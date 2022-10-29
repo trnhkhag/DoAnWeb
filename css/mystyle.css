@@ -22,4 +22,12 @@
 .proceed_to_checkout {
     text-align: center;
 }
+
+.important {
+    color: red;
+}
+
+.note {
+    height: 72px !important;
+}
 /* ffad33 */
