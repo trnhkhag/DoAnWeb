@@ -1,8 +1,25 @@
-.cart_header_top {
-    background-color: #000;
+.cart_quantity {
+    margin-top: 0;
+    margin-bottom: 2rem;
 }
 
-hr {
-    vertical-align: middle;
+.cart_quantity_input {
+    text-align: center;
+    height: 30px !important;
+    width: 10%;
+    margin: 0 5px;
+}
+
+.cart_product_remove {
+    background-color: #fff;
+    border-width: 1px;
+}
+
+.cart_product_remove:hover {
+    background-color: #ffad33;
+}
+
+.proceed_to_checkout {
+    text-align: center;
 }
 /* ffad33 */

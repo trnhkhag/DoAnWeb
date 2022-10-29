@@ -8880,7 +8880,7 @@ h1, h2, h3, h4, h5,
   padding: 16px 20px; }
 
 .ftco-cart button, .ftco-cart .form-control {
-  height: 54px !important;
+  height: 24px !important;
   text-align: center;
   bordeR: 1px solid rgba(0, 0, 0, 0.05) !important;
   color: #000000 !important;
@@ -8935,9 +8935,9 @@ h1, h2, h3, h4, h5,
   .table tbody tr td {
     text-align: center !important;
     vertical-align: middle;
-    padding: 20px 10px;
+    padding: 40px 10px;
     border: 1px solid transparent !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important; }
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important; }
     .table tbody tr td.product-remove a {
       bordeR: 1px solid rgba(0, 0, 0, 0.1);
       padding: 4px 10px;
@@ -8952,10 +8952,10 @@ h1, h2, h3, h4, h5,
     .table tbody tr td.image-prod .img {
       display: block;
       width: 200px;
-      height: 200px;
+      height: 250px;
       margin: 0 auto; }
     .table tbody tr td.product-name {
-      width: 30%; }
+      width: auto; }
       .table tbody tr td.product-name h3 {
         font-size: 16px; }
     .table tbody tr td.total, .table tbody tr td.price {
@@ -8974,7 +8974,8 @@ h1, h2, h3, h4, h5,
     margin-bottom: 20px; }
   .cart-total p {
     width: 100%;
-    display: block; }
+    display: block;
+    text-align: center; }
     .cart-total p span {
       display: block;
       width: 50%; }
@@ -9184,7 +9185,8 @@ textarea.form-control {
   font-size: 24px; }
 
 .ftco-section {
-  padding: 6em 0;
+  margin: 0 12%;
+  padding: 3em 0;
   position: relative; }
 
 .ftco-no-pt {
