@@ -30,4 +30,16 @@
 .note {
     height: 72px !important;
 }
+
+.title {
+    color: #ffad33;
+}
+
+.contact_form_input {
+    height: 36px !important;
+}
+
+.contact_info {
+    margin-bottom: 0.2rem;
+}
 /* ffad33 */
