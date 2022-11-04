@@ -8608,10 +8608,10 @@ h1, h2, h3, h4, h5,
   .deal-of-the-day h3 a {
     color: #ffad33; }
 
-.deal-of-the-day .price {
+.deal-of-the-day .price {                                       /*CHINH SUA*/
   font-weight: 500;
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.5); }
+  color: #fff; }
 
 #timer {
   width: 80%; }
@@ -8629,10 +8629,10 @@ h1, h2, h3, h4, h5,
         font-size: 30px; } }
     #timer .time:first-child {
       border-left: transparent; }
-    #timer .time span {
+    #timer .time span {                                           /*CHINH SUA*/
       font-size: 12px;
       display: block;
-      color: #000000;
+      color: #fff;
       text-transform: uppercase; }
 
 .product-category li {
@@ -8956,6 +8956,7 @@ h1, h2, h3, h4, h5,
     .table tbody tr td.quantity {
       width: 20%; }
     .table tbody tr td.image-prod .img {
+      border-radius: 20px;
       display: block;
       width: 200px;
       height: 250px;
@@ -10021,8 +10022,112 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
 
-.img-fluid2 {
-border-radius: 20px; 
-width: 85%;
-height: auto; 
-}
+
+    .img-fluid2 {
+      border-radius: 20px; 
+      width: 75%;
+      height: auto; 
+      }
+
+      #ftco-nav{
+        position: absolute;
+        left:5%;
+      }
+      #ftco-nav a{
+        color:#000;
+        font-size: 15px;
+      }
+      #ftco-nav a:hover{
+        color:orange;
+        font-weight: bold;
+      }
+      .navbar-brand{
+        margin: 0 auto;
+      }
+      
+      
+      /*#right a{
+        padding:27px 0;
+        font-weight: 400px;
+        opacity: 1 !important;
+        te
+        
+      }*/
+      #c1{
+        position: absolute;
+        left: 50%;
+        right: -50%;	
+      }
+      #c2{
+        position: relative;
+        left: 0%;
+      }
+      #c3{
+        position: relative;
+        left:95%;
+      }
+      input{
+        position: absolute;
+        top:30%;
+      }
+      .search{
+        position: absolute;
+        top:30%;
+      }
+      .log,.cart{
+        position: absolute;
+        top:30%;
+      }
+      .log a{
+        letter-spacing: 2px;
+        font-size: 15px;
+        font-weight: 300;
+        max-height: 58px;
+        padding: 20px 0;
+      }
+      .ftco-navbar-light.scrolled.log>a{
+        color: #ffad33 !important;
+      }
+      .cart a{
+        font-size: 15px;
+        font-weight: 300;
+        max-height: 58px;
+        padding: 20px 0;
+      }
+      #container{
+        margin: 0 auto;
+        width: 50%;
+        height: 300px;
+        background-color: orange;
+      }
+      .left{
+        width: 25%;
+      }
+      .left ul {
+        display: block;
+      }
+      .left li{
+        list-style-type: none;
+      }
+      .left a{
+        color: black;
+      }
+      .left i{
+        color: black;
+      }
+      .right{
+        width: 25%;
+        float: right;
+        
+        
+      }
+      .right a{
+        color:black;
+      /*
+        margin-right: 30PX;
+      */
+      }
+      .right li{
+        list-style-type: none;
+        
+      }
