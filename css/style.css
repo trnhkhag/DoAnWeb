@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .cart a{
 	text-decoration: none;
-	color: #000;
+	color: #ffad33;
 }
 .cart a:hover{
 	font-weight: bold;
@@ -8758,7 +8758,7 @@ h1, h2, h3, h4, h5,
 .deal-of-the-day .price {
   font-weight: 500;
   font-size: 18px;
-  color: rgba(0, 0, 0, 0.5); }
+  color: white; }
 
 #timer {
   width: 80%; }
@@ -8779,7 +8779,7 @@ h1, h2, h3, h4, h5,
     #timer .time span {
       font-size: 12px;
       display: block;
-      color: #000000;
+      color: #fff;
       text-transform: uppercase; }
 
 .product-category li {
@@ -10229,7 +10229,7 @@ height: auto;
 	font-weight: 300;
 	max-height: 58px;
 	padding: 20px 0;
-	color: #000;
+	color: #ffad33;
 }
 /*.ftco-navbar-light.scrolled,.log>a{
 	color: #ffad33 !important;
@@ -10277,10 +10277,3 @@ height: auto;
 	list-style-type: none;
 	
 }
-
-
-
-
-
-
-
