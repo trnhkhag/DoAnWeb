@@ -10,13 +10,15 @@
     margin: 0 5px;
 }
 
-.cart_product_remove {
-    background-color: #fff;
-    border-width: 1px;
+.cart_product_remove a {
+    bordeR: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    color: #000000;
 }
 
-.cart_product_remove:hover {
-    background-color: #ffad33;
+.cart_product_remove a:hover {
+    border: 1px solid #ffad33;
+    background: #ffad33;
 }
 
 .proceed_to_checkout {
@@ -42,4 +44,5 @@
 .contact_info {
     margin-bottom: 0.2rem;
 }
+
 /* ffad33 */
