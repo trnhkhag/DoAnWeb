@@ -1,0 +1,48 @@
+.cart_quantity {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.cart_quantity_input {
+    text-align: center;
+    height: 30px !important;
+    width: 10%;
+    margin: 0 5px;
+}
+
+.cart_product_remove a {
+    bordeR: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 4px 10px;
+    color: #000000;
+}
+
+.cart_product_remove a:hover {
+    border: 1px solid #ffad33;
+    background: #ffad33;
+}
+
+.proceed_to_checkout {
+    text-align: center;
+}
+
+.important {
+    color: red;
+}
+
+.note {
+    height: 72px !important;
+}
+
+.title {
+    color: #ffad33;
+}
+
+.contact_form_input {
+    height: 36px !important;
+}
+
+.contact_info {
+    margin-bottom: 0.2rem;
+}
+
+/* ffad33 */
