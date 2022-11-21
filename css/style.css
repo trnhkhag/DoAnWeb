@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 .input{
 	position: absolute;
 	top:17px;
-	right:18%;
+	right:22%;
 	height: 20px;
 	outline: none;
 	border:none;
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 .search{
 	position: absolute;
 	top:24px;
-	right:18%;
+	right:22%;
 	height: 20px;
 	width: 20px;
 	background-color: orange;
@@ -9355,14 +9355,14 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 14px;
-  padding: 7em 0;
+  margin: 0 12%;
+  padding: 5px
   color: #000000; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
     letter-spacing: .1em; }
   .ftco-footer .ftco-footer-widget h2 {
     font-weight: normal;
-    margin-bottom: 20px;
     font-size: 16px;
     font-weight: 500; }
   .ftco-footer .ftco-footer-widget ul li {
@@ -9374,6 +9374,8 @@ textarea.form-control {
     border: 2px solid #fff !important; }
     .ftco-footer .ftco-footer-widget .btn-primary:hover {
       border: 2px solid #fff !important; }
+      .ftco-footer .ftco-footer-widget ul li a:hover {
+        color: #fff; }
 
 .ftco-footer-social li {
   list-style: none;
@@ -10190,14 +10192,6 @@ height: auto;
 	margin: 0 auto;
 }
 
-
-/*#right a{
-	padding:27px 0;
-	font-weight: 400px;
-	opacity: 1 !important;
-	te
-	
-}*/
 #c1{
 	position: absolute;
 	left: 50%;
@@ -10211,10 +10205,7 @@ height: auto;
 	position: relative;
 	left:50%;
 }
-/*input{
-	position: absolute;
-	top:30%;
-}*/
+
 .search {
 	position: absolute;
 	top: 32%;
@@ -10231,9 +10222,7 @@ height: auto;
 	padding: 20px 20px;
   display: initial;
 }
-/*.ftco-navbar-light.scrolled,.log>a{
-	color: #ffad33 !important;
-}*/
+
 .cart a{
 	font-size: 15px;
 	font-weight: 300;
@@ -10241,44 +10230,52 @@ height: auto;
 	padding: 20px 20px;
   display: initial;
 }
+
 #container{
 	margin: 0 auto;
 	width: 50%;
 	height: 300px;
 	background-color: orange;
 }
+
 .left{
 	width: 25%;
 }
+
 .left ul {
 	display: block;
 }
+
 .left li{
 	list-style-type: none;
 }
+
 .left a{
 	color: black;
 }
+
 .left i{
 	color: black;
 }
+
 .right{
 	width: 25%;
 	float: right;
-	
-	
 }
+
 .right a{
 	color:black;
-/*
-	margin-right: 30PX;
-*/
 }
+
 .right li{
 	list-style-type: none;
 	
 }
 
 .ftco-nav-right {
-  left: 83% !important;
+  left: 86% !important;
+}
+
+.ftco-nav-right ul li a {
+  font-size: 20px !important;
 }
