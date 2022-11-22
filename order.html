@@ -36,63 +36,72 @@
   <div class="container">
     <div class="header">Header</div>
     <div class="sidebar">
-      <div class="mini_header">
-        <h3>THỜI GIAN</h3>
-      </div>
-      <div class="timer">
+      <h3>Thời gian</h3>
+      <div class="filter">
         <form action="#">
-          <select name="time" id="time" class="center">
-            <option value="Trong 24 giờ qua">Trong 24 giờ qua</option>
-            <option value="Trong tuần vừa qua">Trong tuần vừa qua</option>
-            <option value="Trong tháng vừa qua">Trong tháng vừa qua</option>
+          <select name="time" id="time">
+            <option value="Ngày">24 giờ vừa qua</option>
+            <option value="Tuần">Tuần vừa qua</option>
+            <option value="Tháng">Tháng vừa qua</option>
           </select>
+          <div class="date">
+            <label for="date">Ngày: </label>
+            <input type="date" name="date" id="date">
+          </div>
         </form>
       </div>
 
-      <div class="mini_header">
-        <h3>TÌM KIẾM</h3>
-      </div>
-      <div class="search">
+      <h3>Tìm kiếm</h3>
+      <div class="filter">
         <form action="#">
-          <input type="text" id="search" value="" placeholder=" Tìm kiếm theo tên, số điện thoại..."><br>
-          <input type="date" id="date" value="">
+          <input type="text" name="search" id="search" placeholder=" Tìm kiếm theo tên, sđt...">
         </form>
       </div>
 
-      <div class="mini_header">
-        <h3>GIÁ TIỀN</h3>
-      </div>
-      <div class="price_range">
+      <h3>Giá tiền</h3>
+      <div class="filter">
         <form action="#">
-          <label for="from">Từ: </label>
-          <input type="text" id="from" value="" placeholder=" Giá trị"><br>
-          <label for="to">Đến: </label>
-          <input type="text" id="to" value="" placeholder=" Giá trị"><br>
+          <div class="start_price">
+            <label for="sprice">Từ: </label>
+            <input type="text" name="sprice" id="sprice" placeholder=" Giá trị">
+          </div>
+          <div class="end_price">
+            <label for="eprice">Đến: </label>
+            <input type="text" name="eprice" id="eprice" placeholder=" Giá trị">
+          </div>
         </form>
       </div>
 
-      <div class="mini_header" style="margin-top: 10px;">
-        <h3>TRẠNG THÁI</h3>
-      </div>
-      <div class="status">
+      <h3>Trạng thái</h3>
+      <div class="filter">
         <form action="#">
-          <input type="radio" name="status" id="incomplete" value="incomplete">
-          <label for="incomplete">Chưa hoàn thành</label><br>
-          <input type="radio" name="status" id="complete" value="complete">
-          <label for="complete">Hoàn thành</label><br>
+          <div class="status" style="margin-bottom: 10px;">
+            <input type="radio" name="status" id="complete" value="complete">
+            <label for="complete"> Hoàn thành</label>
+          </div>
+          <div class="status">
+            <input type="radio" name="status" id="incomplete" value="incomplete">
+            <label for="incomplete"> Chưa hoàn thành</label>
+          </div>
         </form>
       </div>
 
-      <div class="mini_header">
-        <h3>SẮP XẾP</h3>
-      </div>
-      <div class="status">
+      <h3>Sắp xếp</h3>
+      <div class="filter">
         <form action="#">
-          <input type="radio" name="arrange" id="bytime" value="bytime">
-          <label for="bytime">Theo thời gian</label><br>
-          <input type="radio" name="arrange" id="byprice" value="byprice">
-          <label for="byprice">Theo giá tiền</label><br>
+          <div class="sort" style="margin-bottom: 10px;">
+            <input type="radio" name="sort" id="bytime" value="bytime">
+            <label for="bytime">Theo thời gian</label>
+          </div>
+          <div class="sort">
+            <input type="radio" name="sort" id="byprice" value="byprice">
+            <label for="byprice">Theo giá trị</label>
+          </div>
         </form>
+      </div>
+
+      <div class="filter center" style="padding-top: 0;">
+          <a href="#">Lọc</a>
       </div>
     </div>
 
@@ -113,7 +122,39 @@
           <th>Số điện thoại</th>
           <th>Thời gian</th>
           <th>Giá tiền</th>
-          <th>&nbsp;</th>
+          <th>Chi tiết</th>
+        </tr>
+        <tr class="order">
+          <td class="check"><input type="checkbox" id="order1" name="order1" value="complete"></td>
+          <td>Phạm Hoàng Bách</td>
+          <td>0123456789</td>
+          <td>15:30 22/11/2021</td> 
+          <td>20$</td>
+          <td><a href="order_detail.html">Chi tiết</a></td>
+        </tr>
+        <tr class="order">
+          <td class="check"><input type="checkbox" id="order1" name="order1" value="complete"></td>
+          <td>Phạm Hoàng Bách</td>
+          <td>0123456789</td>
+          <td>15:30 22/11/2021</td> 
+          <td>20$</td>
+          <td><a href="order_detail.html">Chi tiết</a></td>
+        </tr>
+        <tr class="order">
+          <td class="check"><input type="checkbox" id="order1" name="order1" value="complete"></td>
+          <td>Phạm Hoàng Bách</td>
+          <td>0123456789</td>
+          <td>15:30 22/11/2021</td> 
+          <td>20$</td>
+          <td><a href="order_detail.html">Chi tiết</a></td>
+        </tr>
+        <tr class="order">
+          <td class="check"><input type="checkbox" id="order1" name="order1" value="complete"></td>
+          <td>Phạm Hoàng Bách</td>
+          <td>0123456789</td>
+          <td>15:30 22/11/2021</td> 
+          <td>20$</td>
+          <td><a href="order_detail.html">Chi tiết</a></td>
         </tr>
         <tr class="order">
           <td class="check"><input type="checkbox" id="order1" name="order1" value="complete"></td>
@@ -198,13 +239,13 @@
       </table>
 
       <div class="page">
-        <button type="button"><</button>
+        <button type="button" class="previous_page"><</button>
         <button type="button" class="current">1</button>
-        <button type="button">2</button>
-        <button type="button">3</button>
-        <button type="button">4</button>
-        <button type="button">5</button>
-        <button type="button">></button>
+        <button type="button" class="page_number">2</button>
+        <button type="button" class="page_number">3</button>
+        <button type="button" class="page_number">4</button>
+        <button type="button" class="page_number">5</button>
+        <button type="button" class="next_page">></button>
       </div>
     </div>
   </div>

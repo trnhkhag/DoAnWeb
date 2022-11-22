@@ -7,7 +7,6 @@
 body {
     font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
-    padding: 0 1%;
 }
 
 .center {
@@ -35,8 +34,9 @@ body {
 }
 
 .container .sidebar {
-    background-color: #ffdead;
     grid-area: sidebar;
+    padding: 20px 20px 0 20px;
+    background-color: #ffeaa7;
 }
 
 .container .navigationbar {
@@ -49,6 +49,7 @@ body {
 
 .container .content {
     grid-area: content;
+    margin-right: 1%;
 }
 
 .mini_header {
@@ -57,14 +58,16 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #ffad33;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.timer, .search, .price_range, .status{
-    background-color: #ffdead;
+.timer, .search, .price_range {
+    background-color: #fff;
     padding: 0 10px;
 }
 
-.timer form, .search form, .price_range form, .status form {
+.timer form, .search form, .price_range form {
     font-size: 30px;
     padding: 10px 0;
 }
@@ -97,6 +100,7 @@ label {
 }
 
 table {
+    background-color: #fff;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid black;
@@ -119,18 +123,17 @@ td {
 
 .page {
     text-align: center;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    margin: 50px 0;
 }
 
 button {
     height: 30px;
     width: 30px;
     background-color: #fff;
-    border: 1px solid black;
+    border: none;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 button:hover {
@@ -161,4 +164,99 @@ a:hover {
 
 .nav-btn {
     text-align: right;
+}
+
+.sidebar select, .sidebar input {
+    border: none;
+    border-radius: 5px;
+}
+
+.sidebar h3 {
+    background-color: #ffad33;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px 0;
+    border-radius: 0.355rem;
+}
+
+.sidebar .filter {
+    padding: 20px 10px;
+}
+
+.sidebar .filter input {
+    height: 26px;
+    font-size: 15px;
+}
+
+#time {
+    width: 100%;
+    height: 26px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+#date {
+    width: 78%;
+}
+
+.date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start_price {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.end_price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status, .sort {
+    display: flex;
+    align-items: center;
+}
+
+.status label, .sort label {
+    margin-left: 10px;
+}
+
+.next_page, .previous_page, .page_number {
+    background-color: #ffdead;
+}
+
+.page button {
+    margin-right: 2px;
+    border-radius: 5px;
+}
+
+.page button:hover {
+    background-color: #ffad33;
+}
+
+.current {
+    background-color: #ffad33;
+}
+
+.sidebar .filter a {
+    text-decoration: none;
+    background-color: #ffad33;
+    font-size: 16;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fff;
+    padding: 5px 40px;
+    display: block;
+    font-weight: bold;
+    border-radius: 0.355rem;
+}
+
+.sidebar .filter a:hover {
+    background-color: #ffdead;
 }
