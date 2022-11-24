@@ -344,3 +344,42 @@ setInterval(function() { makeTimer(); }, 1000);
 
 })(jQuery);
 
+function loginToShop() {
+	Swal.fire({
+		title: "You are not logged in",
+		text: "Please login to continue shopping",
+		showCancelButton: true,
+		cancelButtonColor: "#555555",
+		confirmButtonText: "login",
+		confirmButtonColor: "#ffad33",
+}).then((result) => {
+	if (result.isConfirmed) {
+		window.location.href = "login1.html";
+	} 
+})
+}
+
+document.querySelector('.not-loggedin').addEventListener('click', loginToShop);
+
+function login() {
+var user = document.getElementById("username").value;
+var pass = document.getElementById("password").value;
+	if (user == "bach" && pass == "123") {
+		window.location.assign('index.html');
+		alert("Login successfully");
+		localStorage.setItem("isLoggedIn", "true");
+} else {
+		alert("wrong user/pass");
+		return true;
+	}
+}
+
+function IsLoggedIn() {
+	if (localStorage.getItem("isLoggedIn") == "true") {
+		console.log("logged in");
+		localStorage.removeItem("isLoggedIn")
+		document.querySelector('.not-loggedin').removeEventListener('click', loginToShop);
+	}
+}
+
+window.onload = IsLoggedIn();

@@ -48,21 +48,20 @@
 						<button type="submit" value="Login" class="btn float-right login_btn">Login</button>
 					</div>
 
-					<script type="text/javascript">
+					<!-- <script type="text/javascript">
 						function login() {
 							var user = document.getElementById("username").value;
 							var pass = document.getElementById("password").value;
 							if(user == "bach" && pass == "123") {
-								Window.location.assign('index.html');
+								window.location.href = "index.html";
 								alert("Logged In Success");
-
-								return false;
+								return true;
 							} else {
 								alert("wrong user/pass");
 								return false;
 								}
 							}
-					</script>
+					</script> -->
 
 				</form>
 			</div>
@@ -77,5 +76,7 @@
 		</div>
 	</div>
 </div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
