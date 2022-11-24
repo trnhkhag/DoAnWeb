@@ -344,6 +344,8 @@ setInterval(function() { makeTimer(); }, 1000);
 
 })(jQuery);
 
+// Login Verification
+
 function loginToShop() {
 	Swal.fire({
 		title: "You are not logged in",
@@ -352,7 +354,7 @@ function loginToShop() {
 		cancelButtonColor: "#555555",
 		confirmButtonText: "login",
 		confirmButtonColor: "#ffad33",
-}).then((result) => {
+	}).then((result) => {
 	if (result.isConfirmed) {
 		window.location.href = "login1.html";
 	} 
@@ -364,21 +366,30 @@ document.querySelector('.not-loggedin').addEventListener('click', loginToShop);
 function login() {
 var user = document.getElementById("username").value;
 var pass = document.getElementById("password").value;
-	if (user == "bach" && pass == "123") {
+	if (user == "User" && pass == "12345678") {
 		window.location.assign('index.html');
-		alert("Login successfully");
+		alert("Login Successfully")
 		localStorage.setItem("isLoggedIn", "true");
-} else {
-		alert("wrong user/pass");
-		return true;
+	}
+	else if (user == "Admin" && pass == "admin") {
+		window.location.assign('order.html');
+		alert("You are logged in as administrator")
+	}
+	else {
+		alert("Wrong Username or Password!");
 	}
 }
 
 function IsLoggedIn() {
 	if (localStorage.getItem("isLoggedIn") == "true") {
 		console.log("logged in");
-		localStorage.removeItem("isLoggedIn")
 		document.querySelector('.not-loggedin').removeEventListener('click', loginToShop);
+		let account = document.getElementsByClassName('nav-item');
+		account[6].innerHTML = '<a href="#" class="nav-link log-out"><i class="fa-solid fa-right-from-bracket"></i></a>';
+		document.querySelector('.log-out').addEventListener('click', () => {
+			localStorage.setItem("isLoggedIn", "false");
+			window.location.reload();
+		})
 	}
 }
 
