@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html body{
-    background-image: url(../images/bg_2.jpg);
+    background-image: url(../images/login_bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -14,7 +14,6 @@ html body{
     }
     
     .card{
-    height: 470px;
     margin-top: auto;
     margin-bottom: auto;
     width: 500px;
@@ -43,7 +42,6 @@ html body{
     }
     
     .input-group-prepend span{
-    width: 50px;
     background-color: #FFC312;
     color: black;
     border:0 !important;
@@ -84,4 +82,25 @@ html body{
     
     .links a{
     margin-left: 4px;
+    }
+
+    .register_btn {
+        background-color: #FFC312;
+        width: 100px;
+    }
+
+    .register_btn:hover {
+        color: black;
+        background-color: white;
+    }
+
+    .action {
+        margin-top: 2rem;
+    }
+    a {
+        color: #FFC312
+    }
+
+    a:hover {
+        color: blueviolet;
     }

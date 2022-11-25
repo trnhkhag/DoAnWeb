@@ -7,7 +7,7 @@
 <html>
 <head>
 	<title>Vegefoods|Sign in</title>
- 
+
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="login_register_css/login.css">
 </head>
@@ -30,38 +30,25 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input id="username" type="text" class="form-control" placeholder="username">
+						<input id="username" type="text" class="form-control" placeholder="Enter Username">
 					</div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input id="password" type="password" class="form-control" placeholder="password">
+						<input id="password" type="password" class="form-control" placeholder="Enter Password">
 					</div>
 
 					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						<input type="checkbox" id="remember">
+						<label for="remember"> Remember Me</label>
 					</div>
 
-					<div>
+					<div class="action">
+						<button type="button" value="Cancel" onclick="window.location.assign('index.html');" class="btn float-right login_btn">Cancel</button>
 						<button type="submit" value="Login" class="btn float-right login_btn">Login</button>
 					</div>
-
-					<!-- <script type="text/javascript">
-						function login() {
-							var user = document.getElementById("username").value;
-							var pass = document.getElementById("password").value;
-							if(user == "bach" && pass == "123") {
-								window.location.href = "index.html";
-								alert("Logged In Success");
-								return true;
-							} else {
-								alert("wrong user/pass");
-								return false;
-								}
-							}
-					</script> -->
 
 				</form>
 			</div>
@@ -78,5 +65,6 @@
 </div>
 
 <script src="js/main.js"></script>
+
 </body>
 </html>

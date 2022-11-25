@@ -355,20 +355,24 @@ function loginToShop() {
 		confirmButtonText: "login",
 		confirmButtonColor: "#ffad33",
 	}).then((result) => {
-	if (result.isConfirmed) {
-		window.location.href = "login1.html";
-	} 
-})
+		if (result.isConfirmed) {
+			window.location.href = "login1.html";
+		} 
+	})
 }
 
-document.querySelector('.not-loggedin').addEventListener('click', loginToShop);
+var buybtn = document.getElementsByClassName('buy-now');
+for (let i = 0; i < buybtn.length; i++) {
+	buybtn[i].addEventListener('click', loginToShop);
+}
+// document.getElementById('add_to_cart').addEventListener('click', loginToShop);
 
 function login() {
 var user = document.getElementById("username").value;
 var pass = document.getElementById("password").value;
 	if (user == "User" && pass == "12345678") {
 		window.location.assign('index.html');
-		alert("Login Successfully")
+		alert("Login Successfully");
 		localStorage.setItem("isLoggedIn", "true");
 	}
 	else if (user == "Admin" && pass == "admin") {
@@ -383,13 +387,20 @@ var pass = document.getElementById("password").value;
 function IsLoggedIn() {
 	if (localStorage.getItem("isLoggedIn") == "true") {
 		console.log("logged in");
-		document.querySelector('.not-loggedin').removeEventListener('click', loginToShop);
+		console.log(buybtn);
+		for (let i = 0; i < buybtn.length; i++) {
+			buybtn[i].removeEventListener('click', loginToShop);
+		}
+		// document.getElementById('add_to_cart').removeEventListener('click', loginToShop);
 		let account = document.getElementsByClassName('nav-item');
 		account[6].innerHTML = '<a href="#" class="nav-link log-out"><i class="fa-solid fa-right-from-bracket"></i></a>';
 		document.querySelector('.log-out').addEventListener('click', () => {
 			localStorage.setItem("isLoggedIn", "false");
 			window.location.reload();
 		})
+	}
+	else {
+		console.log("not logged in");
 	}
 }
 

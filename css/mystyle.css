@@ -46,3 +46,42 @@
 }
 
 /* ffad33 */
+
+footer {
+    padding: 2rem 3rem;
+    background-color: #ffad33;
+    margin: 0 12%;
+}
+
+.Our_social_media {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.Our_social_media i {
+    font-size: 30px;
+    margin: 0 0.5rem;
+}
+
+.more_info {
+    margin: 0 5rem;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+footer p {
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+
+footer a {
+    color: #000000;
+}
+
+footer a:hover {
+    color: #fff;
+}
