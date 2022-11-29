@@ -27,13 +27,13 @@ body {
 }
 
 .container .header {
-    background-color: red;
     grid-area: header;
 }
 
 .container .sidebar {
     grid-area: sidebar;
-    padding: 20px 20px 0 20px;
+    padding: 20px;
+    margin-top: 20px;
     background-color: #ffeaa7;
 }
 

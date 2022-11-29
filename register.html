@@ -31,13 +31,13 @@
                     <h3>Sign Up</h3>
                 </div>
                 <div class="card-body">
-                    <form onsubmit="window.location.assign('login1.html'); alert('Register successfully')">
+                    <form onsubmit="console.log('Hello')"">
 
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username">
+                            <input type="text" class="form-control" placeholder="Username" id="user">
                         </div>
 
                         <div class="input-group form-group">
@@ -58,7 +58,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" id="pass">
                         </div>
 
                         <div class="input-group form-group">
@@ -83,10 +83,10 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html> 
-</div>
 
 <script>
     var reset = document.getElementsByClassName('login_btn');
