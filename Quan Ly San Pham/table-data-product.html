@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Quản lý sản phẩm</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+</head>
+
+<body class="app sidebar-mini rtl">
+    <aside class="app-sidebar">
+      <div class="cgsidebar">
+    <div class="row">
+        <div class="flex-container">
+            <div><b>Tìm Kiếm</b> </div>
+        </div>
+      <div class="form-group down">
+          <label>
+            <input class="form-control" type="Tìm kiếm" placeholder="Theo tên"></label>
+      </div>
+      <div class="form-group down">
+          <label>
+            <input class="form-control" type="Tìm kiếm" placeholder="Theo giá"></label>
+      </div>
+      <div class="form-group down">
+        <label>
+          <input class="form-control" type="Tìm kiếm" placeholder="Theo danh mục"></label>
+    </div>
+
+      <div class="flex-container">
+        <div><b>Các Loại Sản Phẩm</b></div>
+    </div>
+      <div class="form-group down">
+        <select class="form-control-02">
+            <option>Tất cả</option>
+            <option>Đồng Hồ Nam</option>
+            <option>Đồng Hồ Nữ</option>
+            <option>Đồng Hồ Cơ</option>
+            <option>Đồng Hồ Pin</option>
+        </select>
+    </div>
+</div>
+</div>
+    </aside>
+    <main class="app-content">
+        <div class="row">
+            <div class="col-md-01">
+                <div class="tile">
+                    <div class="tile-body">
+                        <div class="headtext"><b> Quản Lý Sản Phẩm</b></div>
+                        <div class="row element-button">
+                            <div class="col-sm">
+                                <button class="btn add js-section-admin-them" type="button" title="Thêm sản phẩm" ><i
+                                    class="fas fa-plus"></i> Thêm sản phẩm</button>
+                            </div>                 
+                            <div class="col-sm">
+                                <button class="btn trash-a" type="button" title="Xóa"><i
+                                    class="fas fa-trash-alt"></i> Xóa tất cả</button>
+                            </div>
+                          </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="colorhead">Tên sản phẩm</th>
+                                    <th class="colorhead">Ảnh</th>
+                                    <th class="colorhead">Số lượng</th>
+                                    <th class="colorhead">Tình trạng</th>
+                                    <th class="colorhead">Giá tiền</th>
+                                    <th class="colorhead">Danh mục</th>
+                                    <th class="colorhead">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_1.jpg" alt="" width="50px;"></td>
+                                    <td>40</td>
+                                    <td><span class="badge bg-success">Còn hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Nam</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                            
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_2.jpg" alt="" width="50px;"></td>
+                                    <td>70</td>
+                                    <td><span class="badge bg-success">Còn hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Nam</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                       
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_3.jpg" alt="" width="50px;"></td>
+                                    <td>40</td>
+                                    <td><span class="badge bg-success">Còn hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Nam</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                      
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_4.jpg" alt="" width="50px;"></td>
+                                    <td>50</td>
+                                    <td><span class="badge bg-success">Còn hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Nữ</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                       
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_5.jpg" alt="" width="50px;"></td>
+                                    <td>0</td>
+                                    <td><span class="badge bg-danger">Hết hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Nữ</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_6.png" alt="" width="50px;"></td>
+                                    <td>10</td>
+                                    <td><span class="badge bg-onsucess">Sắp hết hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Cơ</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Chỉnh Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                        
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Đồng Hồ Lobini</td>
+                                    <td class="img2"><img src="img-sanpham/product_7.jpg" alt="" width="50px;"></td>
+                                    <td>0</td>
+                                    <td><span class="badge bg-danger">Hết Hàng</span></td>
+                                    <td>$20000.00</td>
+                                    <td>Đồng Hồ Pin</td>
+                                    <td><button class="btn trash" type="button" title="Xóa"><i
+                                                class="fas fa-trash-alt"></i> </button>
+                                        <button class="btn edit" type="button" title="Sửa" data-toggle="modal"
+                                            data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                      
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal" id="ModalUP">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group ">
+                            <span class="thong-tin-thanh-toan">
+                                <h5>Chỉnh sửa thông tin sản phẩm cơ bản</h5>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-02">
+                            <label class="control">Tên sản phẩm</label>
+                            <input class="form-control" type="text" required value="Đồng Hồ Lobini">
+                        </div>
+                        <div class="form-group  col-md-02">
+                            <label class="control">Số lượng</label>
+                            <input class="form-control" type="number" required value="20">
+                        </div>
+                        <div class="form-group col-md-02 ">
+                            <label for="exampleSelect1" class="control">Tình trạng sản phẩm</label>
+                            <select class="form-control" id="exampleSelect1">
+                                <option>Còn Hàng</option>
+                                <option>Hết Hàng</option>
+                                <option>Sắp Hết Hàng</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-02 ">
+                            <label for="exampleSelect1" class="control">Danh Mục</label>
+                            <select class="form-control" >
+                                <option>Đồng Hồ Nam</option>
+                                <option>Đồng Hồ Nữ</option>
+                                <option>Đồng Hồ Cơ</option>
+                                <option>Đồng Hồ Pin</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-02">
+                            <label class="control">Giá bán</label>
+                            <input class="form-control" type="text" value="$20000.00">
+                        </div>
+
+                    </div>
+                    <BR>
+                    <button class="btn btn-save" type="button">Lưu lại</button>
+                    <a class="btn btn-cancel" href="#">Hủy bỏ</a>
+                    <BR>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-admin js-modal-admin">
+        <div class=" js-modal-container-admin">
+            <div class="modal-close-admin js-modal-close-admin"></div>
+            
+            <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group ">
+                        <span class="thong-tin-thanh-toan">
+                            <h5>Thêm sản phẩm</h5>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-02">
+                        <label class="control">Tên sản phẩm</label>
+                        <input class="form-control" type="text" required value="Đồng Hồ Lobini">
+                    </div>
+                    <div class="form-group  col-md-02">
+                        <label class="control">Số lượng</label>
+                        <input class="form-control" type="number" required value="20">
+                    </div>
+                    <div class="form-group col-md-02 ">
+                        <label for="exampleSelect1" class="control">Tình trạng sản phẩm</label>
+                        <select class="form-control" >
+                            <option>Còn Hàng</option>
+                            <option>Hết Hàng</option>
+                            <option>Sắp Hết Hàng</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-02 ">
+                        <label for="exampleSelect1" class="control">Danh Mục</label>
+                        <select class="form-control" >
+                            <option>Đồng Hồ Nam</option>
+                            <option>Đồng Hồ Nữ</option>
+                            <option>Đồng Hồ Cơ</option>
+                            <option>Đồng Hồ Pin</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-02">
+                        <label class="control">Giá bán</label>
+                        <input class="form-control" type="text" value="$20000.00">
+                    </div>
+                </div>
+                <div class="up">
+                <button class="btn btn-upload fas fa-file-upload" type="button">UpLoad Hình</button>
+                </div>
+                
+                <button class="btn btn-save" type="button">UpLoad</button>
+                <button class="btn btn-cancel" type="button">Hủy Bỏ</button>
+                <BR>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const them=document.querySelector('.js-section-admin-them')
+        const modal=document.querySelector('.js-modal-admin')
+        const modalClose=document.querySelector('.js-modal-close-admin')
+        const modalContainer=document.querySelector('.js-modal-container-admin')
+        function showThemProduct()
+        {
+            modal.classList.add('open');
+        }
+
+        function hideThemProduct()
+        {
+            modal.classList.remove('open');
+        }
+        them.addEventListener('click',showThemProduct)
+
+        modalClose.addEventListener('click',hideThemProduct)
+
+        modal.addEventListener('click',hideThemProduct)
+
+        modalContainer.addEventListener('click' , function(event){
+        event.stopPropagation();
+        })
+    </script>
+    <!-- Chỉnh sửa -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Xóa -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        jQuery(function () {
+            jQuery(".trash").click(function () {
+                swal({
+                    title: "Cảnh báo",
+                    text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
+                    buttons: ["Hủy bỏ", "Đồng ý"],
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Đã xóa thành công.!", {});
+                        }
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>
