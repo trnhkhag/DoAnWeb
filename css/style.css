@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 .noidung_dropdown a:hover {background-color: #ddd;}
 /* hiển thị nội dung dropdown khi hover */
  .dropdown:hover .noidung_dropdown {display: block;}
-/* Thay đổi màu background cho nút khi được hover */
+/*Thay đổi màu background cho nút khi được hover
 
 /*#header{
 	height: 60px;
