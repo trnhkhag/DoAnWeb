@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BKMT WATCH | Admin - Order_List</title>
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/admin_style.css">
 </head>
@@ -18,7 +19,7 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="#" class="active">
+        <a href="admin_index.html">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
@@ -30,7 +31,7 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="#" class="active">
           <i class='bx bx-list-ul'></i>
           <span class="links_name">Order list</span>
         </a>
@@ -91,10 +92,10 @@
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Dashboard</span>
       </div>
-      <div class="search-box">
+      <!-- <div class="search-box">
         <input type="text" placeholder="Search...">
         <i class='bx bx-search'></i>
-      </div>
+      </div> -->
       <div class="profile-details">
         <img src="images/profile.jpg" alt="">
         <span class="admin_name">Admin</span>
@@ -114,7 +115,7 @@
           </div>
         </div>
 
-        <div class="filter">
+        <div class="filter" style="display: none;">
           <div class="option">
             <p class="title">Time & Date</p>
             <div class="option-list">
@@ -138,11 +139,11 @@
               <form action="" class="price-range">
                 <div>
                   <label for="from">From</label>
-                  <input type="text" id="from">
+                  <input type="text" id="from" placeholder=" 0$">
                 </div>
                 <div>
                   <label for="to">To</label>
-                  <input type="text" id="to">
+                  <input type="text" id="to" placeholder=" 1000$">
                 </div>
               </form>
             </div>
@@ -150,12 +151,143 @@
           <div class="option">
             <p class="title">Status</p>
             <div class="option-list">
-              
+              <div class="status">
+                <button id="paid">Paid</button>
+              </div>
+              <div class="status">
+                <button id="unpaid">Unpaid</button>
+              </div>
             </div>
           </div>
           <div class="option">
             <p class="title">Sort</p>
+            <div class="option-list">
+              <div class="sort">
+                <button id="bytime"><i class="fa-solid fa-arrow-up"></i> By time</button>
+              </div>
+              <div class="sort">
+                <button id="byprice"><i class="fa-solid fa-arrow-up"></i> By price</button>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div class="order-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Phone Number</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pham Hoang Bach</td>
+              <td>0123456789</td>
+              <td>200$</td>
+              <td>22-11-2022</td>
+              <td><span class="status-paid">Paid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>Tran Ha Khang</td>
+              <td>0987654321</td>
+              <td>380$</td>
+              <td>11-11-2022</td>
+              <td><span class="status-paid">Paid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>Lam Kien Minh</td>
+              <td>0125543265</td>
+              <td>300$</td>
+              <td>23-06-2022</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>Nguyen Duc Tai</td>
+              <td>0983275463</td>
+              <td>500$</td>
+              <td>31-07-2022</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>Nguyen Tuan Kiet</td>
+              <td>0983254321</td>
+              <td>1000$</td>
+              <td>21-05-2022</td>
+              <td><span class="status-paid">Paid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+            <tr>
+              <td>Huynh Minh Nhut</td>
+              <td>0987282645</td>
+              <td>800$</td>
+              <td>12-12-2022</td>
+              <td><span class="status-unpaid">Unpaid</span></td>
+              <td>
+                <i class='bx bxs-edit-alt'>
+                  <span class="tooltip">Edit</span>
+                </i>
+                <i class='bx bxs-detail'>
+                  <span class="tooltip">Details</span>
+                </i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footer">
+        <div class="page">
+          <button><i class='bx bx-left-arrow-alt'></i></button>
+          <button class="current-page">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <button><i class='bx bx-right-arrow-alt'></i></button>
         </div>
       </div>
     </div>
@@ -171,4 +303,37 @@
       } else
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
+
+    let filterBtn = document.querySelector(".filter-list");
+    let header = document.querySelector('.header');
+    filterBtn.addEventListener('click', () => {
+      header.classList.toggle('active');
+      let filterList = document.querySelector(".filter");
+      if (filterList.style.display == "none")
+        filterList.style.display = "flex";
+      else
+        filterList.style.display = "none";
+    })
+
+    let sortByTimeBtn = document.querySelector('#bytime');
+    sortByTimeBtn.addEventListener('click', () => {
+      sortByTime = sortByTimeBtn.firstChild;
+      if (sortByTime.classList.contains('fa-arrow-up')) {
+        sortByTime.classList.replace('fa-arrow-up', 'fa-arrow-down');
+      }
+      else {
+        sortByTime.classList.replace('fa-arrow-down', 'fa-arrow-up');
+      }
+    })
+
+    let sortByPriceBtn = document.querySelector('#byprice');
+    sortByPriceBtn.addEventListener('click', () => {
+      sortByPrice = sortByPriceBtn.firstChild;
+      if (sortByPrice.classList.contains('fa-arrow-up')) {
+        sortByPrice.classList.replace('fa-arrow-up', 'fa-arrow-down');
+      }
+      else {
+        sortByPrice.classList.replace('fa-arrow-down', 'fa-arrow-up');
+      }
+    })
   </script>
