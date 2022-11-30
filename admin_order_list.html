@@ -90,7 +90,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Dashboard</span>
+        <span class="dashboard">Order list</span>
       </div>
       <!-- <div class="search-box">
         <input type="text" placeholder="Search...">
@@ -294,6 +294,7 @@
   </section>
 
   <script>
+    // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
     sidebarBtn.onclick = function () {
@@ -304,17 +305,19 @@
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
     }
 
+    // open and close filter list
     let filterBtn = document.querySelector(".filter-list");
     let header = document.querySelector('.header');
     filterBtn.addEventListener('click', () => {
       header.classList.toggle('active');
       let filterList = document.querySelector(".filter");
       if (filterList.style.display == "none")
-        filterList.style.display = "flex";
+        setTimeout(() => {filterList.style.display = "flex";}, 250);
       else
         filterList.style.display = "none";
     })
 
+    // increase and decrease according to time
     let sortByTimeBtn = document.querySelector('#bytime');
     sortByTimeBtn.addEventListener('click', () => {
       sortByTime = sortByTimeBtn.firstChild;
@@ -326,6 +329,7 @@
       }
     })
 
+    // increase and decrease according to price
     let sortByPriceBtn = document.querySelector('#byprice');
     sortByPriceBtn.addEventListener('click', () => {
       sortByPrice = sortByPriceBtn.firstChild;
@@ -337,3 +341,6 @@
       }
     })
   </script>
+</body>
+
+</html>

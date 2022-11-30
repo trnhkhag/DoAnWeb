@@ -444,14 +444,14 @@ nav .profile-details i{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
   background: rgb(255, 255, 255);
   padding: 15px 14px;
-  height: 80;
+  height: 80px;
   border-radius: 12px;
   margin: 0 14px;
-  transition: all 0.5 ease;
+  transition: height 0.5s ease;
 }
 
 .home-content .active {
-  height: 234;
+  height: 234px;
 }
 
 .home-content .header .nav {
@@ -547,9 +547,15 @@ nav .profile-details i{
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
 }
 
+#paid:hover, #unpaid:hover,
+#bytime:hover, #byprice:hover {
+  cursor: pointer;
+}
+
 #paid:active, #unpaid:active,
 #bytime:active, #byprice:active {
-  background-color: #2697FF;
+  box-shadow: none;
+  /* background-color: #2697FF; */
 }
 
 .home-content .order-list {
@@ -621,9 +627,8 @@ nav .profile-details i{
   text-align: center;
   border-radius: 6px;
   padding: 2px 4px;
-  /* Position the tooltip */
   position: absolute;
-  left: -7px;
+  left: 0;
   top: -20px;
   z-index: 1;
 }
