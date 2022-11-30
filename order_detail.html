@@ -1,148 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>BKMT WATCH | Order_detail</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
-
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-
-  <link rel="stylesheet" href="css/aos.css">
-
-  <link rel="stylesheet" href="css/ionicons.min.css">
-
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.css">
-
-  <link rel="stylesheet" href="css/flaticon.css">
-  <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/order_detail.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKMT WATCH | Admin - Order_detail</title>
+  <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/admin_style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="header"></div>
-        <div class="setting">
-            <div>
-                <button type="button">Chỉnh sửa</button>
-                <button type="button">Xuất hoá đơn</button>
-            </div>
-        </div>
-        <div class="order">
-            <div class="title"><h2>THÔNG TIN HOÁ ĐƠN</h2></div>
-            <table>
-                <tr>
-                    <th>Mã hoá đơn</th>
-                    <td>AB1122</td>
-                </tr>
-                <tr>
-                    <th>Ngày lập</th>
-                    <td>22/11/2021</td>
-                </tr>
-                <tr>
-                    <th>Thành tiền</th>
-                    <td><span class="total">800$</span></td>
-                </tr>
-                <tr>
-                    <th>Trạng thái</th>
-                    <td><span class="status">Đã xử lý</span></td>
-                </tr>
-            </table>
-        </div>
-        <div class="customer">
-            <div class="title"><h2>THÔNG TIN KHÁCH HÀNG</h2></div>
-            <table>
-                <tr>
-                    <th>Tên khách hàng</th>
-                    <td>Phạm Hoàng Bách</td>
-                </tr>
-                <tr>
-                    <th>Số điện thoại</th>
-                    <td>0123456789</td>
-                </tr>
-                <tr>
-                    <th>Địa chỉ</th>
-                    <td>123 An Dương Vương, P.3, Q.5, TPHCM</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td><a href="#">abc1234@gmail.com</a></td>
-                </tr>
-            </table>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bx-alarm'></i>
+      <span class="logo_name">BKMT WATCH</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="admin_index.html">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-box'></i>
+          <span class="links_name">Product</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-list-ul'></i>
+          <span class="links_name">Order list</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-pie-chart-alt-2'></i>
+          <span class="links_name">Analytics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-coin-stack'></i>
+          <span class="links_name">Stock</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-book-alt'></i>
+          <span class="links_name">Total order</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Team</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-message'></i>
+          <span class="links_name">Messages</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-heart'></i>
+          <span class="links_name">Favrorites</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Setting</span>
+        </a>
+      </li>
+      <li class="log_out">
+        <a href="#">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Order list</span>
+      </div>
+      <!-- <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search'></i>
+      </div> -->
+      <div class="profile-details">
+        <img src="images/profile.jpg" alt="">
+        <span class="admin_name">Admin</span>
+        <i class='bx bx-chevron-down'></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="header">
+        <div class="nav">
+          <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search'></i>
+          </div>
+          <div class="filter-list">
+            <i class="bx bx-filter"></i>
+          </div>
         </div>
 
-        <div class="product">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sản phẩm</th>
-                        <th>Mô tả</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Tổng</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>
-                        <div class="product_img" style="background-image:url(images/product_5.jpg);"></div>
-                    </td>
-                    <td>
-                        <h3>Submariner</h3>
-						<p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
-                    <td class="price">200$</td>
-                    <td class="quantity">1</td>
-                    <td class="price">200$</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product_img" style="background-image:url(images/product_1.jpg);"></div>
-                    </td>
-                    <td>
-                        <h3>Submariner</h3>
-						<p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
-                    <td class="price">200$</td>
-                    <td class="quantity">1</td>
-                    <td class="price">200$</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product_img" style="background-image:url(images/product_2.jpg);"></div>
-                    </td>
-                    <td>
-                        <h3>Submariner</h3>
-						<p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
-                    <td class="price">200$</td>
-                    <td class="quantity">1</td>
-                    <td class="price">200$</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="product_img" style="background-image:url(images/product_7.jpg);"></div>
-                    </td>
-                    <td>
-                        <h3>Submariner</h3>
-						<p>Far far away, behind the word mountains, far from the countries</p>
-                    </td>
-                    <td class="price">200$</td>
-                    <td class="quantity">1</td>
-                    <td class="price">200$</td>
-                </tr>
-            </table>
+        <div class="filter" style="display: none;">
+          <div class="option">
+            <p class="title">Time & Date</p>
+            <div class="option-list">
+              <form action="" class="time">
+                <label for="time">Time</label>
+                <select name="time" id="time">
+                  <option value="24h">Last 24 hours</option>
+                  <option value="week">Last week</option>
+                  <option value="month">Last month</option>
+                </select>
+              </form>
+              <form action="" class="date">
+                <label for="date">Date</label>
+                <input type="date" id="date">
+              </form>
+            </div>
+          </div>
+          <div class="option">
+            <p class="title">Price range</p>
+            <div class="option-list">
+              <form action="" class="price-range">
+                <div>
+                  <label for="from">From</label>
+                  <input type="text" id="from" placeholder=" 0$">
+                </div>
+                <div>
+                  <label for="to">To</label>
+                  <input type="text" id="to" placeholder=" 1000$">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="option">
+            <p class="title">Status</p>
+            <div class="option-list">
+              <div class="status">
+                <button id="paid">Paid</button>
+              </div>
+              <div class="status">
+                <button id="unpaid">Unpaid</button>
+              </div>
+            </div>
+          </div>
+          <div class="option">
+            <p class="title">Sort</p>
+            <div class="option-list">
+              <div class="sort">
+                <button id="bytime"><i class="fa-solid fa-arrow-up"></i> By time</button>
+              </div>
+              <div class="sort">
+                <button id="byprice"><i class="fa-solid fa-arrow-up"></i> By price</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </section>
 </body>
+
 </html>

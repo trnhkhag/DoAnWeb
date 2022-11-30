@@ -583,6 +583,11 @@ nav .profile-details i{
   border-radius: 4px;
 }
 
+.order-list table td a {
+  text-decoration: none;
+  color: #000;
+}
+
 .order-list table tbody tr:hover {
   background-color: rgba(38, 151, 255, 0.3);
 }
