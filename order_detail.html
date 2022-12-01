@@ -31,7 +31,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="active">
+        <a href="admin_order_list.html" class="active">
           <i class='bx bx-list-ul'></i>
           <span class="links_name">Order list</span>
         </a>
@@ -90,12 +90,8 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Order list</span>
+        <span class="dashboard">Order detail</span>
       </div>
-      <!-- <div class="search-box">
-      <input type="text" placeholder="Search...">
-      <i class='bx bx-search'></i>
-      </div> -->
       <div class="profile-details">
         <img src="images/profile.jpg" alt="">
         <span class="admin_name">Admin</span>
@@ -103,74 +99,147 @@
       </div>
     </nav>
 
-    <div class="home-content">
+    <div class="home-content order-detail">
       <div class="header">
         <div class="nav">
           <div class="search-box">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search ...">
             <i class='bx bx-search'></i>
           </div>
-          <div class="filter-list">
-            <i class="bx bx-filter"></i>
+          <div class="action">
+            <div class="btn">
+              <i class="bx bx-edit"></i>
+            </div>
+            <div class="btn">
+              <i class="bx bx-exit"></i>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="filter" style="display: none;">
-          <div class="option">
-            <p class="title">Time & Date</p>
-            <div class="option-list">
-              <form action="" class="time">
-                <label for="time">Time</label>
-                <select name="time" id="time">
-                  <option value="24h">Last 24 hours</option>
-                  <option value="week">Last week</option>
-                  <option value="month">Last month</option>
-                </select>
-              </form>
-              <form action="" class="date">
-                <label for="date">Date</label>
-                <input type="date" id="date">
-              </form>
-            </div>
-          </div>
-          <div class="option">
-            <p class="title">Price range</p>
-            <div class="option-list">
-              <form action="" class="price-range">
-                <div>
-                  <label for="from">From</label>
-                  <input type="text" id="from" placeholder=" 0$">
-                </div>
-                <div>
-                  <label for="to">To</label>
-                  <input type="text" id="to" placeholder=" 1000$">
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="option">
-            <p class="title">Status</p>
-            <div class="option-list">
-              <div class="status">
-                <button id="paid">Paid</button>
-              </div>
-              <div class="status">
-                <button id="unpaid">Unpaid</button>
-              </div>
-            </div>
-          </div>
-          <div class="option">
-            <p class="title">Sort</p>
-            <div class="option-list">
-              <div class="sort">
-                <button id="bytime"><i class="fa-solid fa-arrow-up"></i> By time</button>
-              </div>
-              <div class="sort">
-                <button id="byprice"><i class="fa-solid fa-arrow-up"></i> By price</button>
-              </div>
-            </div>
-          </div>
+      <div class="info">
+        <div class="box order-info">
+          <table>
+            <caption>Order Infomation</caption>
+            <tbody>
+              <tr>
+                <th>Order's ID</th>
+                <td>011235</td>
+              </tr>
+              <tr>
+                <th>Date</th>
+                <td>22-11-2022</td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td>200$</td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td><span class="status-paid">Paid</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <div class="box customer-info">
+          <table>
+            <caption>Customer Infomation</caption>
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td>Pham Hoang Bach</td>
+              </tr>
+              <tr>
+                <th>Phone Number</th>
+                <td>0123456789</td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td>123 An Duong Vuong, P.5, Q.5, TPHCM</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><a href="#">bach@gmail.com</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box product-list">
+        <table>
+          <caption>Product List</caption>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="product-img" style="background-image:url(images/product_8.jpg);"></div>
+              </td>
+              <td>
+                <h4>Submariner</h4>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+              </td>
+              <td>50$</td>
+              <td>1</td>
+              <td>50$</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-img" style="background-image:url(images/product_7.jpg);"></div>
+              </td>
+              <td>
+                <h4>Submariner</h4>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+              </td>
+              <td>50$</td>
+              <td>1</td>
+              <td>50$</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-img" style="background-image:url(images/product_6.png);"></div>
+              </td>
+              <td>
+                <h4>Submariner</h4>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+              </td>
+              <td>25$</td>
+              <td>1</td>
+              <td>25$</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-img" style="background-image:url(images/product_2.jpg);"></div>
+              </td>
+              <td>
+                <h4>Submariner</h4>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+              </td>
+              <td>50$</td>
+              <td>1</td>
+              <td>50$</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="product-img" style="background-image:url(images/product_1.jpg);"></div>
+              </td>
+              <td>
+                <h4>Submariner</h4>
+                <p>Far far away, behind the word mountains, far from the countries</p>
+              </td>
+              <td>25$</td>
+              <td>1</td>
+              <td>25$</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>

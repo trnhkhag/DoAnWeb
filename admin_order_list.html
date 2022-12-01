@@ -107,15 +107,20 @@
       <div class="header">
         <div class="nav">
           <div class="search-box">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search order">
             <i class='bx bx-search'></i>
           </div>
-          <div class="filter-list">
-            <i class="bx bx-filter"></i>
+          <div class="action">
+            <div class="add-order btn">
+              <i class="bx bx-plus"></i>
+            </div>
+            <div class="filter-list btn">
+              <i class="bx bx-filter"></i>
+            </div>
           </div>
         </div>
 
-        <div class="filter" style="display: none;">
+        <div class="filter">
           <div class="option">
             <p class="title">Time & Date</p>
             <div class="option-list">
@@ -322,11 +327,11 @@
     let header = document.querySelector('.header');
     filterBtn.addEventListener('click', () => {
       header.classList.toggle('active');
-      let filterList = document.querySelector(".filter");
-      if (filterList.style.display == "none")
-        setTimeout(() => { filterList.style.display = "flex"; }, 250);
-      else
-        filterList.style.display = "none";
+      // let filterList = document.querySelector(".filter");
+      // if (filterList.style.display == "none")
+      //   setTimeout(() => { filterList.style.display = "flex"; }, 250);
+      // else
+      //   filterList.style.display = "none";
     })
 
     // increase and decrease according to time
