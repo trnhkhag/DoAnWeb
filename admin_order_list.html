@@ -43,39 +43,9 @@
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-coin-stack'></i>
-          <span class="links_name">Stock</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-book-alt'></i>
-          <span class="links_name">Total order</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
+        <a href="admin_user.html">
           <i class='bx bx-user'></i>
-          <span class="links_name">Team</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-message'></i>
-          <span class="links_name">Messages</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-heart'></i>
-          <span class="links_name">Favrorites</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-cog'></i>
-          <span class="links_name">Setting</span>
+          <span class="links_name">User</span>
         </a>
       </li>
       <li class="log_out">
@@ -196,7 +166,7 @@
               <td>0123456789</td>
               <td>200$</td>
               <td>22-11-2022</td>
-              <td><span class="status-paid">Paid</span></td>
+              <td><span class="status-paid">Complete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -213,7 +183,7 @@
               <td>0987654321</td>
               <td>380$</td>
               <td>11-11-2022</td>
-              <td><span class="status-paid">Paid</span></td>
+              <td><span class="status-paid">Complete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -230,7 +200,7 @@
               <td>0125543265</td>
               <td>300$</td>
               <td>23-06-2022</td>
-              <td><span class="status-unpaid">Unpaid</span></td>
+              <td><span class="status-unpaid">Incomplete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -247,7 +217,7 @@
               <td>0983275463</td>
               <td>500$</td>
               <td>31-07-2022</td>
-              <td><span class="status-unpaid">Unpaid</span></td>
+              <td><span class="status-unpaid">Incomplete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -264,7 +234,7 @@
               <td>0983254321</td>
               <td>1000$</td>
               <td>21-05-2022</td>
-              <td><span class="status-paid">Paid</span></td>
+              <td><span class="status-paid">Complete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -281,7 +251,7 @@
               <td>0987282645</td>
               <td>800$</td>
               <td>12-12-2022</td>
-              <td><span class="status-unpaid">Unpaid</span></td>
+              <td><span class="status-unpaid">Incomplete</span></td>
               <td>
                 <i class='bx bxs-edit-alt'>
                   <span class="tooltip">Edit</span>
@@ -310,6 +280,35 @@
     </div>
   </section>
 
+  <div class="modal order-form">
+    <form action="" class="modal-content animate">
+      <div class="header">
+        <h2>Customer Information</h2>
+      </div>
+      <div class="container">
+        <label for="customer">Customer's name</label>
+        <input type="text" name="customer" value="">
+        <label for="cphone">Phone number</label>
+        <input type="text" name="uemail" value="">
+        <label for="total">Total price</label>
+        <input type="text" name="uphone" value="">
+        <label for="status">Status</label>
+        <select name="status">
+          <option value="complete">Complete</option>
+          <option value="incomplete">Incomplete</option>
+          <option value="processing">Processing</option>
+        </select>
+        <label for="date">Date</label>
+        <input type="date" name="date">
+      </div>
+      <hr>
+      <div class="footer">
+        <button type="button" class="cancel">Cancel</button>
+        <button type="submit" class="done">Done</button>
+      </div>
+    </form>
+  </div>
+
   <script>
     // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
@@ -327,11 +326,6 @@
     let header = document.querySelector('.header');
     filterBtn.addEventListener('click', () => {
       header.classList.toggle('active');
-      // let filterList = document.querySelector(".filter");
-      // if (filterList.style.display == "none")
-      //   setTimeout(() => { filterList.style.display = "flex"; }, 250);
-      // else
-      //   filterList.style.display = "none";
     })
 
     // increase and decrease according to time
@@ -357,6 +351,28 @@
         sortByPrice.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
+
+    // control order form
+    let orderForm= document.querySelector('.order-form');
+    let editBtn = document.getElementsByClassName('bxs-edit-alt');
+    let addBtn = document.querySelector('.add-order');
+    for (let i = 0; i < editBtn.length; i++) {
+      editBtn[i].addEventListener('click', () => {
+        orderForm.style.display = 'flex';
+      });
+    }
+    addBtn.addEventListener('click', () => {
+      orderForm.style.display = 'flex';
+    });
+    let cancelBtn = document.querySelector('.cancel');
+    cancelBtn.addEventListener('click', () => {
+      orderForm.style.display = 'none';
+    })
+    window.onclick = (event) => {
+      if (event.target == orderForm) {
+        orderForm.style.display = 'none';
+      }
+    }
   </script>
 </body>
 

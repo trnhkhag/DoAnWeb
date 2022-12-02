@@ -12,7 +12,7 @@
   position: fixed;
   height: 100%;
   width: 240px;
-  background: #0A2558;
+  background: #CC8C25;
   transition: all 0.5s ease;
 }
 
@@ -29,13 +29,13 @@
 .sidebar .logo-details i {
   font-size: 28px;
   font-weight: 500;
-  color: #fff;
+  color: #f5f5f5;
   min-width: 60px;
   text-align: center
 }
 
 .sidebar .logo-details .logo_name {
-  color: #fff;
+  color: #f5f5f5;
   font-size: 24px;
   font-weight: 500;
   text-align: center;
@@ -61,22 +61,22 @@
 }
 
 .sidebar .nav-links li a.active {
-  background: #081D45;
+  background: #996919;
 }
 
 .sidebar .nav-links li a:hover {
-  background: #081D45;
+  background: #996919;
 }
 
 .sidebar .nav-links li i {
   min-width: 60px;
   text-align: center;
   font-size: 18px;
-  color: #fff;
+  color: #f5f5f5;
 }
 
 .sidebar .nav-links li a .links_name {
-  color: #fff;
+  color: #f5f5f5;
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
@@ -158,7 +158,7 @@ nav .sidebar-button i {
   position: absolute;
   height: 40px;
   width: 40px;
-  background: #2697FF;
+  background: #ffad33;
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
@@ -549,7 +549,7 @@ nav .profile-details i {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2697FF;
+  background-color: #ffad33;
   color: #fff;
   font-size: 26px;
   border-radius: 4px;
@@ -580,7 +580,7 @@ nav .profile-details i {
 
 .filter .option .title {
   text-align: center;
-  background-color: #2697FF;
+  background-color: #ffad33;
   font-size: 16px;
   color: #fff;
   border-radius: 4px;
@@ -646,7 +646,7 @@ nav .profile-details i {
 #byprice:active,
 #byname:active {
   box-shadow: none;
-  /* background-color: #2697FF; */
+  /* background-color: #ffad33; */
 }
 
 .home-content .order-list {
@@ -679,7 +679,7 @@ nav .profile-details i {
   color: #000;
 }
 
-.order-list table tbody tr:hover {
+table tbody tr:hover {
   background-color: rgba(38, 151, 255, 0.3);
 }
 
@@ -709,7 +709,7 @@ nav .profile-details i {
   border-radius: 4px;
 }
 
-.order-list tbody i {
+tbody i {
   padding: 2px;
   font-size: 20px;
   position: relative;
@@ -732,7 +732,8 @@ nav .profile-details i {
 
 .bxs-edit-alt:hover,
 .bxs-detail:hover,
-.bxs-trash:hover {
+.bxs-trash:hover,
+.bx-mail-send:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
@@ -740,7 +741,8 @@ nav .profile-details i {
 
 .bxs-edit-alt:hover .tooltip,
 .bxs-detail:hover .tooltip,
-.bxs-trash:hover .tooltip {
+.bxs-trash:hover .tooltip,
+.bx-mail-send:hover .tooltip {
   visibility: visible;
 }
 
@@ -770,12 +772,13 @@ nav .profile-details i {
 }
 
 .footer .page .current-page {
-  background-color: #2697FF;
+  background-color: #ffad33;
   color: #fff;
 }
 
 .home-content.order-detail .box,
-.home-content.product .box {
+.home-content.product .box,
+.home-content.user .box {
   box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px;
   background: rgb(255, 255, 255);
   padding: 15px 14px;
@@ -801,7 +804,7 @@ nav .profile-details i {
 }
 
 .order-detail table caption {
-  background-color: #2697FF;
+  background-color: #ffad33;
   border-radius: 4px;
   color: #fff;
   font-size: 16px;
@@ -848,7 +851,7 @@ table tr {
   padding: 0 14px;
 }
 
-.category {
+.option-list form {
   padding: 5px 0;
 }
 
@@ -903,7 +906,7 @@ table tr {
 .modal-content .header h2 {
   text-align: center;
   color: #fff;
-  background-color: #2697FF;
+  background-color: #ffad33;
   padding: 0.2rem;
   border-radius: 5px;
 }
@@ -912,8 +915,9 @@ table tr {
   padding: 1rem 0.5rem;
 }
 
-.modal-content .container input[type = text],
-.modal-content .container textarea {
+.modal-content .container input,
+.modal-content .container textarea,
+.modal-content .container select {
   width: 100%;
   padding: 5px 10px;
   margin: 8px 0;
@@ -931,7 +935,7 @@ table tr {
 }
 
 .modal button {
-  background-color: #2697FF;
+  background-color: #ffad33;
   border: none;
   width: 5rem;
   height: 2.5rem;
@@ -1023,4 +1027,43 @@ table tr {
 
 .modal.product-delete .container .action button {
   margin: 0 1rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.user .option-list form input,
+.user .option-list form select {
+  width: 100%;
+}
+
+.home-content.user .active {
+  height: 198px;
+}
+
+.user-list table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.user-list thead th {
+  height: 48px;
+  padding: 0 20px;
+}
+
+.user-list tbody td {
+  height: 60px;
+  padding: 0 20px;
+}
+
+.user-list .email {
+  color: #888;
+  font-size: 14px;
+}
+
+.user-form form,
+.order-form form {
+  width: 30%;
 }
