@@ -148,8 +148,10 @@ function displayWishList(){
             {
                 
                 wishlistContainer.innerHTML += `
+                <div class "wishlist-table">
+                <tr>
                 <td class="product-remove">
-                <a href="#"><span class="REMOVE ion-ios-close"></span></a></td>
+                <button class="wishlistDelete" onclick="DeleteWishList(this)"><span class="ion-ios-close"></span></button>
 
 				<td class="image-prod">
 				<img class="img" src="images/${item.Image}.jpg">
@@ -159,22 +161,20 @@ function displayWishList(){
 				<p>${item.tag}</p>
 				</td>
 				<td class="price">$${item.price}.00</td>
+                </tr>
+                </div>
+                
                 `
             })
     }
 }
 
-function deleteWishList(){
-    let wishlistItem = document.querySelector(".wishlist-container");
-    for(let i=0;i<wishlistItem.length;i++){
-        let product = document.querySelectorAll((".REMOVE"))
-        product[i].addEventListener("click",function(envent){
-         let wishlistDelete = envent.target;
-         let wishlistItem = wishlistDelete.parentElement.parentElement;
-         wishlistItem.remove();
-        })  
-    }
+function DeleteWishList(x){
+    var tr= x.parentElement.parentElement;
+    tr.remove();
 }
+
+
 
 onLoadWishListNumber();
 displayWishList();
