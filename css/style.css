@@ -10487,3 +10487,9 @@ height: auto;
 .block-27 .ulhis{
   padding-bottom: 45px;
 }
+.product-remove .wishlistDelete{
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffad33;
+  border-radius: 0.355rem;
+}
