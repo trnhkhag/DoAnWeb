@@ -10321,6 +10321,45 @@ height: auto;
 .order-list {
   width: 1154px;
 }
+.customer{
+  width: 100%;
+}
+
+.customer1 img{
+  
+  width: 80px;
+  border-radius: 100%;
+  margin: 0 40px;
+
+}
+.comment{
+  width: 80%;
+  float:right;
+  margin-top: -13%;
+  padding-left: 10px;
+  border-left: 1px solid black;
+  height: 130px;
+  display: flex;
+  align-items: center;
+}
+.customer1 span{
+  margin: 0 20px;
+}
+
+
+.customer2 img{
+  width: 80px;
+  border-radius: 100%;
+  margin: 0 40px;
+  margin-top: 10px;
+}
+.customer2 span{
+  margin: 0 auto;
+}
+
+.customer3 img{
+  width: 80px;
+  border-radius: 10
 
 .shop {
   margin-bottom: 1px;
