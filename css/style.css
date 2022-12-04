@@ -9111,8 +9111,8 @@ h1, h2, h3, h4, h5,
   font-size: 13px;
   color: #000000; }
 
-.cart-list {
-  overflow-x: scroll; }
+/* .cart-list {
+  overflow-x: scroll; } */
 
 .table {
   min-width: 1000px !important;
@@ -9475,7 +9475,7 @@ textarea.form-control {
   .heading-section .subheading {
     font-size: 18px;
     display: block;
-    margin-bottom: 10px;
+    margin-top: 10px;
     font-family: "Lora", Georgia, serif;
     font-style: italic;
     color: #ffad33; }
@@ -10365,7 +10365,7 @@ height: auto;
   
   width: 80px;
   border-radius: 100%;
-  margin: 0 40px;
+  margin: 0px 40px;
 
 }
 .comment{

@@ -376,7 +376,7 @@ var pass = document.getElementById("password").value;
 		localStorage.setItem("isLoggedIn", "true");
 	}
 	else if (user == "Admin" && pass == "admin") {
-		window.location.assign('order.html');
+		window.location.assign('admin_index.html');
 		alert("You are logged in as administrator")
 	}
 	else {
