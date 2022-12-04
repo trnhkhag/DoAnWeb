@@ -10575,3 +10575,8 @@ height: auto;
 .customer3 span{
   margin: 0 10px;
 }
+
+#right {
+  position: absolute;
+  left: 65%;
+}
