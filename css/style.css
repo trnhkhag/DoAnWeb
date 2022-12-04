@@ -72,6 +72,42 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem; }
 
+/* Nút Dropdown*/
+.nut_dropdown {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+/* Thiết lập vị trí cho thẻ div với class dropdown*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* Nội dung Dropdown */
+.noidung_dropdown {
+  /*Ẩn nội dung các đường dẫn*/
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/* Thiết kế style cho các đường dẫn trong Dropdown */
+.noidung_dropdown a {
+  color: #ffad33;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* thay đổi màu background khi hover vào đường dẫn */
+.noidung_dropdown a:hover {background-color: #ddd;}
+/* hiển thị nội dung dropdown khi hover */
+ .dropdown:hover .noidung_dropdown {display: block;}
+/*Thay đổi màu background cho nút khi được hover
+
 /*#header{
 	height: 60px;
 	background-color:whitesmoke;
@@ -10285,7 +10321,6 @@ height: auto;
   font-size: 20px !important;
 }
 
-
 /*
 	ORDER HISTORY-------------------------------------------------------------
 */
@@ -10321,6 +10356,7 @@ height: auto;
 .order-list {
   width: 1154px;
 }
+
 .customer{
   width: 100%;
 }
@@ -10359,7 +10395,7 @@ height: auto;
 
 .customer3 img{
   width: 80px;
-  border-radius: 10
+  border-radius: 10px;
 }
 .shop {
   margin-bottom: 1px;
@@ -10529,4 +10565,13 @@ height: auto;
   padding-right: 10px;
   background-color: #ffad33;
   border-radius: 0.355rem;
+}
+.customer3 img{
+  width: 80px;
+  border-radius: 100%;
+  margin: 0 40px;
+  margin-top: 10px;
+}
+.customer3 span{
+  margin: 0 10px;
 }
