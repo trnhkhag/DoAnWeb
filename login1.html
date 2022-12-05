@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form onsubmit="login()" action="index.html">
+				<form onsubmit="login()">
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -49,23 +49,6 @@
 						<button type="button" value="Cancel" onclick="window.location.assign('index.html');" class="btn float-right login_btn">Cancel</button>
 						<button type="submit" value="Login" class="btn float-right login_btn">Login</button>
 					</div>
-
-					<script type="text/javascript">
-						function login() {
-							var user = document.getElementById("username").value;
-							var pass = document.getElementById("password").value;
-							if(user == "bach" && pass == "123") {
-								
-								alert("Logged In Success");
-								//Window.location.assign('index.html');
-								return false;
-							} 
-							else {
-								alert("wrong user/pass");
-								return false;
-								}
-							}
-					</script>
 
 				</form>
 			</div>
