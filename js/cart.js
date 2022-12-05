@@ -190,7 +190,7 @@ function displaycart(){
                      value="buy"></td>
 
                <td class="image-prod" >
-                  <img style="width:280px;height:250px" src="images/${item.Image}.jpg">
+                  <img style="height:250px" src="images/${item.Image}.jpg">
                   </div>
                </td>
 
@@ -217,7 +217,7 @@ function displaycart(){
 }
 displaycart();
 
-const checkbox=document.getElementById('buy');
+const checkbox=document.getElementsByName('watch02');
 console.log(checkbox);
 
 function price0(){
