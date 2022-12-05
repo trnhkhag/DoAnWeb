@@ -185,7 +185,7 @@ function displaycart(){
            {
                
                productcontainer.innerHTML += `
-               <tr class="text-center">
+               <tr>
                <td class="product-remove"><input type="checkbox" id="buy" name="watch02"
                      value="buy"></td>
 
@@ -204,10 +204,12 @@ function displaycart(){
                         max="100">
 
                   </div>
-                  <div class="cart_product_remove">
-                     <a href="#"><span class="ion-ios-close"></span></a>
-                  </div>
+               
+
                </td>
+               <td>
+               <button onclick="deleteproducts(this)" style="padding:0 10px; background-color:#ffad33;border-radius:0.355rem;" ><span class="ion-ios-close"></span></button>
+               
             </tr>
 
            
@@ -217,11 +219,9 @@ function displaycart(){
 }
 displaycart();
 
-const checkbox=document.getElementsByName('watch02');
-console.log(checkbox);
-
-function price0(){
-
+function deleteproducts(x){
+   var tr=x.parentElement.parentElement;
+   tr.remove();
 }
 
 
