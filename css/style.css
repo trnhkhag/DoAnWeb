@@ -10214,7 +10214,7 @@ textarea.form-control {
 
 .img-fluid2 {
 border-radius: 20px; 
-width: 85%;
+width: 75%;
 height: auto; 
 }
 #ftco-nav{
@@ -10320,6 +10320,43 @@ height: auto;
 .ftco-nav-right ul li a {
   font-size: 20px !important;
 }
+
+/*
+	ORDER HISTORY-------------------------------------------------------------
+*/
+
+.bodyhis {
+  position:relative;
+  margin: 0 12%;
+}
+
+.bodyhis .headtext {
+  padding-top: 20px;
+  font-family: Roboto-Regular;
+  font-size: 30px;
+  color: black;
+}
+.bodyhis .searchhis{
+  outline: none;
+  padding-bottom: 10px;
+  display: flex;
+}
+.searchhis-a{
+  outline: none;
+  background-color: #eff0f4;
+  border: 1px solid #eff0f4;
+  padding: 3px;
+  width: 1154px;
+}
+.containerhis {
+  width: 100%;
+  padding-right: 15px;
+}
+
+.order-list {
+  width: 1154px;
+}
+
 .customer{
   width: 100%;
 }
@@ -10358,10 +10395,199 @@ height: auto;
 
 .customer3 img{
   width: 80px;
+  border-radius: 10px;
+}
+.shop {
+  margin-bottom: 1px;
+  border: 2px solid #eff0f4;
+  border-radius: 0.357rem;
+}
+
+.shop-cursor {
+  cursor: pointer;
+}
+
+.order-item {
+  min-height: 80px;
+  padding: 20px 10px 15px 36px;
+  width: 1154px;
+}
+
+.order-item .item-pic {
+  float: left;
+}
+
+.order-item .item-main {
+  float: left;
+  width: 800px;
+  margin-left: 12px;
+  margin-right: 24px;
+}
+
+.text.title {
+  color: #000;
+  font-size: 16px;
+}
+
+.order-item .item-status {
+  color: #000;
+  padding-left: 40px;
+  float: left;
+  min-height: 80px;
+  text-align: left;
+}
+
+.clear {
+  clear: both;
+}
+
+
+.order-item .item-pic img {
+  position: relative;
+  height: 130px;
+  border-radius: 6px;
+}
+
+.numproduct {
+  color: #000;
+}
+
+.foothis {
+  padding: 20px 20px 20px 12px;
+  border: 2px solid #eff0f4;
+  border-radius: 0.357rem;
+  margin-bottom: 30px;
+}
+
+.tthis {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.buyhis {
+  display: flex;
+}
+
+.evaluatehis {
+  margin: 0 0 0 10px;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+
+.evaluatehis {
+  display: flex;
+  overflow: hidden;
+}
+
+.btnhis {
+  outline: none;
+  overflow: hidden;
+  min-width: 150px;
+  min-height: 40px;
+  padding: 8px 20px;
+}
+
+.stardust-button--primary {
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #ee4d2d;
+  border-radius: 0.355rem;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.stardust-button--secondary {
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #ffad33;
+  border: 1px solid #fff;
+  border-radius: 0.355rem;
+  margin-left: 5px;
+  color: #000;
+}
+
+.totalhis {
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .8);
+}
+
+.mnhis {
+  color: #000;
+  font-size: 24px;
+  line-height: 30px;
+}
+.headtexthis{
+  font-size: 16px;
+  color: #000;
+}
+
+.spanhis{
+  color: #4b4b4b;
+  font-weight: bold;
+  font-family:'Times New Roman';
+  font-size: 20px;
+}
+.ishis{
+  background-color:#eff0f4;
+  padding: 3px 3px 3px 6px;
+}
+
+.infohis {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 1px solid #efefef;
+}
+.imginfohis{
+  border-radius: 50%;
+  height: 50px;
+  border: 1px solid #57606f;
+}
+.headinfohis {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+  overflow: hidden;
+}
+.nameinfo{
+  color: #000;
+  font-size: 16px;
+}
+.block-27 .ulhis{
+  padding-bottom: 45px;
+}
+.product-remove .wishlistDelete{
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffad33;
+  border-radius: 0.355rem;
+}
+.customer3 img{
+  width: 80px;
   border-radius: 100%;
   margin: 0 40px;
   margin-top: 10px;
 }
 .customer3 span{
   margin: 0 10px;
+}
+
+#right {
+  position: absolute;
+  left: 65%;
+}
+
+.product-img{
+  position: absolute;
+  z-index: 9999999;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 1px solid red;
+  object-fit: cover;
+  transition: all 1s ease;
 }
