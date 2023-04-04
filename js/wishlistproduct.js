@@ -38,7 +38,7 @@ let products = [
     },
     {
         name:'EXPLORER',
-        Image:'product_6',
+        Image:'product_9',
         tag:'Far far away, behind the word mountains, far from the countries',
         price: 20000,
 
