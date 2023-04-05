@@ -371,13 +371,13 @@ function login() {
 var user = document.getElementById("username").value;
 var pass = document.getElementById("password").value;
 	if (user == "User" && pass == "12345678") {
-		window.location.assign('index.html');
 		alert("Login Successfully");
 		localStorage.setItem("isLoggedIn", "true");
+		window.location.assign('index.html');
 	}
 	else if (user == "Admin" && pass == "admin") {
+		// alert("You are logged in as administrator");
 		window.location.assign('admin_index.html');
-		alert("You are logged in as administrator")
 	}
 	else {
 		alert("Wrong Username or Password!");
