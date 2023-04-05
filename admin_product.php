@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -321,29 +325,36 @@
   </section>
 
   <div class="modal product-form">
-    <form action="" class="modal-content animate">
+    <form action="add_product.php" class="modal-content animate" name="add_product" method="post" enctype="multipart/form-data">
       <div class="header">
         <h2>Product Information</h2>
       </div>
       <div class="container">
         <label for="pname">Name</label>
         <input type="text" name="pname" value="">
-        <label for="pcategory">Category</label>
-        <input type="text" name="pcategory" value="">
+        <label for="pprice">Price</label>
+        <input type="text" name="pprice" value="">
         <label for="pstock">Stock</label>
         <input type="text" name="pstock" value="">
         <label for="pstatus">Status</label>
         <input type="text" name="pstatus" value="">
-        <label for="pprice">Price</label>
-        <input type="text" name="pprice" value="">
-        <label for="pdecs">Description</label>
-        <textarea name="pdecs" cols="30" rows="3"></textarea>
-        <button type="button">Image</button>
+        <label for="pbrand">Brand</label>
+        <input type="text" name="pbrand" value="">
+        <label for="pcategory">Category</label>
+        <select name="pcategory">
+          <option value="1">Men's Watches</option>
+          <option value="2">Women's Watches</option>
+          <option value="3">Couple's Watches</option>
+          <option value="4">Unisex Watches</option>
+        </select>
+        <label for="pdesc">Description</label>
+        <textarea name="pdesc" cols="30" rows="3"></textarea>
+        <input type="file" name="pimage">
       </div>
       <hr>
       <div class="footer">
         <button type="button" class="cancel">Cancel</button>
-        <button type="submit" class="done">Done</button>
+        <button type="submit" class="done" name="addProduct">Done</button>
       </div>
     </form>
   </div>
