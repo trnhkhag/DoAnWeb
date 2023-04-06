@@ -74,6 +74,7 @@ if (isset($_POST["addProduct"])) {
   } else {
     if (move_uploaded_file($_FILES["pimage"]["tmp_name"], $target_file)) {
       echo "The file " . htmlspecialchars(basename($_FILES["pimage"]["name"])) . " has been uploaded.";
+      header("Location: admin_product.php");
     } else {
       echo "Sorry, there was an error uploading your file.";
     }

@@ -2,7 +2,22 @@
 <html lang="en">
 
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webprojectdb";
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connect failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai";
+$result = mysqli_query($conn, $sql);
+
+$conn->close();
 ?>
 
 <head>
@@ -12,7 +27,7 @@
   <title>BKMT WATCH | Admin - Product</title>
   <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/admin_style.css">
+  <link rel="stylesheet" href="css/admin_style.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -155,16 +170,35 @@
         <table>
           <thead>
             <tr>
+              <th>Product</th>
               <th class="product-name text-left">Name</th>
-              <th>Category</th>
+              <th>Price</th>
               <th>Stock</th>
               <th>Status</th>
-              <th>Price</th>
-              <th>Action</th>
+              <th>Brand</th>
+              <th>Category</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <?php
+            $s = "";
+            while ($row = mysqli_fetch_assoc($result)) {
+              $s .= "<tr>";
+              $s .= sprintf("<td><img src='%s' class='product-image'></td>", $row["Hinh"]);
+              $s .= sprintf("<td class='text-left'>%s</td>", $row["TenSP"]);
+              $s .= sprintf("<td>%f</td>", $row["Gia"]);
+              $s .= sprintf("<td>%d</td>", $row["LuongTon"]);
+              $s .= sprintf("<td>%s</td>", $row["TrangThai"]);
+              $s .= sprintf("<td>%s</td>", $row["Hang"]);
+              $s .= sprintf("<td>%s</td>", $row["TenLoai"]);
+              $s .= sprintf("<td>%s</td>", $row["MoTa"]);
+              $s .= sprintf("<td><i class='bx bxs-detail'><span class='tooltip'>detail</span></i><i class='bx bxs-edit-alt' onclick='editProduct(%d)'><span class='tooltip'>edit</span></i><i class='bx bxs-trash' onclick='deleteProduct(%d)'><span class='tooltip'>delete</span></i></td>", $row["MaSP"], $row["MaSP"]);
+              $s .= "</tr>";
+            }
+            echo ($s);
+            ?>
+            <!-- <tr>
               <td class="text-left">Royal Oak</td>
               <td>Men's watches</td>
               <td>60</td>
@@ -307,7 +341,7 @@
                   <span class="tooltip">delete</span>
                 </i>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -368,22 +402,24 @@
     </div>
   </div>
 
-  <div class="modal product-delete">
-    <div class="container animate">
-      <h2>Are you sure you want to<br>
-        delete this product?</h2>
-      <div class="action">
-        <button type="button" class="confirm">Confirm</button>
-        <button type="button" class="cancel-deletion">Cancel</button>
+  <form action="delete_product.php" name="delete_product" method="post" enctype="multipart/form-data">
+    <div class="modal product-delete">
+      <div class="container animate">
+        <h2>Are you sure you want to<br>
+          delete this product?</h2>
+        <div class="action">
+          <button type="submit" class="confirm" name="deleteProduct">Confirm</button>
+          <button type="button" class="cancel-deletion">Cancel</button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <script>
     // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
+    sidebarBtn.onclick = function() {
       sidebar.classList.toggle("active");
       if (sidebar.classList.contains("active")) {
         sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
@@ -404,8 +440,7 @@
       sortByTime = sortByTimeBtn.firstChild;
       if (sortByTime.classList.contains('fa-arrow-up')) {
         sortByTime.classList.replace('fa-arrow-up', 'fa-arrow-down');
-      }
-      else {
+      } else {
         sortByTime.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
@@ -416,12 +451,12 @@
       sortByPrice = sortByPriceBtn.firstChild;
       if (sortByPrice.classList.contains('fa-arrow-up')) {
         sortByPrice.classList.replace('fa-arrow-up', 'fa-arrow-down');
-      }
-      else {
+      } else {
         sortByPrice.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
   <script src="js/admin_product.js"></script>
 </body>
 

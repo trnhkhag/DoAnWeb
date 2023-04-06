@@ -1091,3 +1091,8 @@ table tr {
   height: 60px;
   padding: 0 20px;
 }
+
+.product-image {
+  max-width: 50%;
+  height: auto;
+}
