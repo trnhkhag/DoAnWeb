@@ -9363,8 +9363,8 @@ textarea.form-control {
   height: inherit !important; }
 
 .ftco-animate {
-  opacity: 0;
-  visibility: hidden; }
+  opacity: 1;
+ }
 
 .bg-primary {
   background: #ffad33 !important; }
@@ -10591,3 +10591,26 @@ height: auto;
   object-fit: cover;
   transition: all 1s ease;
 } 
+
+/* TAI-CSS (SHOP) */
+.ftco-section2 {
+  margin: 0 5%;
+  padding: 3em 0;
+  position: relative;
+}
+.container2{
+  display: flex;
+  width: 100%;
+}
+.contain-shop1{
+  width: 25%;
+}
+
+.contain-shop1 h3{
+font-size: 35px;
+color: #ffad33;
+}
+
+.contain-shop2{
+  width: 75%;
+}
