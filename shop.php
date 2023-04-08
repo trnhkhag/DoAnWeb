@@ -103,7 +103,7 @@ include('connect_db.php');
                 <h3>Giá</h3>
                 <input type="hidden" id="hidden_minimum_price" value="0" />
                 <input type="hidden" id="hidden_maximum_price" value="65000" />
-                <p id="price_show">1000 - 65000</p>
+                <p id="price_show">0 - 65000</p>
                 <div id="price_range"></div>
             </div>
             <div class="contain-shop2">
@@ -208,9 +208,9 @@ include('connect_db.php');
 
             $('#price_range').slider({
                 range: true,
-                min: 1000,
+                min: 0,
                 max: 65000,
-                values: [1000, 65000],
+                values: [0, 65000],
                 step: 500,
                 stop: function(event, ui) {
                     $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
