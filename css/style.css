@@ -10603,7 +10603,11 @@ height: auto;
   width: 100%;
 }
 .contain-shop1{
+  height: auto;
+  display: flex;
   width: 25%;
+  flex-wrap: wrap;
+  margin-right: 25px;
 }
 
 .contain-shop1 h3{
@@ -10613,4 +10617,8 @@ color: #ffad33;
 
 .contain-shop2{
   width: 75%;
+}
+
+.item-shop1{
+  width: 100%;
 }

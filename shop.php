@@ -100,11 +100,51 @@ include('connect_db.php');
     <section class="ftco-section2">
         <div class="container2">
             <div class="contain-shop1">
-                <h3>Giá</h3>
-                <input type="hidden" id="hidden_minimum_price" value="0" />
-                <input type="hidden" id="hidden_maximum_price" value="65000" />
-                <p id="price_show">0 - 65000</p>
-                <div id="price_range"></div>
+                <div class="item-shop1">
+                    <h3>Giá</h3>
+                    <input type="hidden" id="hidden_minimum_price" value="0" />
+                    <input type="hidden" id="hidden_maximum_price" value="65000" />
+                    <p id="price_show">0 - 65000</p>
+                    <div id="price_range"></div>
+                </div>
+                <div class="item-shop1">
+                    <h3>Hãng</h3>
+                    <?php
+                    $query = "SELECT DISTINCT(Hang) FROM sanpham WHERE TrangThai = '1' ORDER BY MaSP DESC";
+                    $statement = $connect->prepare($query);
+                    $statement->execute();
+                    $result = $statement->fetchAll();
+                    foreach($result as $row)
+                    {
+                    ?>
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="common_selector brand" value="<?php echo $row['Hang']; ?>"  > <?php echo $row['Hang']; ?></label>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <div class="item-shop1">
+                    <h3>Mã Loại</h3>
+                    <?php
+
+                    $query = "
+                    SELECT DISTINCT(MaLoai) FROM sanpham WHERE TrangThai = '1'
+                    ";
+                    $statement = $connect->prepare($query);
+                    $statement->execute();
+                    $result = $statement->fetchAll();
+                    foreach ($result as $row) {
+                    ?>
+                        <div class="list-group-item checkbox">
+                            <label><input type="checkbox" class="common_selector maloai" value="<?php echo $row['MaLoai']; ?>"> <?php echo $row['MaLoai']; ?></label>
+                        </div>
+                    <?php
+                    }
+
+                    ?>
+                </div>
+
             </div>
             <div class="contain-shop2">
                 <div class="row filter_data">
@@ -180,6 +220,8 @@ include('connect_db.php');
                 var action = 'fetch_data_shop';
                 var minimum_price = $('#hidden_minimum_price').val();
                 var maximum_price = $('#hidden_maximum_price').val();
+                var brand = get_filter('brand');
+                var maloai = get_filter('maloai');
                 $.ajax({
                     url: "fetch_data_shop.php",
                     method: "POST",
@@ -187,6 +229,8 @@ include('connect_db.php');
                         action: action,
                         minimum_price: minimum_price,
                         maximum_price: maximum_price,
+                        brand: brand,
+                        maloai: maloai
                     },
                     success: function(data) {
                         $('.filter_data').html(data);
@@ -219,7 +263,7 @@ include('connect_db.php');
                     filter_data();
                 }
             });
-        }); 
+        });
     </script>
 
 </body>

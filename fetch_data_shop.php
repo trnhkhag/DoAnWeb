@@ -15,6 +15,20 @@ if(isset($_POST["action"]))
 		 AND Gia BETWEEN '".$_POST["minimum_price"]."' AND '".$_POST["maximum_price"]."'
 		";
 	}
+	if(isset($_POST["brand"]))
+	{
+		$brand_filter = implode("','", $_POST["brand"]);
+		$query .= "
+		 AND Hang IN('".$brand_filter."')
+		";
+	}
+	if(isset($_POST["maloai"]))
+	{
+		$ram_filter = implode("','", $_POST["maloai"]);
+		$query .= "
+		 AND MaLoai IN('".$ram_filter."')
+		";
+	}
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
