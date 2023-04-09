@@ -4,29 +4,31 @@
 
 include('connect_db.php');
 
-if(isset($_POST["action"]))
-{
+if (isset($_POST["action"])) {
 	$query = "
 		SELECT * FROM sanpham WHERE TrangThai = '1'
 	";
-	if(isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"]))
-	{
-		$query .= "
-		 AND Gia BETWEEN '".$_POST["minimum_price"]."' AND '".$_POST["maximum_price"]."'
-		";
+	if(isset($_POST["minimum_price"], $_POST["maximum_price"])) {
+		$minimum_price = $_POST["minimum_price"];
+		$maximum_price = $_POST["maximum_price"];
+		if(!empty($minimum_price) && !empty($maximum_price)) {
+			$query .= "
+				AND Gia BETWEEN $minimum_price AND $maximum_price
+			";
+		}
 	}
-	if(isset($_POST["brand"]))
-	{
+	
+	
+	if (isset($_POST["brand"])) {
 		$brand_filter = implode("','", $_POST["brand"]);
 		$query .= "
-		 AND Hang IN('".$brand_filter."')
+		 AND Hang IN('" . $brand_filter . "')
 		";
 	}
-	if(isset($_POST["maloai"]))
-	{
-		$ram_filter = implode("','", $_POST["maloai"]);
+	if (isset($_POST["maloai"])) {
+		$maloai_filter = implode("','", $_POST["maloai"]);
 		$query .= "
-		 AND MaLoai IN('".$ram_filter."')
+		 AND MaLoai IN('" . $maloai_filter . "')
 		";
 	}
 	$statement = $connect->prepare($query);
@@ -35,22 +37,20 @@ if(isset($_POST["action"]))
 	$total_row = $statement->rowCount();
 	$output = '';
 	//PRODUCT
-	if($total_row > 0)
-	{
-		foreach($result as $row)
-		{
+	if ($total_row > 0) {
+		foreach ($result as $row) {
 			$output .= '
 			<div class="col-md-6 col-lg-3 ftco-animate">
 			<div class="product">
-				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="'. $row['Hinh'] .'"
+				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
 						alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
 				<div class="text py-3 pb-4 px-3 text-center">
-					<h3><a href="#">'. $row['TenSP'] .'</a></h3>
+					<h3><a href="#">' . $row['TenSP'] . '</a></h3>
 					<div class="d-flex">
 						<div class="pricing">
-							<p class="price"><span class="price-sale">'. $row['Gia'] .'</span></p>
+							<p class="price"><span class="price-sale">' . $row['Gia'] . '</span></p>
 						</div>
 					</div>
 					<div class="bottom-area d-flex px-3">
@@ -72,12 +72,8 @@ if(isset($_POST["action"]))
 		</div>
 			';
 		}
-	}
-	else
-	{
+	} else {
 		$output = '<h3>No Data Found</h3>';
 	}
 	echo $output;
 }
-
-?>
