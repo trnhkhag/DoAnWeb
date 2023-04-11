@@ -35,8 +35,9 @@
 			</div>
 
 			<div id="right">
-				<form action="shop.html">
+				<form action="search.php" method="post">
 					<input type="search" placeholder="Search" class="input">
+				
 					<div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
 				</form>
 			</div>

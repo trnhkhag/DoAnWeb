@@ -34,7 +34,7 @@
 </head>
 
 <body class="goto-here">
-	<?php include 'nav.html';?>      
+	<?php include 'nav.php';?>      
 
 	<!-- END nav -->
 
