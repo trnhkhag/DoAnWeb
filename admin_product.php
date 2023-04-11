@@ -15,6 +15,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai";
+
 $result = mysqli_query($conn, $sql);
 
 $conn->close();
@@ -79,7 +80,7 @@ $conn->close();
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Product</span>
+        <span class="dashboard">Product - </span>
       </div>
       <!-- <div class="search-box">
         <input type="text" placeholder="Search...">
@@ -115,11 +116,11 @@ $conn->close();
             <div class="option-list">
               <form action="" class="category">
                 <select name="category" id="category">
-                  <option value="all">All</option>
-                  <option value="men">Men's watches</option>
-                  <option value="women">Women's watches</option>
-                  <option value="couple">Couple's watches</option>
-                  <option value="unisex">Unisex watches</option>
+                  <option value="">All</option>
+                  <option value="Men's Watches">Men's watches</option>
+                  <option value="Women's Watches">Women's watches</option>
+                  <option value="Couple's Watches">Couple's watches</option>
+                  <option value="Unisex Watches">Unisex watches</option>
                 </select>
               </form>
             </div>
@@ -142,12 +143,11 @@ $conn->close();
           <div class="option">
             <p class="title">Status</p>
             <div class="option-list">
-              <form action="" class="status">
-                <select name="category" id="category">
-                  <option value="all">All</option>
-                  <option value="stocking">Stocking</option>
-                  <option value="soldout">Sold out</option>
-                  <option value="nearlysoldout">Nearly sold out</option>
+              <form action="#" class="status">
+                <select name="status" id="status">
+                  <option value="">All</option>
+                  <option value="Stocking">Stocking</option>
+                  <option value="Sold out">Sold out</option>
                 </select>
               </form>
             </div>
@@ -180,14 +180,14 @@ $conn->close();
               <th>Description</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="product-table">
             <?php
             $s = "";
             while ($row = mysqli_fetch_assoc($result)) {
               $s .= "<tr>";
               $s .= sprintf("<td><img src='%s' class='product-image'></td>", $row["Hinh"]);
               $s .= sprintf("<td class='text-left'>%s</td>", $row["TenSP"]);
-              $s .= sprintf("<td>%f</td>", $row["Gia"]);
+              $s .= sprintf("<td>%s</td>", number_format($row["Gia"], 2, '.', '') . '$');
               $s .= sprintf("<td>%d</td>", $row["LuongTon"]);
               $s .= sprintf("<td>%s</td>", $row["TrangThai"]);
               $s .= sprintf("<td>%s</td>", $row["Hang"]);
@@ -198,150 +198,6 @@ $conn->close();
             }
             echo ($s);
             ?>
-            <!-- <tr>
-              <td class="text-left">Royal Oak</td>
-              <td>Men's watches</td>
-              <td>60</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Submariner</td>
-              <td>Men's watches</td>
-              <td>50</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Serpenti</td>
-              <td>Women's watches</td>
-              <td>40</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>80$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Ruchiea</td>
-              <td>Women's watches</td>
-              <td>0</td>
-              <td><span class="status-unpaid">Sold out</span></td>
-              <td>100$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Onlyou</td>
-              <td>Couple's watches</td>
-              <td>20</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>40$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">T-Race Chronograph</td>
-              <td>Unisex watches</td>
-              <td>100</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Hydro Conquest</td>
-              <td>Unisex watches</td>
-              <td>0</td>
-              <td><span class="status-unpaid">Sold out</span></td>
-              <td>60$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Le Locle</td>
-              <td>Unisex watches</td>
-              <td>80</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>35$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr> -->
           </tbody>
         </table>
       </div>
@@ -456,9 +312,10 @@ $conn->close();
       }
     })
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
-  <script src="js/admin_product.js"></script>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
+<script src="js/admin_productt.js"></script>
 
 </html>
 

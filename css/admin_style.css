@@ -855,7 +855,7 @@ table tr {
   padding: 5px 0;
 }
 
-#category {
+#category, #status {
   width: 100%;
 }
 

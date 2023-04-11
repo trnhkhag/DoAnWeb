@@ -18,6 +18,7 @@ let addBtn = document.querySelector('.add-order');
 function editProduct(n) {
   document.forms['add_product'].action = 'edit_product.php?p=' + n;
   productForm.style.display = 'flex';
+  console.log('a');
 }
 
 function deleteProduct(n) {
@@ -25,6 +26,7 @@ function deleteProduct(n) {
   productDltConfirm.style.display = 'flex';
 }
 
+// Get product info in edit
 $(".bxs-edit-alt").click(function () {
   let result;
   let $row = $(this).closest("tr");
@@ -32,8 +34,8 @@ $(".bxs-edit-alt").click(function () {
   let requestProductInfo = new XMLHttpRequest();
   requestProductInfo.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      // console.log(this.response);
       result = JSON.parse(this.response);
+      console.log(result);
       productName.value = result["TenSP"];
       productPrice.value = result["Gia"];
       productStock.value = result["LuongTon"];
@@ -41,11 +43,33 @@ $(".bxs-edit-alt").click(function () {
       productBrand.value = result["Hang"];
       productCategory.value = result["MaLoai"];
       productDesc.value = result["MoTa"];
+
     }
   }
   requestProductInfo.open("GET", "product_info.php?p=" + $productName, true);
   requestProductInfo.send();
 });
+
+// Filter category
+$(document).ready(function(){
+  $("#category").on("change", function() {
+    var value = $(this).val();
+    $("#product-table tr").filter(function() {
+      $(this).toggle($(this).text().indexOf(value) > -1);
+    });
+  });
+});
+
+// Filter status
+$(document).ready(function(){
+  $("#status").on("change", function() {
+    var value = $(this).val();
+    $("#product-table tr").filter(function() {
+      $(this).toggle($(this).text().indexOf(value) > -1);
+    });
+  });
+});
+
 
 addBtn.addEventListener('click', () => {
   document.forms['add_product'].action = 'add_product.php';
@@ -71,22 +95,6 @@ for (let i = 0; i < detailBtn.length; i++) {
 closeBtn.addEventListener('click', () => {
   productDetail.style.display = 'none';
 });
-
-//product delete
-// let deleteBtn = document.getElementsByClassName('bxs-trash');
-// let confirmDeletion = document.querySelector('.confirm');
-// let cancelDeletion = document.querySelector('.cancel-deletion');
-// for (let i = 0; i < deleteBtn.length; i++) {
-//   deleteBtn[i].addEventListener('click', () => {
-//     productDltConfirm.style.display = 'flex';
-//   });
-// }
-// confirmDeletion.addEventListener('click', () => {
-//   productDltConfirm.style.display = 'none';
-// });
-// cancelDeletion.addEventListener('click', () => {
-//   productDltConfirm.style.display = 'none';
-// });
 
 window.onclick = function (event) {
   if (event.target == productForm) {

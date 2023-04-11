@@ -26,7 +26,13 @@ if (isset($_POST["addProduct"])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = sprintf("UPDATE sanpham SET TenSP = '%s', Hinh = '%s', Gia = %f, LuongTon = %d, TrangThai = '%s', Hang = '%s', Mota = '%s', MaLoai = %d WHERE MaSP = $p", $productName, $target_file, $productPrice, $productStock, $productStatus, $productBrand, $productDesc, $productCategory);
+    if ($_FILES["pimage"]["name"] == "") {
+        $sql = sprintf("UPDATE sanpham SET TenSP = '%s', Gia = %f, LuongTon = %d, TrangThai = '%s', Hang = '%s', Mota = '%s', MaLoai = %d WHERE MaSP = $p", $productName, $productPrice, $productStock, $productStatus, $productBrand, $productDesc, $productCategory);    
+    }
+    else {
+        $sql = sprintf("UPDATE sanpham SET TenSP = '%s', Hinh = '%s', Gia = %f, LuongTon = %d, TrangThai = '%s', Hang = '%s', Mota = '%s', MaLoai = %d WHERE MaSP = $p", $productName, $target_file, $productPrice, $productStock, $productStatus, $productBrand, $productDesc, $productCategory);
+    }
+    
     $sqlHinh = "SELECT Hinh FROM sanpham WHERE MaSP = $p";
     $result = $conn->query($sqlHinh);
     $row = mysqli_fetch_assoc($result);
@@ -40,50 +46,52 @@ if (isset($_POST["addProduct"])) {
 
     $conn->close();
 
-    unlink(implode(" ", $row));
+    if ($_FILES["pimage"]["name"] != "") {
+        unlink(implode(" ", $row));
 
-    // Upload product image
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["pimage"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-
-    // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES["pimage"]["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["pimage"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["pimage"]["name"])) . " has been uploaded.";
-            header("Location: admin_product.php");
+        // Upload product image
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($_FILES["pimage"]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+
+        // Check file size
+        if ($_FILES["pimage"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        if (
+            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif"
+        ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES["pimage"]["tmp_name"], $target_file)) {
+                echo "The file " . htmlspecialchars(basename($_FILES["pimage"]["name"])) . " has been uploaded.";
+                header("Location: admin_product.php");
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
         }
     }
 }
