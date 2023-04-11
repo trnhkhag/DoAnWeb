@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script>
+  function showresult(str){
+    if(str.length==1){
+      document.getElementById("livesearch").innerHTML=str;
+      document.getElementById("livesearch").style.border="1px solid black";
+      return;
+    }
+  }
+</script>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
@@ -35,9 +44,9 @@
 			</div>
 
 			<div id="right">
-				<form action="search.php" method="post">
-					<input type="search" placeholder="Search" class="input">
-				
+				<form action="" method="post">
+					<input type="search" placeholder="Search" class="input" id="search" onkeyup="showresult(this.value)">
+					<div id="livesearch"></div>
 					<div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
 				</form>
 			</div>
