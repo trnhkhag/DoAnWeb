@@ -129,7 +129,7 @@ include('connect_db.php');
                     <?php
 
                     $query = "
-                    SELECT DISTINCT(MaLoai) FROM sanpham WHERE TrangThai = '1'
+                    SELECT DISTINCT(TenLoai) FROM sanpham,loai WHERE TrangThai = '1'and sanpham.MaLoai=loai.MaLoai
                     ";
                     $statement = $connect->prepare($query);
                     $statement->execute();
@@ -137,7 +137,7 @@ include('connect_db.php');
                     foreach ($result as $row) {
                     ?>
                         <div class="list-group-item checkbox">
-                            <label><input type="checkbox" class="common_selector maloai" value="<?php echo $row['MaLoai']; ?>"> <?php echo $row['MaLoai']; ?></label>
+                            <label><input type="checkbox" class="common_selector maloai" value="<?php echo $row['TenLoai']; ?>"> <?php echo $row['TenLoai']; ?></label>
                         </div>
                     <?php
                     }

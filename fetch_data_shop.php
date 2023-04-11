@@ -6,36 +6,54 @@ include('connect_db.php');
 
 if (isset($_POST["action"])) {
 	$query = "
-		SELECT * FROM sanpham WHERE TrangThai = '1'
-	";
-	if(isset($_POST["minimum_price"], $_POST["maximum_price"])) {
+    SELECT Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh 
+    FROM sanpham, loai 
+    WHERE TrangThai = '1' and sanpham.MaLoai = loai.MaLoai
+";
+
+	$parameters = array();
+
+	if (isset($_POST["minimum_price"], $_POST["maximum_price"])) {
 		$minimum_price = $_POST["minimum_price"];
 		$maximum_price = $_POST["maximum_price"];
-		if(!empty($minimum_price) && !empty($maximum_price)) {
+		if (!empty($minimum_price) && !empty($maximum_price)) {
 			$query .= "
-				AND Gia BETWEEN $minimum_price AND $maximum_price
-			";
+            AND Gia BETWEEN ? AND ?
+        ";
+			$parameters[] = $minimum_price;
+			$parameters[] = $maximum_price;
 		}
 	}
-	
-	
+
 	if (isset($_POST["brand"])) {
-		$brand_filter = implode("','", $_POST["brand"]);
-		$query .= "
-		 AND Hang IN('" . $brand_filter . "')
-		";
+		$brand_filter = $_POST["brand"];
+		if (!empty($brand_filter)) {
+			$brand_placeholders = implode(',', array_fill(0, count($brand_filter), '?'));
+			$query .= "
+            AND Hang IN ($brand_placeholders)
+        ";
+			$parameters = array_merge($parameters, $brand_filter);
+		}
 	}
+
 	if (isset($_POST["maloai"])) {
-		$maloai_filter = implode("','", $_POST["maloai"]);
-		$query .= "
-		 AND MaLoai IN('" . $maloai_filter . "')
-		";
+		$maloai_filter = $_POST["maloai"];
+		if (!empty($maloai_filter)) {
+			$maloai_placeholders = implode(',', array_fill(0, count($maloai_filter), '?'));
+			$query .= "
+            AND TenLoai IN ($maloai_placeholders)
+        ";
+			$parameters = array_merge($parameters, $maloai_filter);
+		}
 	}
+
 	$statement = $connect->prepare($query);
-	$statement->execute();
+	$statement->execute($parameters);
 	$result = $statement->fetchAll();
 	$total_row = $statement->rowCount();
+
 	$output = '';
+
 	//PRODUCT
 	if ($total_row > 0) {
 		foreach ($result as $row) {
