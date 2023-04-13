@@ -15,7 +15,7 @@ if ($conn -> connect_error) {
     die("Connection failed: " . $conn -> connect_error);
 }
 
-$sql = sprintf("SELECT * FROM sanpham WHERE TenSP = '".$p."'");
+$sql = sprintf("SELECT * FROM sanpham WHERE MaSP = $p");
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 

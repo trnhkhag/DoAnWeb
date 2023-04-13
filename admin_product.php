@@ -170,14 +170,12 @@ $conn->close();
         <table>
           <thead>
             <tr>
-              <th>Product</th>
-              <th class="product-name text-left">Name</th>
+              <th class="text-left">Name</th>
               <th>Price</th>
               <th>Stock</th>
               <th>Status</th>
               <th>Brand</th>
               <th>Category</th>
-              <th>Description</th>
             </tr>
           </thead>
           <tbody id="product-table">
@@ -185,15 +183,13 @@ $conn->close();
             $s = "";
             while ($row = mysqli_fetch_assoc($result)) {
               $s .= "<tr>";
-              $s .= sprintf("<td><img src='%s' class='product-image'></td>", $row["Hinh"]);
               $s .= sprintf("<td class='text-left'>%s</td>", $row["TenSP"]);
               $s .= sprintf("<td>%s</td>", number_format($row["Gia"], 2, '.', '') . '$');
               $s .= sprintf("<td>%d</td>", $row["LuongTon"]);
               $s .= sprintf("<td>%s</td>", $row["TrangThai"]);
               $s .= sprintf("<td>%s</td>", $row["Hang"]);
               $s .= sprintf("<td>%s</td>", $row["TenLoai"]);
-              $s .= sprintf("<td>%s</td>", $row["MoTa"]);
-              $s .= sprintf("<td><i class='bx bxs-detail'><span class='tooltip'>detail</span></i><i class='bx bxs-edit-alt' onclick='editProduct(%d)'><span class='tooltip'>edit</span></i><i class='bx bxs-trash' onclick='deleteProduct(%d)'><span class='tooltip'>delete</span></i></td>", $row["MaSP"], $row["MaSP"]);
+              $s .= sprintf("<td><i class='bx bxs-detail' onclick='ProductDetail(%d)'><span class='tooltip'>detail</span></i><i class='bx bxs-edit-alt' onclick='editProduct(%d)'><span class='tooltip'>edit</span></i><i class='bx bxs-trash' onclick='deleteProduct(%d)'><span class='tooltip'>delete</span></i></td>", $row["MaSP"], $row["MaSP"], $row["MaSP"]);
               $s .= "</tr>";
             }
             echo ($s);
@@ -253,7 +249,7 @@ $conn->close();
     <div class="container animate">
       <div class="product-img" style="background-image:url(images/product_8.jpg);"></div>
       <h4>Description</h4>
-      <p>Far far away, behind the word mountains, far from the countries</p>
+      <p class="product-desc">Far far away, behind the word mountains, far from the countries</p>
       <div class="footer"><button type="button" class="close">Close</button></div>
     </div>
   </div>
