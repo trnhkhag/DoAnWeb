@@ -63,7 +63,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="row">
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="product">
 						<a href="product-single.html" class="img-prod"><img class="img-fluid" src="images/product_1.jpg"

@@ -8,11 +8,19 @@
 </head>
 <script>
   function showresult(str){
-    if(str.length==1){
-      document.getElementById("livesearch").innerHTML=str;
-      document.getElementById("livesearch").style.border="1px solid black";
+    if(str.length>0){
+		if(str=="LOBINNI"){
+			document.getElementById("row").style.display='none';
+		}
+
+
+
+
       return;
-    }
+    }else{
+		document.getElementById("row").style.display='block';
+
+	}
   }
 </script>
 <body>
@@ -46,7 +54,6 @@
 			<div id="right">
 				<form action="" method="post">
 					<input type="search" placeholder="Search" class="input" id="search" onkeyup="showresult(this.value)">
-					<div id="livesearch"></div>
 					<div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
 				</form>
 			</div>
