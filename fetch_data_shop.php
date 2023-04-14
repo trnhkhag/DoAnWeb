@@ -68,7 +68,7 @@ if (isset($_POST["action"])) {
 					<h3><a href="#">' . $row['TenSP'] . '</a></h3>
 					<div class="d-flex">
 						<div class="pricing">
-							<p class="price"><span class="price-sale">' . $row['Gia'] . '</span></p>
+							<p class="price"><span class="price-sale">' . $row['Gia'] . '.00$</span></p>
 						</div>
 					</div>
 					<div class="bottom-area d-flex px-3">
