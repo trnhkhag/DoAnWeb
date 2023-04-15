@@ -16,7 +16,7 @@ if (isset($_POST['input'])) {
 	if(mysqli_num_rows($result) > 0) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			?>
-			<div class="product">
+			<div class="product" style="width: 300px; margin-left:20px;">
 				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="<?php echo  $row['Hinh'] ?>" alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
@@ -51,19 +51,5 @@ if (isset($_POST['input'])) {
 
 }
 ?>
-<div class="row mt-5">
-					<div class="col text-center">
-						<div class="block-27">
-							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+
 		

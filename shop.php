@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $querry);
 			<div class="row justify-content-center">
 				<div class="col-md-10 mb-5 text-center">
 					<ul class="product-category">
-						<li><a href="#" class="active">All</a></li>
+						<li><a href="shop.php" class="active">All</a></li>
 						<li><a href="#">Lobinni</a></li>
 						<li><a href="#">Tenitop</a></li>
 						<li><a href="#">Hazeal</a></li>
@@ -123,9 +123,9 @@ $result = mysqli_query($conn, $querry);
 				}
 
 				?>
-				
-
-				<div class="row mt-5">
+			
+			</div>
+			<div class="row mt-5">
 					<div class="col text-center">
 						<div class="block-27">
 							<ul>
@@ -140,7 +140,6 @@ $result = mysqli_query($conn, $querry);
 						</div>
 					</div>
 				</div>
-			</div>
 	</section>
 
 	<?php include 'footer.html'; ?>
