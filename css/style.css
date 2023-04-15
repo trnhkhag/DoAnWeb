@@ -10622,3 +10622,7 @@ color: #ffad33;
 .item-shop1{
   width: 100%;
 }
+
+.nav-item h1{
+  font-size: 15px;
+}
