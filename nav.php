@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+	<title>Document</title>
 </head>
-<script>
-  function showresult(str){
-    if(str.length>0){
-		if(str=="LOBINNI"){
-			document.getElementById("row").style.display='none';
-		}
-
-
-
-
-      return;
-    }else{
-		document.getElementById("row").style.display='block';
-
-	}
-  }
+<script tyoe="text/javascript">
+$(document).ready(function(){
+  $('#search').keyup(function(){
+    var input = $(this).val();
+    if(input != ''){
+      $.ajax({
+        url: 'search.php',
+        method: 'post',
+        data: {input: input},
+        success: function(data){
+          $('#row').html(data);
+        }
+      });
+    }
+	
+  });
+});
 </script>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">BKMT WATCH</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
@@ -36,8 +40,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="shop.php" id="dropdown04" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">Shop</a>
+						<a class="nav-link dropdown-toggle" href="shop.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
 							<a class="dropdown-item" href="shop.php">Men's Watches</a>
 							<a class="dropdown-item" href="shop.php">Women's Watches</a>
@@ -53,20 +56,19 @@
 
 			<div id="right">
 				<form action="" method="post">
-					<input type="search" placeholder="Search" class="input" id="search" onkeyup="showresult(this.value)">
+					<input type="search" placeholder="Search" class="input" id="search">
 					<div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
 				</form>
 			</div>
 
 			<div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="cart.php" class="nav-link"><i
-								class="fa-solid fa-cart-shopping"></i></a></li>
-					<li class="nav-item"><a href="login1.html" class="nav-link"><i
-								class="fa-solid fa-user"></i></a></li>
+					<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
+					<li class="nav-item"><a href="login1.html" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </body>
+
 </html>
