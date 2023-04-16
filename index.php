@@ -3,8 +3,6 @@
 <?php
 session_start();
 
-if (isset($_SESSION['MaNguoiDung']) && isset($_SESSION['TenDangNhap'])) {
-
 ?>
 
 	<head>
@@ -652,10 +650,3 @@ if (isset($_SESSION['MaNguoiDung']) && isset($_SESSION['TenDangNhap'])) {
 	</body>
 
 </html>
-<?php
-} else {
-	header("Location: index.php");
-	exit();
-}
-?>
-<!-- test pull request -->
