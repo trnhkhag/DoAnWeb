@@ -34,7 +34,7 @@
 </head>
 
 <body class="goto-here">
-        <?php include 'nav.html';?>      
+        <?php include 'header.php';?>      
   <!-- END nav -->
 
   <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">

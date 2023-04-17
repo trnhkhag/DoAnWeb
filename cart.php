@@ -33,7 +33,7 @@
 </head>
 
 <body class="goto-here">
-	<?php include 'nav.php';?>      
+	<?php include 'header.php';?>      
 
 	<!-- END nav -->
 

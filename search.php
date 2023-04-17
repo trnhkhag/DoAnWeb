@@ -16,7 +16,7 @@ if (isset($_POST['input'])) {
 	if(mysqli_num_rows($result) > 0) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			?>
-			<div class="product" style="width: 300px; margin-left:20px;">
+			<div class="product" style="width: 300px;">
 				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="<?php echo  $row['Hinh'] ?>" alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
