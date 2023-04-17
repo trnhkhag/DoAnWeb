@@ -8,8 +8,7 @@ if (isset($_POST["action"])) {
 	$query = "
     SELECT Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh 
     FROM sanpham, loai 
-    WHERE TrangThai = '1' and sanpham.MaLoai = loai.MaLoai
-";
+    WHERE TrangThai = '1' and sanpham.MaLoai = loai.MaLoai";
 
 	$parameters = array();
 
@@ -30,9 +29,9 @@ if (isset($_POST["action"])) {
 		if (!empty($brand_filter)) {
 			$brand_placeholders = implode(',', array_fill(0, count($brand_filter), '?'));
 			$query .= "
-            AND Hang IN ($brand_placeholders)
+            AND Hang LIKE ?
         ";
-			$parameters = array_merge($parameters, $brand_filter);
+			$parameters[] = $brand_filter[0] . '%';
 		}
 	}
 
@@ -44,6 +43,16 @@ if (isset($_POST["action"])) {
             AND TenLoai IN ($maloai_placeholders)
         ";
 			$parameters = array_merge($parameters, $maloai_filter);
+		}
+	}
+
+	if (isset($_POST["search_product_name"])) {
+		$search_filter = $_POST["search_product_name"];
+		if (!empty($search_filter)) {
+			$query .= "
+            AND TenSP LIKE ?
+        ";
+			$parameters[] = $search_filter . '%';
 		}
 	}
 

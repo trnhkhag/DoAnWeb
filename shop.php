@@ -66,8 +66,8 @@ include('connect_db.php');
             </div>
 
             <div id="right">
-                <form class="example" action="shop.html">
-                    <input type="text" placeholder="Search.." name="search2">
+                <form method="POST">
+                    <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
                     <button type="submit" style="background-color: #ffad33;"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -114,12 +114,11 @@ include('connect_db.php');
                     $statement = $connect->prepare($query);
                     $statement->execute();
                     $result = $statement->fetchAll();
-                    foreach($result as $row)
-                    {
+                    foreach ($result as $row) {
                     ?>
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="common_selector brand" value="<?php echo $row['Hang']; ?>"  > <?php echo $row['Hang']; ?></label>
-                    </div>
+                        <div class="list-group-item checkbox">
+                            <label><input type="checkbox" class="common_selector brand" value="<?php echo $row['Hang']; ?>"> <?php echo $row['Hang']; ?></label>
+                        </div>
                     <?php
                     }
                     ?>
@@ -153,20 +152,20 @@ include('connect_db.php');
             </div>
         </div>
         <div class="row mt-5">
-                    <div class="col text-center">
-                        <div class="block-27">
-                            <ul>
-                                <li><a href="#">&lt;</a></li>
-                                <li class="active"><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&gt;</a></li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
                 </div>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -221,6 +220,7 @@ include('connect_db.php');
                 var maximum_price = $('#hidden_maximum_price').val();
                 var brand = get_filter('brand');
                 var maloai = get_filter('maloai');
+                var search_product_name = $('#search_product_name').val();
                 $.ajax({
                     url: "fetch_data_shop.php",
                     method: "POST",
@@ -229,7 +229,8 @@ include('connect_db.php');
                         minimum_price: minimum_price,
                         maximum_price: maximum_price,
                         brand: brand,
-                        maloai: maloai
+                        maloai: maloai,
+                        search_product_name: search_product_name
                     },
                     success: function(data) {
                         $('.filter_data').html(data);
@@ -261,6 +262,10 @@ include('connect_db.php');
                     $('#hidden_maximum_price').val(ui.values[1]);
                     filter_data();
                 }
+            });
+
+            $('#search_product_name').keyup(function() {
+                filter_data();
             });
         });
     </script>
