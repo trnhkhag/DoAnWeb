@@ -68,15 +68,12 @@ include('connect_db.php');
             <div id="right">
                 <form method="POST">
                     <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
-                    <button type="submit" style="background-color: #ffad33;"><i class="fa fa-search"></i></button>
                 </form>
             </div>
 
             <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span style="font-size:15px; position:absolute; top:13px;left:21%">0</span></i></a></li>
-                    <li class="nav-item"><a href="wishlist.html" class="nav-link"><i class="fa-solid fa-heart"></i></a>
-                    </li>
                     <li class="nav-item"><a href="login1.html" class="nav-link"><i class="fa-solid fa-user"></i></a>
                     </li>
                 </ul>
