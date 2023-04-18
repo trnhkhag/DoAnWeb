@@ -855,7 +855,7 @@ table tr {
   padding: 5px 0;
 }
 
-#category {
+#category, #status {
   width: 100%;
 }
 
@@ -1090,4 +1090,9 @@ table tr {
 .statistical-list tbody td {
   height: 60px;
   padding: 0 20px;
+}
+
+.product-image {
+  max-width: 50%;
+  height: auto;
 }

@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+$conn = new mysqli("localhost", "root", "", "webprojectdb");
+if ($conn->connect_error) {
+  die("Connect failed: " . $conn->connect_error);
+}
+$sql = "SELECT d.*, HoTen, SoDienThoai FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung";
+$result = $conn->query($sql);
+
+$conn->close();
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -161,7 +172,24 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <?php
+            $s = "";
+            while($row = $result->fetch_assoc()) {
+              $s .= "<tr>";
+              $s .= "<td>" . $row["HoTen"] . "</td>";
+              $s .= "<td>" . $row["SoDienThoai"] . "</td>";
+              $s .= "<td>" . number_format($row["ThanhTien"], 2, '.', '') . '$</td>';
+              $s .= "<td>" . $row["NgayLap"] . "</td>";
+              $s .= "<td>" . $row["TrangThai"] . "</td>";
+              $s .= sprintf("<td><i class='bx bxs-edit-alt' onclick='editOrder(%d)'><span class='tooltip'>Edit</span></i><a href='order_detail.html'><i class='bx bxs-detail'><span class='tooltip'>Detail</span></i></a></td>", $row["MaDH"]);
+              $s .= "</tr>";
+            }
+            echo ($s);
+            ?>
+
+
+
+            <!-- <tr>
               <td>Pham Hoang Bach</td>
               <td>0123456789</td>
               <td>200$</td>
@@ -262,7 +290,7 @@
                   </i>
                 </a>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -281,22 +309,22 @@
   </section>
 
   <div class="modal order-form">
-    <form action="" class="modal-content animate">
+    <form action="" class="modal-content animate" name="order-form" method="POST">
       <div class="header">
-        <h2>Customer Information</h2>
+        <h2>Order Information</h2>
       </div>
       <div class="container">
         <label for="customer">Customer's name</label>
         <input type="text" name="customer" value="">
         <label for="cphone">Phone number</label>
-        <input type="text" name="uemail" value="">
+        <input type="text" name="cphone" value="">
         <label for="total">Total price</label>
-        <input type="text" name="uphone" value="">
+        <input type="text" name="total" value="">
         <label for="status">Status</label>
         <select name="status">
-          <option value="complete">Complete</option>
-          <option value="incomplete">Incomplete</option>
-          <option value="processing">Processing</option>
+          <option value="Complete">Complete</option>
+          <option value="Incomplete">Incomplete</option>
+          <option value="Processing">Processing</option>
         </select>
         <label for="date">Date</label>
         <input type="date" name="date">
@@ -304,7 +332,7 @@
       <hr>
       <div class="footer">
         <button type="button" class="cancel">Cancel</button>
-        <button type="submit" class="done">Done</button>
+        <button type="submit" class="done" name="submit-order-form">Done</button>
       </div>
     </form>
   </div>
@@ -351,29 +379,9 @@
         sortByPrice.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
-
-    // control order form
-    let orderForm= document.querySelector('.order-form');
-    let editBtn = document.getElementsByClassName('bxs-edit-alt');
-    let addBtn = document.querySelector('.add-order');
-    for (let i = 0; i < editBtn.length; i++) {
-      editBtn[i].addEventListener('click', () => {
-        orderForm.style.display = 'flex';
-      });
-    }
-    addBtn.addEventListener('click', () => {
-      orderForm.style.display = 'flex';
-    });
-    let cancelBtn = document.querySelector('.cancel');
-    cancelBtn.addEventListener('click', () => {
-      orderForm.style.display = 'none';
-    })
-    window.onclick = (event) => {
-      if (event.target == orderForm) {
-        orderForm.style.display = 'none';
-      }
-    }
   </script>
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/admin_order_list.js"></script>
 </body>
 
 </html>
