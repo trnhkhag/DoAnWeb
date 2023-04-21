@@ -34,7 +34,7 @@
 </head>
 
 <body class="goto-here">
-<?php include 'nav.html';?>      
+<?php include 'header.php';?>      
 
 	<!-- END nav -->
 
@@ -89,7 +89,18 @@
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-12">
-								<a href="#">Create an Account</a>
+								<?php
+								$username=$_GET['username'];
+								if($username==1){?>
+									<a href="">Save</a>
+								<?php 
+								}
+								else{?>
+									<a href="register.html">Create an Account</a>
+
+								<?php
+								}
+								?>
 							</div>
 						</div>
 					</form><!-- END -->
