@@ -37,8 +37,7 @@
 <body class="goto-here">
 	
 <?php include 'header.php'; 
-	include_once 'connect.php';
-	?>      
+?>      
 
 	<!-- END nav -->
 
@@ -62,6 +61,12 @@
 						<h3 class="mb-4 billing-heading">Billing Address</h3>
 						<div class="row align-items-end">
 							<div class="col-md-12">
+							
+
+								
+									
+								
+								
 								<div class="form-group">
 									<label for="firstname">Full Name<span class="important"> *</span></label>
 									<input type="text" name="fullname" class="form-control" placeholder="John M. Doe">
@@ -93,19 +98,10 @@
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-12">
-								<?php
-								if($_SESSION['logged']==true){?>
-									<button type="submit" value="Login" name="save" class="btn float-right login_btn">save</button>
-								<?php 
-								}
-								else{?>
 									<a href="register.html">Create an Account</a>
-
-								<?php
-								}
-								?>
 							</div>
 						</div>
+
 					</form><!-- END -->
 				</div>
 				<div class="col-xl-5">
@@ -156,7 +152,7 @@
 										</div>
 									</div>
 								</div>
-								<p><a href="#" class="btn btn-primary py-3 px-4">Continue Checkout</a></p>
+								<p><a href="order_history.php" class="btn btn-primary py-3 px-4">Continue Checkout</a></p>
 							</div>
 						</div>
 					</div>

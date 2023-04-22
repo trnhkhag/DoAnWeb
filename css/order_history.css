@@ -1,0 +1,18 @@
+table,th,td{
+    border: 1px solid black;
+}
+td{
+    width: 150px;
+    height: 100px;
+    font-size: 20px;
+}
+table{
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20%;
+    margin-top: 5%;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
