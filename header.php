@@ -66,10 +66,13 @@ $(document).ready(function(){
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
 					<?php 
-						if($_SESSION['logged']==true){?>
+						if($_SESSION['username1']){
+							
+							?>
 							
 							
 							<li class="nav-item"><a class="nav-link"><?php echo $_SESSION['username1']="Minh" ?></a></li>
+
 
 					<?php }
 						else{?>
