@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="login_register_css/login.css">
 </head>
 <body>
+
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -24,20 +25,20 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form onsubmit="login()">
+				<form action="logincheck.php" method="post">
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input id="username" type="text" class="form-control" placeholder="Enter Username">
+						<input id="username" name="username1" type="text" class="form-control" placeholder="Enter Username">
 					</div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input id="password" type="password" class="form-control" placeholder="Enter Password">
+						<input id="password" name="password1"  type="password" class="form-control" placeholder="Enter Password">
 					</div>
 
 					<div class="row align-items-center remember">
@@ -47,7 +48,7 @@
 
 					<div class="action">
 						<button type="button" value="Cancel" onclick="window.location.assign('index.html');" class="btn float-right login_btn">Cancel</button>
-						<button type="submit" value="Login" class="btn float-right login_btn">Login</button>
+						<button type="submit" value="Login" name="logged" class="btn float-right login_btn">Login</button>
 					</div>
 
 				</form>

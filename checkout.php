@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +35,10 @@
 </head>
 
 <body class="goto-here">
-<?php include 'header.php';?>      
+	
+<?php include 'header.php'; 
+	include_once 'connect.php';
+	?>      
 
 	<!-- END nav -->
 
@@ -54,45 +58,44 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-xl-7 ftco-animate">
-					<form action="#" class="billing-form">
+					<form action="billingaddress.php" method="post" class="billing-form">
 						<h3 class="mb-4 billing-heading">Billing Address</h3>
 						<div class="row align-items-end">
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="firstname">Full Name<span class="important"> *</span></label>
-									<input type="text" class="form-control" placeholder="John M. Doe">
+									<input type="text" name="fullname" class="form-control" placeholder="John M. Doe">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Address<span class="important"> *</span></label>
-									<input type="text" class="form-control" placeholder="542 W, 15th Street">
+									<input type="text" name="address" class="form-control" placeholder="542 W, 15th Street">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Phone<span class="important"> *</span></label>
-									<input type="text" class="form-control" placeholder="0123456789">
+									<input type="text" name="phone" class="form-control" placeholder="0123456789">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Email</label>
-									<input type="text" class="form-control" placeholder="john@example.com">
+									<input type="text" name="email" class="form-control" placeholder="john@example.com">
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 									<label for="lastname">Note</label>
-									<textarea class="form-control note" placeholder=""></textarea>
+									<textarea class="form-control note" name="note" placeholder=""></textarea>
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-12">
 								<?php
-								$username=$_GET['username'];
-								if($username==1){?>
-									<a href="">Save</a>
+								if($_SESSION['logged']==true){?>
+									<button type="submit" value="Login" name="save" class="btn float-right login_btn">save</button>
 								<?php 
 								}
 								else{?>
