@@ -48,7 +48,7 @@
 
 					<div class="action">
 						<button type="button" value="Cancel" onclick="window.location.assign('index.html');" class="btn float-right login_btn">Cancel</button>
-						<button type="submit" value="Login" name="logged"  class="btn float-right login_btn">Login</button>
+						<button type="submit" value="Login" name="login1"  class="btn float-right login_btn">Login</button>
 					</div>
 
 				</form>

@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,12 +69,16 @@ $(document).ready(function(){
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
 					<?php 
-						if($_SESSION['username1']){
-							
+						if($_SESSION['login1']==true){
+
 							?>
 							
 							
-							<li class="nav-item"><a class="nav-link"><?php echo $_SESSION['username1']="Minh" ?></a></li>
+							<li class="nav-item"><a class="nav-link"></li>
+							<form action="logout.php" method="post">
+								<li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
+							</form>
+
 
 
 					<?php }

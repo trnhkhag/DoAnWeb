@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
@@ -35,9 +33,9 @@
 </head>
 
 <body class="goto-here">
-	
-<?php include 'header.php'; 
-?>      
+
+	<?php include 'header.php';
+	?>
 
 	<!-- END nav -->
 
@@ -57,16 +55,10 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-xl-7 ftco-animate">
-					<form action="billingaddress.php" method="post" class="billing-form">
+					<form action="billing.php" method="post" class="billing-form">
 						<h3 class="mb-4 billing-heading">Billing Address</h3>
 						<div class="row align-items-end">
 							<div class="col-md-12">
-							
-
-								
-									
-								
-								
 								<div class="form-group">
 									<label for="firstname">Full Name<span class="important"> *</span></label>
 									<input type="text" name="fullname" class="form-control" placeholder="John M. Doe">
@@ -96,10 +88,19 @@
 									<textarea class="form-control note" name="note" placeholder=""></textarea>
 								</div>
 							</div>
-							<div class="w-100"></div>
-							<div class="col-md-12">
+							<?php
+							if ($_SESSION['login1'] == true) { ?>
+								<div class="col-md-12">
+									<button name="submit" type="submit">save</button>
+								</div>
+							<?php } else { ?>
+								<div class="col-md-12">
 									<a href="register.html">Create an Account</a>
-							</div>
+								</div>
+							<?php
+							}
+							?>
+
 						</div>
 
 					</form><!-- END -->
@@ -161,7 +162,7 @@
 		</div>
 	</section> <!-- .section -->
 
-	<?php include 'footer.html';?>      
+	<?php include 'footer.html'; ?>
 
 
 
@@ -169,8 +170,7 @@
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-				stroke="#F96D00" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
 		</svg></div>
 
 
@@ -187,16 +187,15 @@
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 
 			var quantitiy = 0;
-			$('.quantity-right-plus').click(function (e) {
+			$('.quantity-right-plus').click(function(e) {
 
 				// Stop acting like a button
 				e.preventDefault();
@@ -212,7 +211,7 @@
 
 			});
 
-			$('.quantity-left-minus').click(function (e) {
+			$('.quantity-left-minus').click(function(e) {
 				// Stop acting like a button
 				e.preventDefault();
 				// Get the field name
