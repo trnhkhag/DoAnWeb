@@ -69,7 +69,7 @@ $(document).ready(function(){
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
 					<?php 
-						if($_SESSION['login1']==true){
+						if($_SESSION['login']==true){
 
 							?>
 							

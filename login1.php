@@ -31,14 +31,14 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input id="username" name="username1" type="text" class="form-control" placeholder="Enter Username">
+						<input id="username" name="username" type="text" class="form-control" placeholder="Enter Username">
 					</div>
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input id="password" name="password1"  type="password" class="form-control" placeholder="Enter Password">
+						<input id="password" name="password"  type="password" class="form-control" placeholder="Enter Password">
 					</div>
 
 					<div class="row align-items-center remember">
@@ -48,7 +48,7 @@
 
 					<div class="action">
 						<button type="button" value="Cancel" onclick="window.location.assign('index.html');" class="btn float-right login_btn">Cancel</button>
-						<button type="submit" value="Login" name="login1"  class="btn float-right login_btn">Login</button>
+						<button type="submit" value="Login" name="login"  class="btn float-right login_btn">Login</button>
 					</div>
 
 				</form>
