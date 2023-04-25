@@ -1,35 +1,26 @@
 <?php
 session_start();
 
-$username = "root";
-$password = "";
-$servername = "localhost";
-$dbname = "webprojectdb";
+include 'connect.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if (!$conn) {
-    die("connnection failed" . mysqli_connect_error());
-}
-
-if (isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['username']) && isset($_POST['password'])) {
     $user = $_POST['username'];
     $pass = $_POST['password'];
-    $query = "SELECT id,TenDangNhap,MatKhau FROM nguoidung";
+    $query = "SELECT MaNguoiDung,TenDangNhap,MatKhau FROM nguoidung where TenDangNhap='$user' and MatKhau='$pass'";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
         $authenticated = false;
         while ($row = mysqli_fetch_assoc($result)) {
             if ($user == $row['TenDangNhap'] && $pass == $row['MatKhau']) {
                 $_SESSION['login'] = true;
-                $_SESSION['TenDangNhap'] = $row['id'];
+                $_SESSION['TenDangNhap'] = $row['MaNguoiDung'];
                 $authenticated = true;
+                header("Location:/index.php?login=success");
                 break;
             }
         }
-        if ($authenticated) {
-            header("Location:/checkout.php");
-        } else {
-            echo "wrong email or password";
+        if ($authenticated||empty($user)&&empty($pass)) {
+            header("Location:/login1.php?login=failed");
         }
     }
 }
