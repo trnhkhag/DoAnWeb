@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form action="logincheck.php" method="post">
+				<form action="process.php" method="post">
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
