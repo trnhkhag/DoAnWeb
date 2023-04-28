@@ -1237,7 +1237,7 @@ pre {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
-    max-width: 50%; }
+    max-width: 100%; }
   .col-lg-7 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 58.33333%;
@@ -4433,9 +4433,11 @@ input[type="button"].btn-block {
     color: #202326; }
 
 .alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb; }
+  width: 81%;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    margin-left: 129px;}
   .alert-success hr {
     border-top-color: #b1dfbb; }
   .alert-success .alert-link {
@@ -7980,7 +7982,13 @@ button.bg-dark:focus {
   text-align: right !important; }
 
 .text-center {
+  width: 141%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center !important; }
+  .text-center2 {
+    justify-content: center;
+    text-align: center !important; }
 
 @media (min-width: 576px) {
   .text-sm-left {
@@ -9127,11 +9135,15 @@ h1, h2, h3, h4, h5,
       color: #fff !important;
       border: 1px solid transparent !important; }
   .table tbody tr td {
+    display: flex;
+    height: 100%;
     text-align: center !important;
     vertical-align: middle;
     padding: 40px 10px;
     border: 1px solid transparent !important;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important; }
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important;
+    justify-content: center;
+    align-items: center; }
     .table tbody tr td.product-remove a {
       bordeR: 1px solid rgba(0, 0, 0, 0.1);
       padding: 4px 10px;
@@ -10595,7 +10607,7 @@ height: auto;
 /* TAI-CSS (SHOP) */
 .ftco-section2 {
   margin: 0 5%;
-  padding: 3em 0;
+  padding: 6em 0;
   position: relative;
 }
 .container2{
@@ -10629,4 +10641,33 @@ color: #ffad33;
 
 .user-header{
   font-size: 15px;
+}
+#message{
+  position: absolute;
+  z-index: 10;
+  top: 18px;
+  right: 2px;
+  width: 74%;
+}
+#message2{
+  font-size: 19.5px;
+  right: 60px;
+  position: absolute;
+  z-index: 10;
+  top: -411px;
+}
+
+.addItemBtn{
+  color: #fff;
+  width: 100%;
+  background: #ffad33;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none !important;
+  outline: none !important; 
+}
+
+.bodyofcart{
+  width: 100%;
 }

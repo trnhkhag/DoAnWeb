@@ -1,10 +1,7 @@
-<?php
-include('connect_db.php');
 
-?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include('connect_db.php') ?>
 <head>
     <title>BKMT WATCH | Shop</title>
     <meta charset="utf-8">
@@ -73,8 +70,8 @@ include('connect_db.php');
 
             <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span style="font-size:15px; position:absolute; top:13px;left:21%">0</span></i></a></li>
-                    <li class="nav-item"><a href="login1.html" class="nav-link"><i class="fa-solid fa-user"></i></a>
+                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span id="cart-Item" style="font-size:15px; position:absolute; bottom:28px;left:36%"></span></i></a></li>
+                    <li class="nav-item"><a href="login.php" class="nav-link"><i class="fa-solid fa-user"></i></a>
                     </li>
                 </ul>
             </div>
@@ -266,7 +263,6 @@ include('connect_db.php');
             });
         });
     </script>
-
 </body>
 
 </html>
