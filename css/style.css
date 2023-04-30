@@ -7981,12 +7981,12 @@ button.bg-dark:focus {
 .text-right {
   text-align: right !important; }
 
-.text-center {
+.text-center2 {
   width: 141%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center !important; }
-  .text-center2 {
+  .text-center {
     justify-content: center;
     text-align: center !important; }
 
@@ -9180,8 +9180,7 @@ h1, h2, h3, h4, h5,
     margin-bottom: 20px; }
   .cart-total p {
     width: 100%;
-    display: block;
-    text-align: center; }
+    display: block; }
     .cart-total p span {
       display: block;
       width: 50%; }

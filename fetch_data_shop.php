@@ -74,7 +74,7 @@ if (isset($_POST["action"])) {
 						alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
-				<div class="text py-3 pb-4 px-3 text-center2">
+				<div class="text py-3 pb-4 px-3 text-center">
 					<h3><a href="#">' . $row['TenSP'] . '</a></h3>
 					<div class="d-flex">
 						<div class="pricing">
@@ -84,7 +84,7 @@ if (isset($_POST["action"])) {
 					<div class="bottom-area d-flex px-3">
 						<div class="m-auto d-flex">
 							<a href="product-single.html"
-								class="add-to-cart d-flex justify-content-center align-items-center text-center2">
+								class="add-to-cart d-flex justify-content-center align-items-center text-center">
 								<span><i class="ion-ios-menu"></i></span>
 							</a>
 							<div>

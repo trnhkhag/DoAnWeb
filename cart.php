@@ -78,7 +78,7 @@
   <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
-        <div class="col-md-9 ftco-animate text-center2">
+        <div class="col-md-9 ftco-animate text-center">
           <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
           <h1 class="mb-0 bread">Cart</h1>
         </div>
@@ -105,7 +105,7 @@
           <div class="cart-list">
             <table class="table">
               <thead class="thead-primary">
-                <tr class="text-center2">
+                <tr class="text-center">
                   <th>&nbsp;</th>
                   <th>&nbsp;</th>
                   <th>Product name</th>
@@ -115,7 +115,7 @@
                 </tr>
               </thead>
               <tbody class="bodyofcart">
-                <tr class="text-center" id="row-<?= $row['MaSP'] ?>">
+                <tr class="text-center2" id="row-<?= $row['MaSP'] ?>">
                   <?php
                   $servername = "localhost";
                   $username = "root";
@@ -143,7 +143,7 @@
               </tbody>
             </table>
           </div>
-          <p class="text-center2 mt-5" style="display: flex; justify-content: space-between">
+          <p class="text-center mt-5" style="display: flex; justify-content: space-between">
             <a href="shop.php" class="btn btn-primary">Continue shopping</a>
             <a href="action.php?clear=all" class="btn btn-primary" onclick="return confirm('Are you sure want to clear your cart?')">Clear Cart</a>
 
@@ -155,13 +155,13 @@
   <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
     <div class="col-lg-6 cart-wrap ftco-animate" id="bodyoftotal">
       <div class="cart-total mb-3">
-        <h2 class="text-center2">Cart Totals</h2>
+        <h2 class="text-center">Cart Totals</h2>
         <p class="d-flex">
           <span>Subtotal</span>
           <span><?= number_format($grand_total, 2) ?>$</span>
         </p>
       </div>
-      <p class="text-center2"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
+      <p class="text-center"><a href="checkout.php" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
       </p>
     </div>
     </div>
