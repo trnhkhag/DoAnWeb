@@ -3,7 +3,7 @@
 
 <head>
 	<title>LOGIN</title>
-	<link rel="stylesheet" type="text/css" href="login_register_css/style.css?v= <?php echo time() ?>">
+	<link rel="stylesheet" type="text/css" href="login_register_css/style.css">
 </head>
 
 <body>
