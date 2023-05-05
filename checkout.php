@@ -1,15 +1,16 @@
+<?php session_start() ?>
 <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "webprojectdb";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+$a=$_SESSION['TenDangNhap'];
 $grand_total = 0;
 $allItems = '';
 $items = array();
 
-$sql = "SELECT CONCAT(TenSP, '(',SoLuong,')') AS qty, TongGia FROM giohang";
+$sql = "SELECT CONCAT(TenSP, '(',SoLuong,')') AS qty, TongGia FROM giohang WHERE TenDangNhap='$a'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -113,7 +114,8 @@ $allItems = implode(", ", $items);
         <div class="container">
             <div class="row justify-content-center" id="order">
                 <div class="col-xl-7 ftco-animate">
-                    <form action="" class="billing-form" method="post" id="placeOrder">
+                    <form action="action.php" class="billing-form" method="post" id="placeOrder">
+                        <!--  -->
                         <h3 class="mb-4 billing-heading">Complete Your Order</h3>
                         <div class="col-md-12 d-flex mb-5">
                             <div class="cart-detail cart-total p-3 p-md-4">
@@ -125,37 +127,92 @@ $allItems = implode(", ", $items);
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Total</span>
-                                    <span><?= number_format($grand_total,2) ?>$</span>
+                                    <span><?= number_format($grand_total, 2) ?>$</span>
                                 </p>
                             </div>
                         </div>
                         <input type="hidden" name="products" value="<?= $allItems; ?>">
                         <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
                         <div class="row align-items-end">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="firstname">Full Name<span class="important"> *</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="John M. Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Address<span class="important"> *</span></label>
-                                    <input type="text" class="form-control" name="address" placeholder="542 W, 15th Street">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Phone<span class="important"> *</span></label>
-                                    <input type="text" class="form-control" name="phone" placeholder="0123456789">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Email</label>
-                                    <input type="text" class="form-control" name="email" placeholder="john@example.com">
-                                </div>
-                            </div>
+                            <?php
+
+                            if (isset($_SESSION['TenDangNhap'])) {
+                                $a = $_SESSION['TenDangNhap'];
+                                $qerry = "SELECT HoTen,DiaChi,SDT FROM donhang WHERE TenDangNhap='$a'";
+                                $result1 = mysqli_query($conn, $qerry);
+                                if (!$result1) {
+                                    die('Query failed: ' . mysqli_error($conn));
+                                }
+                                if (mysqli_num_rows($result1) > 0) {
+                                    if ($row = mysqli_fetch_assoc($result1)) {
+
+                            ?>
+                                        <h3 class="mb-4 billing-heading"> Your Information</h3>
+                                        <div class="col-md-12 d-flex mb-5">
+                                            <div class="cart-detail cart-total p-3 p-md-4">
+                                                <p class="d-flex">
+                                                    <span>FullName:</span>
+                                                    <span style="color: black; font-size:20px"><?php echo $row['HoTen'] ?></span>
+                                                </p>
+                                                <hr>
+                                                <p class="d-flex">
+                                                    <span>Address</span>
+                                                    <span style="color: black; font-size:20px" name="address"><?php echo $row['DiaChi'] ?></span>
+                                                </p>
+                                                <hr>
+                                                <p class="d-flex">
+                                                    <span>Phone</span>
+                                                    <span style="color: black; font-size:20px"><?php echo $row['SDT'] ?></span>
+                                                </p>
+                                                <hr>
+                                                <p class="d-flex">
+                                                    <span>Payment Options</span>
+                                                    <span>
+                                                    <select name="pmode">
+                                                        <option value="" selected disabled>Select Payment Options</option>
+                                                        <option value="cards">Credit Card</option>
+                                                        <option value="cod">COD</option>
+                                                        <option value="netbanking">Net Banking</option>
+                                                    </select>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <input style="margin-top:20px;" type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+
+
+
+                                    <?php
+
+
+                                    }
+                                    } else {
+
+                                    ?>
+                                        <div class="col -md-12">
+                                            <div class="form-group">
+                                                <label for="firstname">Full Name<span class="important"> *</span></label>
+                                                <input type="text" name="name" class="form-control" placeholder="John M. Doe">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lastname">Address<span class="important"> *</span></label>
+                                                <input type="text" class="form-control" name="address" placeholder="542 W, 15th Street">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lastname">Phone<span class="important"> *</span></label>
+                                                <input type="text" class="form-control" name="phone" placeholder="0123456789">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lastname">Email</label>
+                                                <input type="text" class="form-control" name="email" placeholder="john@example.com">
+                                            </div>
+                                        </div>
                         </div>
                         <div class="col-md-12">
                             <div class="cart-detail p-3 p-md-4">
@@ -168,12 +225,31 @@ $allItems = implode(", ", $items);
                                 </select>
                             </div>
                         </div>
-                        <input style="margin-top:20px;" type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+                        <?php
+
+                                        if (isset($_SESSION['TenDangNhap'])) {
+                        ?>
+
+                            <input style="margin-top:20px;" type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+
+                        <?php } else { ?>
+                            <a href="login1.php" name="login">Login</a>
+            <?php }
+                                    }
+                                }
+                            
+
+            ?>
+
+
                     </form><!-- END -->
                 </div>
             </div>
         </div>
         <a href="shop.php">Continue Shopping</a>
+        <a href="order_history.php" style="float: right; margin-right:80px">Order History</a>
+
+
     </section> <!-- .section -->
 
     <footer>

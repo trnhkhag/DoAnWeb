@@ -39,6 +39,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 			$row = mysqli_fetch_assoc($result);
             if ($row['TenDangNhap'] === $uname && $row['MatKhau'] === $pass) {
             	$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
+				$_SESSION['Email'] = $row['Email'];
             	$_SESSION['HoTen'] = $row['HoTen'];
             	$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
             	header("Location: index.php");
