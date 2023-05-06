@@ -52,7 +52,7 @@ if (isset($_POST["action"])) {
 			$query .= "
             AND TenSP LIKE ?
         ";
-			$parameters[] = $search_filter . '%';
+			$parameters[] = '%'. $search_filter . '%';
 		}
 	}
 
@@ -70,7 +70,7 @@ if (isset($_POST["action"])) {
 			<div id="message"></div>
 			<div class="col-md-6 col-lg-3 ftco-animate">
 			<div class="product">
-				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
+				<a href="product-single.php?MaSP=' .$row['MaSP'] . '" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
 						alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
