@@ -620,6 +620,7 @@ nav .profile-details i {
 
 #paid,
 #unpaid,
+#waiting,
 #bytime,
 #byprice,
 #byname {
@@ -633,6 +634,7 @@ nav .profile-details i {
 
 #paid:hover,
 #unpaid:hover,
+#waiting:hover,
 #bytime:hover,
 #byprice:hover,
 #byname:hover {
@@ -641,6 +643,7 @@ nav .profile-details i {
 
 #paid:active,
 #unpaid:active,
+#waiting:active,
 #bytime:active,
 #byprice:active,
 #byname:active {
@@ -707,6 +710,13 @@ button {
 
 .status-unpaid {
   background-color: rgba(255, 0, 0, 0.1);
+  color: red;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.status-waiting {
+  background-color: rgba(251, 255, 0, 0.1);
   color: red;
   padding: 2px 6px;
   border-radius: 4px;
@@ -953,12 +963,12 @@ table tr {
 }
 
 .modal-content .cancel,
-.modal.product-delete .cancel-deletion {
+.modal.product-delete .cancel-deletion-1 .cancel-deletion .product-delete-1 {
   background-color: rgba(255, 0, 0, 0.75);
 }
 
 .modal-content .done,
-.modal.product-delete .confirm {
+.modal.product-delete .product-delete-1 .confirm-1 .confirm{
   background-color: rgba(0, 155, 0, 0.75);
 }
 
@@ -1017,7 +1027,7 @@ table tr {
   opacity: 0.5;
 }
 
-.modal.product-delete .container {
+.modal.product-delete .product-delete-1.container {
   background-color: #f5f5f5;
   padding: 2rem 2rem;
   text-align: center;
@@ -1025,11 +1035,11 @@ table tr {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
 }
 
-.modal.product-delete .container .action {
+.modal.product-delete .product-delete-1.container .action {
   margin-top: 1.5rem;
 }
 
-.modal.product-delete .container .action button {
+.modal.product-delete .product-delete-1.container .action button {
   margin: 0 1rem;
 }
 
