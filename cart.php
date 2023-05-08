@@ -35,36 +35,105 @@
 <body class="goto-here">
 	<?php include 'header.php';?>      
 
-	<!-- END nav -->
-
-	<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
-					<h1 class="mb-0 bread">Cart</h1>
+				<div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
+						<?php
+						if (isset($_SESSION['TenDangNhap'])) {
+						?>
+							<li class="nav-item"><a href="index.php" class="nav-link"><span class="user-header">Hello, <?php echo $_SESSION['TenDangNhap']; ?></span> </a></li>
+							<li class="nav-item"><a href="logout.php" class="nav-link"><span class="user-header">Logout</span> </a></li>
+						<?php
+						} else {
+						?>
+							<li class="nav-item"><a href="login1.php" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
+						<?php
+						}
+						?>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</div>
+		</nav>
+  <!-- END nav -->
+  
+  <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+          <h1 class="mb-0 bread">Cart</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="ftco-section2 ftco-cart">
+    <div style="display:<?php if (isset($_SESSION['showAlert'])) {
+                          echo $_SESSION['showAlert'];
+                        } else {
+                          echo 'none';
+                        }
+                        unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong><?php if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+              }
+              unset($_SESSION['showAlert']); ?></strong>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 ftco-animate">
+          <div class="cart-list">
+            <table class="table">
+              <thead class="thead-primary">
+                <tr class="text-center">
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>Product name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody class="bodyofcart">
+                <tr class="text-center2" id="row-<?= $row['MaSP'] ?>">
+                  <?php
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "webprojectdb";
+                  $a=$_SESSION['TenDangNhap'];
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
+                  $qerry="SELECT * FROM giohang WHERE TenDangNhap='$a'";
+                  $result1=mysqli_query($conn,$qerry);
+                  $stmt = $conn->prepare("SELECT * FROM giohang WHERE TenDangNhap='$a'");
+                  $stmt->execute();
+                  $result = $stmt->get_result();
+                  $grand_total = 0;
+                  while ($row = $result->fetch_assoc()) :
+                  ?>
+                    <td><img style="width:50%;" src=" <?= $row['Hinh'] ?>" alt=""></td>
+                    <input type="hidden" class="pid" value="<?= $row['MaSP'] ?>">
+                    <td><?= $row['TenSP'] ?></td>
+                    <td><?= number_format($row['Gia'], 2) ?>$</td>
+                    <input type="hidden" class="pprice" value="<?= $row['Gia'] ?>">
+                    <td><input type="number" class="itemQty" value="<?= $row['SoLuong'] ?>" style="width:30%;" onchange="updateCart(<?= $row['MaSP'] ?>, this.value);"></td>
+                    <td><?= number_format($row['TongGia'], 2) ?>$</td>
+                    <td><a href="action.php?remove=<?= $row['MaSP'] ?>" onclick="return confirm('Are you sure want to remove this product?');" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
+                    <?php $grand_total += $row['TongGia'] ?>
+                  <?php endwhile; ?>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-center mt-5" style="display: flex; justify-content: space-between">
+            <a href="shop.php" class="btn btn-primary">Continue shopping</a>
+            <a href="order_history.php" class="btn btn-primary" style="float: right; margin-right:80px">Order History</a>
+            <a href="action.php?clear=all" class="btn btn-primary" onclick="return confirm('Are you sure want to clear your cart?')">Clear Cart</a>
 
-	<section class="ftco-section ftco-cart">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 ftco-animate">
-					<div class="cart-list">
-						<table class="table">
-							<tbody class="bodyofcart">
-								
-
-							
-							</tbody>
-						</table>
-					</div>
-					<p class="text-center mt-5"><a href="shop.html" class="btn btn-primary">Continue shopping</a></p>
-				</div>
-			</div>
-	</section>
+          </p>
+        </div>
+      </div>
+  </section>
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
 		<div class="row justify-content-end mb-5">

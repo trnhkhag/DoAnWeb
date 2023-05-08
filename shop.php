@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include('connect_db.php') ?>
 <head>
 	<title>BKMT WATCH | Shop</title>
 	<meta charset="utf-8">
@@ -31,24 +31,60 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/mystyle.css">
 </head>
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webprojectdb";
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-if (!$conn) {
-	die("Connection failed: " . mysqli_connect_error());
-}
-$querry = "SELECT * FROM sanpham";
-$result = mysqli_query($conn, $querry);
-?>
 
 <body class="goto-here">
-	<?php include 'header.php'; ?>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">BKMT WATCH</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="oi oi-menu"></span> Menu
+				</button>
 
-	<!-- END nav -->
+				<div class="collapse navbar-collapse" id="ftco-nav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="shop.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown04">
+								<a class="dropdown-item" href="shop.html">Men's Watches</a>
+								<a class="dropdown-item" href="shop.html">Women's Watches</a>
+								<a class="dropdown-item" href="shop.html">Couple's Watches</a>
+								<a class="dropdown-item" href="shop.html">Unisex Watches</a>
+							</div>
+						</li>
+						<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+						<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+					</ul>
+
+				</div>
+
+				<div id="right">
+					<form class="example" action="shop.html">
+						<input type="text" placeholder="Search.." name="search2">
+						<button type="submit" style="background-color: #ffad33;"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+
+				<div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
+						<?php
+						if (isset($_SESSION['TenDangNhap'])) {
+						?>
+							<li class="nav-item"><a href="index.php" class="nav-link"><span class="user-header">Hello, <?php echo $_SESSION['TenDangNhap']; ?></span> </a></li>
+							<li class="nav-item"><a href="logout.php" class="nav-link"><span class="user-header">Logout</span> </a></li>
+						<?php
+						} else {
+						?>
+							<li class="nav-item"><a href="login1.php" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
+						<?php
+						}
+						?>
+					</ul>
+				</div>
+			</div>
+		</nav>
+    <!-- END nav -->
 
 	<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
 		<div class="container">
@@ -121,25 +157,32 @@ $result = mysqli_query($conn, $querry);
 					
 				}
 
-				?>
-			
-			</div>
-			<div class="row mt-5">
-					<div class="col text-center">
-						<div class="block-27">
-							<ul>
-								<li><a href="#">&lt;</a></li>
-								<li class="active"><span>1</span></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">&gt;</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-	</section>
+                    ?>
+                </div>
+
+            </div>
+            <div class="contain-shop2">
+                <div class="row filter_data">
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<?php include 'footer.html'; ?>
 
