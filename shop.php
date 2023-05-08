@@ -50,24 +50,24 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="shop.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown04">
-								<a class="dropdown-item" href="shop.html">Men's Watches</a>
-								<a class="dropdown-item" href="shop.html">Women's Watches</a>
-								<a class="dropdown-item" href="shop.html">Couple's Watches</a>
-								<a class="dropdown-item" href="shop.html">Unisex Watches</a>
+								<a class="dropdown-item" href="shop.php">Men's Watches</a>
+								<a class="dropdown-item" href="shop.php">Women's Watches</a>
+								<a class="dropdown-item" href="shop.php">Couple's Watches</a>
+								<a class="dropdown-item" href="shop.php">Unisex Watches</a>
 							</div>
 						</li>
-						<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-						<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+						<li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+						<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
 					</ul>
 
 				</div>
 
-				<div id="right">
-					<form class="example" action="shop.html">
-						<input type="text" placeholder="Search.." name="search2">
-						<button type="submit" style="background-color: #ffad33;"><i class="fa fa-search"></i></button>
-					</form>
-				</div>
+
+                <div id="right">
+                <form method="POST">
+                    <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
+                </form>
+            </div>
 
 				<div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
 					<ul class="navbar-nav ml-auto">

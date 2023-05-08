@@ -4,7 +4,7 @@ $idUser = $_GET['id'];
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "webprojectdb";
+$dbname = "webprojectdb1";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

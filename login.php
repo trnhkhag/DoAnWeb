@@ -38,16 +38,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
-<<<<<<< HEAD
-            if ($row['TenDangNhap'] === $uname && $row['MatKhau'] === $pass) {
-            	$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
-				$_SESSION['Email'] = $row['Email'];
-            	$_SESSION['HoTen'] = $row['HoTen'];
-            	$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
-            	header("Location: index.php");
-		        exit();
-            }else{
-=======
+
 			if ($row['TenDangNhap'] === $uname && $row['MatKhau'] === $pass) {
 				if ($row['role'] === 'Customer') {
 					$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
@@ -64,7 +55,6 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 					exit();
 				}
 			} else {
->>>>>>> cf672dd85d8f2973661f6bdad1e8821540d75f13
 				header("Location: login1.php?error=Incorect User name or password");
 				exit();
 			}

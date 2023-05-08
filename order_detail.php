@@ -8,7 +8,7 @@ if(isset($_REQUEST['id'])){
   $username = "root";
   $password = "";
   //đổi giùm cái tên database
-  $dbname = "webprojectdb1";
+  $dbname = "webprojectdb";
   
   // Create connection
   $conn = mysqli_connect($servername, $username, $password, $dbname);

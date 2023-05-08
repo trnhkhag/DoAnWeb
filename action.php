@@ -10,10 +10,8 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (isset($_POST['pid'])) {
     $pid = $_POST['pid'];
     $pname = $_POST['pname'];
-    var_dump($pname);
     $pprice = $_POST['pprice'];
     $pimage = $_POST['pimage'];
-    var_dump($pimage);
     $pcode = $_POST['pcode'];
     $pqty = 1;
     $a = $_SESSION['TenDangNhap'];
@@ -28,7 +26,6 @@ if (isset($_POST['pid'])) {
     $r = $res->fetch_assoc();
     if ($r !== null) {
         $code = $r['CodeSP'];
-        var_dump($code);
     } else {
         $code = null;
     }
@@ -91,9 +88,7 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
                 $email = $row['Email'];
                 $phone = $row['SDT'];
                 $products = $_POST['products'];
-                var_dump($products);
                 $grand_total = $_POST['grand_total'];
-                var_dump($grand_total);
                 $address = $row['DiaChi'];
                 $pimage=$_POST['images'];
                 $pmode = $_POST['pmode'];
