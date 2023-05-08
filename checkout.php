@@ -104,7 +104,7 @@ $soluong = implode(",", $soluong);
 		<div class="container">
 			<div class="row justify-content-center" id="order" style="width: 1000px;">
 				<div class="col-xl-7 ftco-animate">
-					<form action="action.php" class="billing-form" method="post" id="placeOrder">
+					<form action="action.php" class="billing-form" name="order" method="post" id="placeOrder">
 						<!--  -->
 						<h3 class="mb-4 billing-heading">Complete Your Order</h3>
 						<div class="col-md-12 d-flex mb-5">
@@ -216,19 +216,53 @@ $soluong = implode(",", $soluong);
 						</div>
 						<?php
 
-								if (isset($_SESSION['TenDangNhap'])) {
-						?>
-						<?php } else { ?>
+								if (isset($_SESSION['TenDangNhap'])) {?>
+						<?php
+						 } else { ?>
 							<a href="login1.php" name="login">Login</a>
+					</form>
 					<?php
 								}
 							}
 					?>
-					</form>
+				</div>
+			</div>
+		</div>
 
-
-
-
+	</section>
+	<footer>
+        <div class="Our_social_media">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="more_info">
+            <a href="#">Contact us</a>
+            <a href="#">Our Services</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Career</a>
+        </div>
+        <p>INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh</p>
+    </footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/sweetalert.all.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 
 </html>

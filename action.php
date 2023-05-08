@@ -10,12 +10,14 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (isset($_POST['pid'])) {
     $pid = $_POST['pid'];
     $pname = $_POST['pname'];
+    var_dump($pname);
     $pprice = $_POST['pprice'];
     $pimage = $_POST['pimage'];
+    var_dump($pimage);
     $pcode = $_POST['pcode'];
     $pqty = 1;
-    
     $a = $_SESSION['TenDangNhap'];
+
     $stmt = $conn->prepare("SELECT CodeSP from giohang where CodeSP=? AND TenDangNhap='$a' ");
     $stmt->bind_param("s", $pcode);
     $stmt->execute();
@@ -26,6 +28,7 @@ if (isset($_POST['pid'])) {
     $r = $res->fetch_assoc();
     if ($r !== null) {
         $code = $r['CodeSP'];
+        var_dump($code);
     } else {
         $code = null;
     }
@@ -74,6 +77,7 @@ if (isset($_GET['clear'])) {
     header('location:cart.php');
 }
 if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
+    echo 1;
     if (isset($_SESSION['TenDangNhap'])) {
         $a = $_SESSION['TenDangNhap'];
         $qerry = "SELECT HoTen,DiaChi,SDT,Email FROM donhang WHERE TenDangNhap='$a'";
@@ -87,12 +91,16 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
                 $email = $row['Email'];
                 $phone = $row['SDT'];
                 $products = $_POST['products'];
+                var_dump($products);
                 $grand_total = $_POST['grand_total'];
+                var_dump($grand_total);
                 $address = $row['DiaChi'];
+                $pimage=$_POST['images'];
                 $pmode = $_POST['pmode'];
+             
                 $data = '';
-                $stmt = $conn->prepare("INSERT INTO donhang (HoTen,TenDangNhap,Email,SDT,DiaChi,PMode,SanPham,ThanhTien)VALUES(?,'$a',?,?,?,?,?,?)");
-                $stmt->bind_param('ssssssd', $name, $email, $phone, $address, $pmode, $products, $grand_total);
+                $stmt = $conn->prepare("INSERT INTO donhang (HoTen,TenDangNhap,Email,SDT,DiaChi,PMode,SanPham,hinhanh,ThanhTien)VALUES(?,'$a',?,?,?,?,?,?,?)");
+                $stmt->bind_param('sssssssd', $name, $email, $phone, $address, $pmode, $products,$pimage, $grand_total);
                 $stmt->execute();
                 $stmt2 = $conn->prepare("DELETE FROM giohang WHERE TenDangNhap='$a'");
                 $stmt2->execute();
@@ -103,7 +111,7 @@ if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
                                             <h4>Your Name : ' . $name . '</h4>
                                             <h4>Your E-mail : ' . $email . '</h4>
                                             <h4>Your Phone : ' . $phone . '</h4>
-                                            <h4>Total Amount Paid : ' . number_format($grand_total, 2) . '</h4>
+                                            <h4>Total Amount Paid : ' .number_format($grand_total,2) . '</h4>
                                             <h4>Payment Mode : ' . $pmode . '</h4>
                                         </div>';
                 echo $data;
