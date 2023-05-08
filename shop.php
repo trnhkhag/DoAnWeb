@@ -147,38 +147,14 @@
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <?php
-                        if ($currentPage > 1) {
-                            echo '<li><a href="shop.php?page=' . $currentPage - 1 . '">&lt;</a></li>';
-                        } else {
-                            echo '<li><a href="#">&lt;</a></li>';
-                        }
-                        ?>
-
-                        <?php
-                        for ($i = 1; $i <= $totalPages; $i++) {
-                            if ($i == $currentPage) {
-                                echo "<li class='active'><span>" . $i . "</span></li>";
-                            } else {
-                                echo "<li><a href='shop.php?page=" . $i . "'>" . $i . "</a></li>";
-                            }
-                        }
-                        ?>
-
-                        <?php
-                        if ($currentPage < $totalPages) {
-                            echo '<li><a href="shop.php?page=' . $currentPage + 1 . '">&gt;</a></li>';
-                        } else {
-                            echo '<li><a href="#">&gt;</a></li>';
-                        }
-                        ?>
-                        <!-- <li><a href="#">&lt;</a></li>
+                        
+                        <li><a href="#">&lt;</a></li>
                         <li class="active"><span>1</span></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li> -->
+                        <li><a href="#">&gt;</a></li>
                     </ul>
                 </div>
             </div>

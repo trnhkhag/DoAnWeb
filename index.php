@@ -27,41 +27,13 @@
 
 		<link rel="stylesheet" href="css/flaticon.css">
 		<link rel="stylesheet" href="css/icomoon.css">
-		<link rel="stylesheet" href="css/style.css?v=<?php echo time() ?>">
+		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/mystyle.css">
 	</head>
 
-	<body class="goto-here">
-<?php include 'header.php' ?>
-		<!-- END nav -->
-
-		<section id="home-section" class="hero">
-			<div class="home-slider owl-carousel">
-				<div class="slider-item" style="background-image: url(images/bg_1.jpeg);">
-					<div class="overlay"></div>
-					<div class="container">
-						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-
-							<div class="col-md-12 ftco-animate text-center">
-								<h1 class="mb-2">What time is it ?</h1>
-								<p><a href="#" class="btn btn-primary">View Details</a></p>
-							</div>
-
-	<link rel="stylesheet" href="css/ionicons.min.css">
-
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="css/jquery.timepicker.css">
-
-	<link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.css">
-
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css?v=<?php echo time() ?>">
-	<link rel="stylesheet" href="css/mystyle.css">
-</head>
-
 <body class="goto-here">
-	<?php require_once "nav.php"; ?>
+<?php include 'header.php' ?>
+	<!-- <?php require_once "nav.php"; ?> -->
 	<!-- END nav -->
 
 	<section id="home-section" class="hero">
