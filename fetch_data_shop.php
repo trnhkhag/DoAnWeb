@@ -25,7 +25,7 @@ $start = ($currentPage - 1) * $limit;
 
 if (isset($_POST["action"])) {
 	$query = "
-    SELECT Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh 
+    SELECT MaSP, Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh, CodeSP
     FROM sanpham, loai 
     WHERE TrangThai = '1' and sanpham.MaLoai = loai.MaLoai";
 
@@ -48,12 +48,12 @@ if (isset($_POST["action"])) {
 		if (!empty($brand_filter)) {
 			$brand_placeholders = implode(',', array_fill(0, count($brand_filter), '?'));
 			$query .= "
-            AND Hang LIKE ?
-        ";
-			$parameters[] = $brand_filter[0] . '%';
+				AND Hang LIKE ($brand_placeholders)
+			";
+			$parameters = array_merge($parameters, $brand_filter);
 		}
 	}
-
+	
 	if (isset($_POST["maloai"])) {
 		$maloai_filter = $_POST["maloai"];
 		if (!empty($maloai_filter)) {
@@ -71,7 +71,7 @@ if (isset($_POST["action"])) {
 			$query .= "
             AND TenSP LIKE ?
         ";
-			$parameters[] = $search_filter . '%';
+			$parameters[] = '%'. $search_filter . '%';
 		}
 	}
 
@@ -88,9 +88,10 @@ if (isset($_POST["action"])) {
 	if ($total_row > 0) {
 		foreach ($result as $row) {
 			$output .= '
+			<div id="message"></div>
 			<div class="col-md-6 col-lg-3 ftco-animate">
 			<div class="product">
-				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
+				<a href="product-single.php?MaSP=' .$row['MaSP'] . '" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
 						alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
@@ -107,9 +108,16 @@ if (isset($_POST["action"])) {
 								class="add-to-cart d-flex justify-content-center align-items-center text-center">
 								<span><i class="ion-ios-menu"></i></span>
 							</a>
-							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-								<span><i class="ion-ios-cart btn-buynow"></i></span>
-							</a>
+							<div>
+							<form action="" class="form-submit">
+								<input type="hidden" class="pid" value="' . $row['MaSP'] . '">
+								<input type="hidden" class="pname" value="' . $row['TenSP'] . '">
+								<input type="hidden" class="pprice" value="' . $row['Gia'] . '">
+								<input type="hidden" class="pimage" value="' . $row['Hinh'] . '">
+								<input type="hidden" class="pcode" value="' . $row['CodeSP'] . '">
+								<button class="buy-now d-flex justify-content-center align-items-center mx-1 addItemBtn"><i class="ion-ios-cart btn-buynow"></i></button>
+							</form>
+							</div>
 							<a href="#" class="add-wishlist heart d-flex justify-content-center align-items-center ">
 								<span><i class="ion-ios-heart"></i></span>
 							</a>
@@ -121,7 +129,51 @@ if (isset($_POST["action"])) {
 			';
 		}
 	} else {
-		$output = '<h3>No Data Found</h3>';
+		$output = '<h3 class="no-product">No Products Found</h3>';
 	}
 	echo $output;
 }
+?>
+    <script>
+        $(document).ready(function(){
+            $(".addItemBtn").click(function(e){
+                e.preventDefault();
+                var $form = $(this).closest(".form-submit");
+                var pid = $form.find(".pid").val();
+                var pname = $form.find(".pname").val();
+                var pprice = $form.find(".pprice").val();
+                var pimage = $form.find(".pimage").val();
+                var pcode = $form.find(".pcode").val();
+
+                $.ajax({
+                    url: 'action.php',
+                    method: 'post',
+                    data:{
+                        pid:pid,
+                        pname:pname, 
+                        pprice:pprice,
+                        pimage:pimage,
+                        pcode:pcode
+                        },
+                        success:function(response){
+                            $("#message").html(response);
+							window.scrollTo(0,0);
+							load_cart_item_number();
+                        }
+                });
+            });
+
+			load_cart_item_number();
+
+			function load_cart_item_number(){
+				$.ajax({
+					url:'action.php',
+					method:'get',
+					data:{cartItem:"cart_item"},
+					success:function(response){
+						$("#cart-Item").html(response);
+					}
+				});
+			}
+        });
+    </script>

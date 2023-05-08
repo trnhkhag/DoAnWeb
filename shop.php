@@ -1,29 +1,6 @@
-<?php
-session_start();
-include('connect_db.php');
-
-// Define limit and get total products
-$limit = 8;
-$sql = "SELECT count(MaSP) AS total FROM sanpham";
-$result = $connect->query($sql);
-$row = $result->fetch();
-$totalProducts = $row['total'];
-
-// Get current page
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-// calculate total pages and start
-$totalPages = ceil($totalProducts / $limit);
-if ($currentPage > $totalPages) {
-    $currentPage = $totalPages;
-} else if ($currentPage < 1) {
-    $currentPage = 1;
-}
-$start = ($currentPage - 1) * $limit;
-?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include('connect_db.php') ?>
 <head>
     <title>BKMT WATCH | Shop</title>
     <meta charset="utf-8">
@@ -59,7 +36,47 @@ $start = ($currentPage - 1) * $limit;
 </head>
 
 <body class="goto-here">
-    <?php require_once 'nav.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BKMT WATCH</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="shop.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="shop.html">Men's Watches</a>
+                            <a class="dropdown-item" href="shop.html">Women's Watches</a>
+                            <a class="dropdown-item" href="shop.html">Mechanical Watches</a>
+                            <a class="dropdown-item" href="shop.html">Battery Watches</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <div id="right">
+                <form method="POST">
+                    <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
+                </form>
+            </div>
+
+            <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span id="cart-Item" style="font-size:15px; position:absolute; bottom:28px;left:36%"></span></i></a></li>
+                    <li class="nav-item"><a href="login.php" class="nav-link"><i class="fa-solid fa-user"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
 
     <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
         <div class="container">
@@ -254,7 +271,6 @@ $start = ($currentPage - 1) * $limit;
             });
         });
     </script>
-
 </body>
 
 </html>
