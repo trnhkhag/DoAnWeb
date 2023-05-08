@@ -4,25 +4,6 @@
 
 include('connect_db.php');
 
-$limit = 8;
-$sql = "SELECT count(MaSP) AS total FROM sanpham";
-$result = $connect->query($sql);
-$row = $result->fetch();
-$totalProducts = $row['total'];
-
-// Get current page
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-// calculate total pages and start
-$totalPages = ceil($totalProducts / $limit);
-if ($currentPage > $totalPages) {
-    $currentPage = $totalPages;
-}
-else if ($currentPage < 1) {
-    $currentPage = 1;
-}
-$start = ($currentPage - 1) * $limit;
-
 if (isset($_POST["action"])) {
 	$query = "
     SELECT MaSP, Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh, CodeSP
@@ -74,8 +55,6 @@ if (isset($_POST["action"])) {
 			$parameters[] = '%'. $search_filter . '%';
 		}
 	}
-
-	$query .= " LIMIT $start, $limit";
 
 	$statement = $connect->prepare($query);
 	$statement->execute($parameters);
