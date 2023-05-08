@@ -8,7 +8,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 //đổi giùm cái tên database
-$dbname = "mydb21s6";
+$dbname = "webprojectdb";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

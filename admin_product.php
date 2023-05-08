@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webprojectdb";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connect failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai";
+
+$result = mysqli_query($conn, $sql);
+
+$conn->close();
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +28,7 @@
   <title>BKMT WATCH | Admin - Product</title>
   <link rel="stylesheet" href="fontawesome-free-6.2.0-web/css/all.min.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/admin_style.css">
+  <link rel="stylesheet" href="css/admin_style.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -60,7 +80,7 @@
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Product</span>
+        <span class="dashboard">Product - </span>
       </div>
       <!-- <div class="search-box">
         <input type="text" placeholder="Search...">
@@ -96,11 +116,11 @@
             <div class="option-list">
               <form action="" class="category">
                 <select name="category" id="category">
-                  <option value="all">All</option>
-                  <option value="men">Men's watches</option>
-                  <option value="women">Women's watches</option>
-                  <option value="couple">Couple's watches</option>
-                  <option value="unisex">Unisex watches</option>
+                  <option value="">All</option>
+                  <option value="Men's Watches">Men's watches</option>
+                  <option value="Women's Watches">Women's watches</option>
+                  <option value="Couple's Watches">Couple's watches</option>
+                  <option value="Unisex Watches">Unisex watches</option>
                 </select>
               </form>
             </div>
@@ -123,12 +143,11 @@
           <div class="option">
             <p class="title">Status</p>
             <div class="option-list">
-              <form action="" class="status">
-                <select name="category" id="category">
-                  <option value="all">All</option>
-                  <option value="stocking">Stocking</option>
-                  <option value="soldout">Sold out</option>
-                  <option value="nearlysoldout">Nearly sold out</option>
+              <form action="#" class="status">
+                <select name="status" id="status">
+                  <option value="">All</option>
+                  <option value="Stocking">Stocking</option>
+                  <option value="Sold out">Sold out</option>
                 </select>
               </form>
             </div>
@@ -151,159 +170,30 @@
         <table>
           <thead>
             <tr>
-              <th class="product-name text-left">Name</th>
-              <th>Category</th>
+              <th class="text-left">Name</th>
+              <th>Price</th>
               <th>Stock</th>
               <th>Status</th>
-              <th>Price</th>
-              <th>Action</th>
+              <th>Brand</th>
+              <th>Category</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="text-left">Royal Oak</td>
-              <td>Men's watches</td>
-              <td>60</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Submariner</td>
-              <td>Men's watches</td>
-              <td>50</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Serpenti</td>
-              <td>Women's watches</td>
-              <td>40</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>80$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Ruchiea</td>
-              <td>Women's watches</td>
-              <td>0</td>
-              <td><span class="status-unpaid">Sold out</span></td>
-              <td>100$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Onlyou</td>
-              <td>Couple's watches</td>
-              <td>20</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>40$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">T-Race Chronograph</td>
-              <td>Unisex watches</td>
-              <td>100</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>50$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Hydro Conquest</td>
-              <td>Unisex watches</td>
-              <td>0</td>
-              <td><span class="status-unpaid">Sold out</span></td>
-              <td>60$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left">Le Locle</td>
-              <td>Unisex watches</td>
-              <td>80</td>
-              <td><span class="status-paid">Stocking</span></td>
-              <td>35$</td>
-              <td>
-                <i class='bx bxs-detail'>
-                  <span class="tooltip">detail</span>
-                </i>
-                <i class='bx bxs-edit-alt'>
-                  <span class="tooltip">edit</span>
-                </i>
-                <i class='bx bxs-trash'>
-                  <span class="tooltip">delete</span>
-                </i>
-              </td>
-            </tr>
+          <tbody id="product-table">
+            <?php
+            $s = "";
+            while ($row = mysqli_fetch_assoc($result)) {
+              $s .= "<tr>";
+              $s .= sprintf("<td class='text-left'>%s</td>", $row["TenSP"]);
+              $s .= sprintf("<td>%s</td>", number_format($row["Gia"], 2, '.', '') . '$');
+              $s .= sprintf("<td>%d</td>", $row["LuongTon"]);
+              $s .= sprintf("<td>%s</td>", $row["TrangThai"]);
+              $s .= sprintf("<td>%s</td>", $row["Hang"]);
+              $s .= sprintf("<td>%s</td>", $row["TenLoai"]);
+              $s .= sprintf("<td><i class='bx bxs-detail' onclick='ProductDetail(%d)'><span class='tooltip'>detail</span></i><i class='bx bxs-edit-alt' onclick='editProduct(%d)'><span class='tooltip'>edit</span></i><i class='bx bxs-trash' onclick='deleteProduct(%d)'><span class='tooltip'>delete</span></i></td>", $row["MaSP"], $row["MaSP"], $row["MaSP"]);
+              $s .= "</tr>";
+            }
+            echo ($s);
+            ?>
           </tbody>
         </table>
       </div>
@@ -321,29 +211,36 @@
   </section>
 
   <div class="modal product-form">
-    <form action="" class="modal-content animate">
+    <form action="add_product.php" class="modal-content animate" name="add_product" method="post" enctype="multipart/form-data">
       <div class="header">
         <h2>Product Information</h2>
       </div>
       <div class="container">
         <label for="pname">Name</label>
         <input type="text" name="pname" value="">
-        <label for="pcategory">Category</label>
-        <input type="text" name="pcategory" value="">
+        <label for="pprice">Price</label>
+        <input type="text" name="pprice" value="">
         <label for="pstock">Stock</label>
         <input type="text" name="pstock" value="">
         <label for="pstatus">Status</label>
         <input type="text" name="pstatus" value="">
-        <label for="pprice">Price</label>
-        <input type="text" name="pprice" value="">
-        <label for="pdecs">Description</label>
-        <textarea name="pdecs" cols="30" rows="3"></textarea>
-        <button type="button">Image</button>
+        <label for="pbrand">Brand</label>
+        <input type="text" name="pbrand" value="">
+        <label for="pcategory">Category</label>
+        <select name="pcategory">
+          <option value="1">Men's Watches</option>
+          <option value="2">Women's Watches</option>
+          <option value="3">Couple's Watches</option>
+          <option value="4">Unisex Watches</option>
+        </select>
+        <label for="pdesc">Description</label>
+        <textarea name="pdesc" cols="30" rows="3"></textarea>
+        <input type="file" name="pimage">
       </div>
       <hr>
       <div class="footer">
         <button type="button" class="cancel">Cancel</button>
-        <button type="submit" class="done">Done</button>
+        <button type="submit" class="done" name="addProduct">Done</button>
       </div>
     </form>
   </div>
@@ -352,27 +249,29 @@
     <div class="container animate">
       <div class="product-img" style="background-image:url(images/product_8.jpg);"></div>
       <h4>Description</h4>
-      <p>Far far away, behind the word mountains, far from the countries</p>
+      <p class="product-desc">Far far away, behind the word mountains, far from the countries</p>
       <div class="footer"><button type="button" class="close">Close</button></div>
     </div>
   </div>
 
-  <div class="modal product-delete">
-    <div class="container animate">
-      <h2>Are you sure you want to<br>
-        delete this product?</h2>
-      <div class="action">
-        <button type="button" class="confirm">Confirm</button>
-        <button type="button" class="cancel-deletion">Cancel</button>
+  <form action="delete_product.php" name="delete_product" method="post" enctype="multipart/form-data">
+    <div class="modal product-delete">
+      <div class="container animate">
+        <h2>Are you sure you want to<br>
+          delete this product?</h2>
+        <div class="action">
+          <button type="submit" class="confirm" name="deleteProduct">Confirm</button>
+          <button type="button" class="cancel-deletion">Cancel</button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <script>
     // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
+    sidebarBtn.onclick = function() {
       sidebar.classList.toggle("active");
       if (sidebar.classList.contains("active")) {
         sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
@@ -393,8 +292,7 @@
       sortByTime = sortByTimeBtn.firstChild;
       if (sortByTime.classList.contains('fa-arrow-up')) {
         sortByTime.classList.replace('fa-arrow-up', 'fa-arrow-down');
-      }
-      else {
+      } else {
         sortByTime.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
@@ -405,13 +303,16 @@
       sortByPrice = sortByPriceBtn.firstChild;
       if (sortByPrice.classList.contains('fa-arrow-up')) {
         sortByPrice.classList.replace('fa-arrow-up', 'fa-arrow-down');
-      }
-      else {
+      } else {
         sortByPrice.classList.replace('fa-arrow-down', 'fa-arrow-up');
       }
     })
   </script>
-  <script src="js/admin_product.js"></script>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="noreferrer"></script>
+<script src="js/admin_productt.js"></script>
 
 </html>
+
+<!-- HELLO -->

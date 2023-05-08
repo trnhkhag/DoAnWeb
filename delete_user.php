@@ -6,7 +6,7 @@ if(isset($_REQUEST['deleteUser'])) {
 	$servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "mydb21s6";
+    $dbname = "webprojectdb";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection

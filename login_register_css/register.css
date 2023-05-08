@@ -42,6 +42,7 @@ html body{
     }
     
     .input-group-prepend span{
+    margin-right: 15px;
     background-color: #FFC312;
     color: black;
     border:0 !important;
@@ -83,7 +84,12 @@ html body{
     .links a{
     margin-left: 4px;
     }
-
+    .links a:hover{
+        color: #FFC312;
+        text-decoration: none;
+        font-weight: bold;
+        transition: .5s ease-in-out;
+    }
     .register_btn {
         background-color: #FFC312;
         width: 100px;
@@ -104,3 +110,39 @@ html body{
     a:hover {
         color: blueviolet;
     }
+    .frm-group{
+        margin: 25px 10px;
+        display: flex;
+    }
+    .frm-control {
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .error {
+        background: #F2DEDE;
+        color: #A94442;
+        padding: 10px;
+        width: 95%;
+        border-radius: 5px;
+        margin: 20px auto;
+     }
+     
+     .success {
+        background: #D4EDDA;
+        color: #40754C;
+        padding: 10px;
+        width: 95%;
+        border-radius: 5px;
+        margin: 20px auto;
+     }
+     
