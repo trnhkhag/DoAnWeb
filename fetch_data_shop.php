@@ -4,6 +4,25 @@
 
 include('connect_db.php');
 
+$limit = 8;
+$sql = "SELECT count(MaSP) AS total FROM sanpham";
+$result = $connect->query($sql);
+$row = $result->fetch();
+$totalProducts = $row['total'];
+
+// Get current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// calculate total pages and start
+$totalPages = ceil($totalProducts / $limit);
+if ($currentPage > $totalPages) {
+    $currentPage = $totalPages;
+}
+else if ($currentPage < 1) {
+    $currentPage = 1;
+}
+$start = ($currentPage - 1) * $limit;
+
 if (isset($_POST["action"])) {
 	$query = "
     SELECT MaSP, Hang, Gia, sanpham.MaLoai, TenLoai, TenSP, Hinh, CodeSP
@@ -29,7 +48,7 @@ if (isset($_POST["action"])) {
 		if (!empty($brand_filter)) {
 			$brand_placeholders = implode(',', array_fill(0, count($brand_filter), '?'));
 			$query .= "
-				AND Hang LIKE ($brand_placeholders)
+				AND Hang IN ($brand_placeholders)
 			";
 			$parameters = array_merge($parameters, $brand_filter);
 		}
@@ -52,9 +71,11 @@ if (isset($_POST["action"])) {
 			$query .= "
             AND TenSP LIKE ?
         ";
-			$parameters[] = $search_filter . '%';
+			$parameters[] = '%'. $search_filter . '%';
 		}
 	}
+
+	$query .= " LIMIT $start, $limit";
 
 	$statement = $connect->prepare($query);
 	$statement->execute($parameters);
@@ -70,7 +91,7 @@ if (isset($_POST["action"])) {
 			<div id="message"></div>
 			<div class="col-md-6 col-lg-3 ftco-animate">
 			<div class="product">
-				<a href="product-single.html" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
+				<a href="product-single.php?MaSP=' .$row['MaSP'] . '" class="img-prod"><img class="img-fluid" src="' . $row['Hinh'] . '"
 						alt="Colorlib Template">
 					<div class="overlay"></div>
 				</a>
@@ -108,7 +129,7 @@ if (isset($_POST["action"])) {
 			';
 		}
 	} else {
-		$output = '<h3>No Data Found</h3>';
+		$output = '<h3 class="no-product">No Products Found</h3>';
 	}
 	echo $output;
 }

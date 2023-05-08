@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <?php include('connect_db.php') ?>
@@ -94,8 +93,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span>
-                    </p>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
                     <h1 class="mb-0 bread">Products</h1>
                 </div>
             </div>
@@ -108,8 +106,8 @@
                 <div class="item-shop1">
                     <h3>Giá</h3>
                     <input type="hidden" id="hidden_minimum_price" value="0" />
-                    <input type="hidden" id="hidden_maximum_price" value="65000" />
-                    <p id="price_show">1000 - 65000</p>
+                    <input type="hidden" id="hidden_maximum_price" value="5000" />
+                    <p id="price_show">0$ - 5000$</p>
                     <div id="price_range"></div>
                 </div>
                 <div class="item-shop1">
@@ -160,35 +158,45 @@
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <li><a href="#">&lt;</a></li>
+                        <?php
+                        if ($currentPage > 1) {
+                            echo '<li><a href="shop.php?page=' . $currentPage - 1 . '">&lt;</a></li>';
+                        } else {
+                            echo '<li><a href="#">&lt;</a></li>';
+                        }
+                        ?>
+
+                        <?php
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            if ($i == $currentPage) {
+                                echo "<li class='active'><span>" . $i . "</span></li>";
+                            } else {
+                                echo "<li><a href='shop.php?page=" . $i . "'>" . $i . "</a></li>";
+                            }
+                        }
+                        ?>
+
+                        <?php
+                        if ($currentPage < $totalPages) {
+                            echo '<li><a href="shop.php?page=' . $currentPage + 1 . '">&gt;</a></li>';
+                        } else {
+                            echo '<li><a href="#">&gt;</a></li>';
+                        }
+                        ?>
+                        <!-- <li><a href="#">&lt;</a></li>
                         <li class="active"><span>1</span></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
+                        <li><a href="#">&gt;</a></li> -->
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="Our_social_media">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-        <div class="more_info">
-            <a href="#">Contact us</a>
-            <a href="#">Our Services</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Career</a>
-        </div>
-        <p>INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh</p>
-    </footer>
+    <?php require_once 'footer.php'; ?>
 
 
     <!-- loader -->
@@ -227,7 +235,7 @@
                 var maloai = get_filter('maloai');
                 var search_product_name = $('#search_product_name').val();
                 $.ajax({
-                    url: "fetch_data_shop.php",
+                    url: "fetch_data_shop.php?page=" + <?php echo $currentPage ?>,
                     method: "POST",
                     data: {
                         action: action,
@@ -257,12 +265,12 @@
 
             $('#price_range').slider({
                 range: true,
-                min: 1000,
-                max: 65000,
-                values: [1000, 65000],
-                step: 500,
+                min: 0,
+                max: 5000,
+                values: [0, 5000],
+                step: 1,
                 stop: function(event, ui) {
-                    $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+                    $('#price_show').html(ui.values[0] + '$ - ' + ui.values[1] + '$');
                     $('#hidden_minimum_price').val(ui.values[0]);
                     $('#hidden_maximum_price').val(ui.values[1]);
                     filter_data();
