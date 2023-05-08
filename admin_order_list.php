@@ -42,25 +42,23 @@ else{
   if(isset($_REQUEST['statusSort'])){
     $statusSort= $_REQUEST['statusSort'];
   }
+  if(!isset($_REQUEST['statusSort'])){
+    $statusSort= $_REQUEST['statusSort'];
+  }
   if(isset($_REQUEST['datefrom'])){
     $Datefrom= $_REQUEST['datefrom'];
   }
   if(isset($_REQUEST['dateto'])){
     $Dateto= $_REQUEST['dateto'];
   }
-  if(!isset($_REQUEST['dateto'])){
-    $Dateto=date('Y-m-d');
-  }
-  $timestamp1 = strtotime($Datefrom);
-  $timestamp2 = strtotime($Dateto);
-
-if ($timestamp1 > $timestamp2) {
-  $z=$Datefrom;
-  $Datefrom=$Dateto;
-  $Dateto=$z;
-} 
-$sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%' or NgayLap >= '%$Datefrom%' and NgayLap <= '%$Dateto%'";
+$sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung";
+if(isset($_REQUEST['dateto'])&&isset($_REQUEST['datefrom'])){
+  $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%' and (NgayLap BETWEEN '$Datefrom' and '$Dateto')";
+}
+if(!isset($_REQUEST['dateto'])&&!isset($_REQUEST['datefrom'])&&isset($_REQUEST['statusSort']))
+  $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%'";
 $result = mysqli_query($conn, $sql);}
+//trường hợp nếu không isset ngày tháng
 ?>
 
 <head>
@@ -156,9 +154,9 @@ $result = mysqli_query($conn, $sql);}
           <div class="option">
             <p class="title">Time & Date</p>
                 <label for="datefrom">From:</label>
-                <input type="date" name="datefrom">
+                <input type="date" name="datefrom" value="<?php if(isset($_REQUEST['datefrom'])) echo $_REQUEST['datefrom'];  ?>">
                 <label for="dateto">To    :</label>
-                <input type="date" name="dateto">
+                <input type="date" name="dateto" value="<?php if(isset($_REQUEST['datefrom'])) echo $_REQUEST['dateto'];  ?>">
 </br>
             <button onclick="submitForm()">ok</button>
             </div>
@@ -358,6 +356,7 @@ function Orderdetail(x){
     filterBtn.addEventListener('click', () => {
       header.classList.toggle('active');
     })
+
     
 
     
