@@ -29,7 +29,7 @@ if (isset($_POST["action"])) {
 		if (!empty($brand_filter)) {
 			$brand_placeholders = implode(',', array_fill(0, count($brand_filter), '?'));
 			$query .= "
-				AND Hang LIKE ($brand_placeholders)
+				AND Hang IN ($brand_placeholders)
 			";
 			$parameters = array_merge($parameters, $brand_filter);
 		}
