@@ -96,10 +96,6 @@ include('connect_db.php')
             });
         }
 
-
-
-
-
         function get_filter(class_name) {
             var filter = [];
             $('.' + class_name + ':checked').each(function() {

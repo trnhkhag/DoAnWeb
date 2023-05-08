@@ -1775,6 +1775,7 @@ pre {
     border: 0; }
 
 .form-control {
+  margin:5px;
   display: block;
   width: 100%;
   height: calc(2.25rem + 2px);
@@ -7986,7 +7987,7 @@ button.bg-dark:focus {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center !important; }
   .text-center {
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center !important; }
     .text-center3 {
@@ -10685,6 +10686,7 @@ color: #ffad33;
   margin-top: 10px;
   padding: 0;
   display: flex;
+  width: 100%;
 }
 .img-fluid3{
   width: 20%;
@@ -10692,4 +10694,16 @@ color: #ffad33;
 .name-top-search{
   font-size: 20px;
   margin-left: 20px;
+}
+
+#product_output{
+  padding: 5px;
+  margin-left: 0px;
+  top: 106%;
+  position: absolute;
+  background-color: #e2dddd;
+  width: 18.3%;
+}
+.no-product{
+  font-size: 15px;
 }
