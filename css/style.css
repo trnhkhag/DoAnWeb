@@ -9367,7 +9367,7 @@ h1, h2, h3, h4, h5,
         background: transparent;
         display: none; } }
 
-.form-control {
+.form-control2 {
   right: 20%;
   height: 40px !important;
   background: #fff !important;
@@ -9379,6 +9379,24 @@ h1, h2, h3, h4, h5,
   position: fixed;
   top:0;
 }
+.form-control2 {
+  margin:5px;
+  display: block;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
   .form-control:focus, .form-control:active {
     border-color: #000000; }
 
@@ -10709,6 +10727,7 @@ color: #ffad33;
   position: absolute;
   background-color: #e2dddd;
   width: 18.3%;
+  right: 21.3%;
 }
 .no-product{
   font-size: 15px;

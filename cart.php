@@ -79,8 +79,8 @@
                   $username = "root";
                   $password = "";
                   $dbname = "webprojectdb";
-                  $a=$_SESSION['TenDangNhap'];
                   $conn = mysqli_connect($servername, $username, $password, $dbname);
+                  $a=$_SESSION['TenDangNhap'];
                   $qerry="SELECT * FROM giohang WHERE TenDangNhap='$a'";
                   $result1=mysqli_query($conn,$qerry);
                   $stmt = $conn->prepare("SELECT * FROM giohang WHERE TenDangNhap='$a'");

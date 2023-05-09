@@ -41,7 +41,7 @@ include('connect_db.php')
             </div>
 
             <form action="" method="POST" class="form-cl">
-                <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
+                <input type="text" class="form-control2" placeholder="Search" id="search_product_name" name="search_product_name">
                 <div class="row filter_data" id="product_output">
 
                 </div>

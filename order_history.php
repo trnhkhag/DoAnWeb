@@ -10,7 +10,7 @@ $password = "";
 $db_name = "webprojectdb";
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 $a = $_SESSION['TenDangNhap'];
-$qerry = "SELECT SanPham,ThanhTien,PMode,TrangThai,NgayLap from donhang where TenDangNhap='$a' ";
+$qerry = "SELECT * from donhang where TenDangNhap='$a' ";
 $result = mysqli_query($conn, $qerry);
 
 ?>
