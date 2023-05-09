@@ -84,7 +84,12 @@ html body{
     .links a{
     margin-left: 4px;
     }
-
+    .links a:hover{
+        color: #FFC312;
+        text-decoration: none;
+        font-weight: bold;
+        transition: .5s ease-in-out;
+    }
     .register_btn {
         background-color: #FFC312;
         width: 100px;
@@ -123,16 +128,21 @@ html body{
         border-radius: .25rem;
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
-    .frm-group input:focus{
-        outline: 0; 
-    }
-    .frm-group.success input{
-        border-color: green;
-    }
-    .frm-group.error input{
-        border-color: red;
-    }
-    .error{
-        color: #ff3860;
-       
-    }
+    .error {
+        background: #F2DEDE;
+        color: #A94442;
+        padding: 10px;
+        width: 95%;
+        border-radius: 5px;
+        margin: 20px auto;
+     }
+     
+     .success {
+        background: #D4EDDA;
+        color: #40754C;
+        padding: 10px;
+        width: 95%;
+        border-radius: 5px;
+        margin: 20px auto;
+     }
+     

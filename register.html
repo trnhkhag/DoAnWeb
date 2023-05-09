@@ -33,13 +33,18 @@
                 </div>
                 <div class="card-body">
                     <form id="form">
+                        <div class="frm-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="frm-control" placeholder="Full Name" id="full_name">
+                        </div>
 
                         <div class="frm-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text" class="frm-control" placeholder="Username" id="username">
-                            <div class="error"></div>
                         </div>
 
                         <div class="frm-group">
@@ -47,7 +52,6 @@
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
                             <input type="text" class="frm-control" placeholder="Email" id="email">
-                            <div class="error"></div>
                         </div>
 
                         <div class="frm-group">
@@ -55,7 +59,6 @@
                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
                             </div>
                             <input type="text" class="frm-control" placeholder="Phone Number" id="phone-number">
-                            <div class="error"></div>
                         </div>
 
                         <div class="frm-group">
@@ -63,7 +66,6 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" class="frm-control" placeholder="Password" id="pass" itemid="password">
-                            <div class="error"></div>
                         </div>
 
                         <div class="frm-group">
@@ -71,13 +73,11 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" class="frm-control" placeholder="Confirm Password" id="password2">
-                            <div class="error"></div>
                         </div>
 
                         <div class="form-group action">
                             <input type="button" value="Reset" class="btn login_btn">
                             <input type="submit" value="Register" class="btn float-right register_btn">
-                            <div class="error"></div>
                         </div>
                     
                     </form>
