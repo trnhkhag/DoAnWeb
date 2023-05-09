@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php session_start(); ?>
+
 <head>
   <title>BKMT WATCH | Cart</title>
   <meta charset="utf-8">
@@ -32,7 +32,7 @@
 </head>
 
 <body class="goto-here">
-  <?php include 'header.php' ?>
+<?php include 'header.php' ?>
   <!-- END nav -->
 
   <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
@@ -78,17 +78,17 @@
                   $servername = "localhost";
                   $username = "root";
                   $password = "";
-                  $dbname = "webprojectdb";
+                  $dbname = "webprojectdb2";
                   $conn = mysqli_connect($servername, $username, $password, $dbname);
-                  $a = $_SESSION['TenDangNhap'];
-
+                  $a=$_SESSION['TenDangNhap'];
+                  
                   $stmt = $conn->prepare("SELECT * FROM giohang where TenDangNhap='$a'");
                   $stmt->execute();
                   $result = $stmt->get_result();
                   $grand_total = 0;
                   while ($row = $result->fetch_assoc()) :
                   ?>
-                    <td><img style="width:50%;" src="<?= $row['Hinh'] ?>" alt=""></td>
+                    <td><img style="width:50%;" src=" <?= $row['Hinh'] ?>" alt=""></td>
                     <input type="hidden" class="pid" value="<?= $row['MaSP'] ?>">
                     <td><?= $row['TenSP'] ?></td>
                     <td><?= number_format($row['Gia'], 2) ?>$</td>
@@ -97,14 +97,15 @@
                     <td><?= number_format($row['TongGia'], 2) ?>$</td>
                     <td><a href="action.php?remove=<?= $row['MaSP'] ?>" onclick="return confirm('Are you sure want to remove this product?');" class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
                     <?php $grand_total += $row['TongGia'] ?>
-                  <?php endwhile; ?>
+                    <?php endwhile; ?>
                 </tr>
               </tbody>
-
             </table>
           </div>
           <p class="text-center mt-5" style="display: flex; justify-content: space-between">
             <a href="shop.php" class="btn btn-primary">Continue shopping</a>
+            <a href="order_history.php" class="btn btn-primary" style="width: 200px;margin-right:30px">Order History</a>
+
             <a href="action.php?clear=all" class="btn btn-primary" onclick="return confirm('Are you sure want to clear your cart?')">Clear Cart</a>
 
           </p>
@@ -121,8 +122,21 @@
           <span><?= number_format($grand_total, 2) ?>$</span>
         </p>
       </div>
-      <p class="text-center"><a href="checkout.php" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
-      </p>
+
+      <!-- process cart to checkout -->
+      <?php
+      $sql = "SELECT * FROM giohang WHERE TenDangNhap='$a'";
+      $result = mysqli_query($conn, $sql);
+      if (mysqli_num_rows($result) > 0) { ?>
+        <p class="text-center"><a href="checkout.php" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+
+        <?php
+      } else { ?>
+        <p class="text-center"><a href="#" class="btn btn-primary py-3 px-4" style="background-color: grey;">Proceed to Checkout</a></p>
+
+        <?php
+      }
+        ?>
     </div>
     </div>
   </section>

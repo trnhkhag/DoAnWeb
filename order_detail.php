@@ -8,7 +8,7 @@ if(isset($_REQUEST['id'])){
   $username = "root";
   $password = "";
   //đổi giùm cái tên database
-  $dbname = "webprojectdb1";
+  $dbname = "webprojectdb2";
   
   // Create connection
   $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -139,7 +139,7 @@ if(isset($_REQUEST['id'])){
             <tbody>
               <tr>
                 <th>Name</th>
-                <td><?php echo $row['Hoten'];?></td>
+                <td><?php echo $row['HoTen'];?></td>
               </tr>
               <tr>
                 <th>Phone Number</th>
@@ -151,7 +151,7 @@ if(isset($_REQUEST['id'])){
               </tr>
               <tr>
                 <th>Email</th>
-                <td><?php echo $row['email'];?></td>
+                <td><?php echo $row['Email'];?></td>
               </tr>
             </tbody>
           </table>

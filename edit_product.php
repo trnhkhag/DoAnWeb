@@ -17,7 +17,7 @@ if (isset($_POST["addProduct"])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb";
+    $dbname = "webprojectdb2";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

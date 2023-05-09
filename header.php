@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('connect_db.php')
 ?>
 <!DOCTYPE html>
@@ -34,14 +34,14 @@ include('connect_db.php')
                             <a class="dropdown-item" href="shop.php">Unisex Watches</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
                 </ul>
 
             </div>
 
             <form action="" method="POST" class="form-cl">
-                <input type="text" class="form-control" placeholder="Search" id="search_product_name" name="search_product_name">
+                <input type="text" class="form-control2" placeholder="Search" id="search_product_name" name="search_product_name">
                 <div class="row filter_data" id="product_output">
 
                 </div>
@@ -51,8 +51,8 @@ include('connect_db.php')
 
 
             <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span id="cart-Item" style="font-size:15px; position:absolute; bottom:28px;left:36%"></span></i></a></li>
+                <ul class="navbar-nav2 ">
+                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span id="cart-Item" style="font-size:15px; position:absolute;top:4px;"></span></i></a></li>
                     <?php
                     if (isset($_SESSION['TenDangNhap'])) {
                     ?>

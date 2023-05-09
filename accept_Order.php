@@ -3,7 +3,7 @@ if(isset($_REQUEST['acceptOrder'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb1";
+    $dbname = "webprojectdb2";
 
     $id=$_REQUEST['idaccept'];
 

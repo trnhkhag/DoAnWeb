@@ -8,7 +8,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 //đổi giùm cái tên database
-$dbname = "webprojectdb";
+$dbname = "webprojectdb2";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -214,8 +214,8 @@ $result = mysqli_query($conn, $sql);
 							$s .= '<tr>';
                 $s .= sprintf('<td id="getID">"%s"</td>', $row['MaNguoiDung']);
                 $s .= '<td class="text-left">';
-                $s .= sprintf('<p id="test">"%s"</p>', $row['Hoten']);
-                $s .= sprintf('<p class="email">"%s"</p>', $row['email']);
+                $s .= sprintf('<p id="test">"%s"</p>', $row['HoTen']);
+                $s .= sprintf('<p class="email">"%s"</p>', $row['Email']);
                 $s .= '</td>';
                 $s .= sprintf('<td class="text-left">"%s"</td>', $row['SoDienThoai']);
                 $s .= sprintf('<td class="text-left">"%s"</td>', $row['role']);

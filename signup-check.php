@@ -4,7 +4,7 @@ $sname= "localhost";
 $unmae= "root";
 $password = "";
 
-$db_name = "webprojectdb";
+$db_name = "webprojectdb2";
 
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 

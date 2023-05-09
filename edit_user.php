@@ -9,7 +9,7 @@ if(isset($_REQUEST['edituser'])) {
 	$servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb";
+    $dbname = "webprojectdb2";
 
 
 	// Create connection

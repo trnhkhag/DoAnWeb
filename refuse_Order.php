@@ -3,7 +3,7 @@ if(isset($_REQUEST['refuseOrder'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb1";
+    $dbname = "webprojectdb";
 
     $id=$_REQUEST['idrefuse'];
 

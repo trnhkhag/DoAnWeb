@@ -29,7 +29,7 @@
 
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css?v=<?php echo time() ?>">
   <link rel="stylesheet" href="css/mystyle.css">
 </head>
 
@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
         <div class="col-md-9 ftco-animate text-center">
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html" style="font-size: 30px; color:white">WE'RE BKMT
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.php" style="font-size: 30px; color:white">WE'RE BKMT
                 WATCH</a></span></p>
         </div>
       </div>

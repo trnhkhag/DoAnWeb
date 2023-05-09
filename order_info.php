@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "webprojectdb");
+$conn = new mysqli("localhost", "root", "", "webprojectdb2");
 $MaDH = $_GET["p"];
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

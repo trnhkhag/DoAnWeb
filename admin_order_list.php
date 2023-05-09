@@ -7,7 +7,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 //đổi giùm cái tên database
-$dbname = "webprojectdb1";
+$dbname = "webprojectdb2";
 
 
 // Create connection

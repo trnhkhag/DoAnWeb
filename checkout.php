@@ -1,24 +1,4 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "webprojectdb";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$grand_total = 0;
-$allItems = '';
-$items = array();
-
-$sql = "SELECT CONCAT(TenSP, '(',SoLuong,')') AS qty, TongGia FROM giohang";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-    $grand_total += $row['TongGia'];
-    $items[] = $row['qty'];
-}
-$allItems = implode(", ", $items);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,46 +34,42 @@ $allItems = implode(", ", $items);
 </head>
 
 <body class="goto-here">
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">BKMT WATCH</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="shop.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="shop.php">Men's Watches</a>
-                            <a class="dropdown-item" href="shop.php">Women's Watches</a>
-                            <a class="dropdown-item" href="shop.php">Couple's Watches</a>
-                            <a class="dropdown-item" href="shop.php">Unisex Watches</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-
-            </div>
-
-            <div id="right">
-                <form class="example" action="shop.php">
-                    <input type="text" placeholder="Search.." name="search2">
-                    <button type="submit" style="background-color: #ffad33;"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-
-            <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li class="nav-item"><a href="login.php" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+ <?php include 'header.php'; ?>
+    <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webprojectdb2";
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+$a=$_SESSION['TenDangNhap'];
+$grand_total = 0;
+$allItems = '';
+$items = array();
+$images = array();
+$pname = array();
+$soluong = array();
+$sql = "SELECT CONCAT(TenSP, '(',SoLuong,')') AS qty,Hinh, TongGia,TenSP,SoLuong FROM giohang WHERE TenDangNhap='$a' ";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+	$grand_total += $row['TongGia'];
+	$qty = $row['qty'];
+	$soluong[] = $row['SoLuong'];
+	if (!empty($row['Hinh'])) {
+		$img = '<img src="' . $row['Hinh'] . '" style="width:100px;height:100px;margin-top:5px" name="images">
+                    ';
+		$qty = $img . ' ' . $qty;
+		$images[] = $row['Hinh'];
+	}
+	$items[] = $qty;
+	$pname[] = $row['TenSP'];
+}
+$allItems = implode(", ", $items);
+$img1 = implode(",", $images);
+$pname = implode(",", $pname);
+$soluong = implode(",", $soluong);
+?>
     <!-- END nav -->
 
     <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
@@ -120,6 +96,8 @@ $allItems = implode(", ", $items);
                                 <p class="d-flex">
                                     <span>Product:</span>
                                     <span><?= $allItems; ?></span>
+                                    <input type="hidden" name="products" value="<?= $pname; ?>">
+
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
@@ -128,51 +106,123 @@ $allItems = implode(", ", $items);
                                 </p>
                             </div>
                         </div>
-                        <input type="hidden" name="products" value="<?= $allItems; ?>">
                         <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
-                        <div class="row align-items-end">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="firstname">Full Name<span class="important"> *</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="John M. Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Address<span class="important"> *</span></label>
-                                    <input type="text" class="form-control" name="address" placeholder="542 W, 15th Street">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Phone<span class="important"> *</span></label>
-                                    <input type="text" class="form-control" name="phone" placeholder="0123456789">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="lastname">Email</label>
-                                    <input type="text" class="form-control" name="email" placeholder="john@example.com">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="cart-detail p-3 p-md-4">
-                                <h3 class="billing-heading mb-3">Payment Options</h3>
-                                <select name="pmode">
-                                    <option value="" selected disabled>Select Payment Options</option>
-                                    <option value="cards">Credit Card</option>
-                                    <option value="cod">COD</option>
-                                    <option value="netbanking">Net Banking</option>
-                                </select>
-                            </div>
-                        </div>
+                        <?php
+                           if (isset($_SESSION['TenDangNhap'])) {
+                            $a = $_SESSION['TenDangNhap'];
+                            $qerry = "SELECT HoTen,DiaChi,SoDienThoai,Email FROM nguoidung WHERE TenDangNhap='$a'";
+                            $result1 = mysqli_query($conn, $qerry);
+                            if (!$result1) {
+                                die('Query failed: ' . mysqli_error($conn));
+                            }
+                            if (mysqli_num_rows($result1) > 0) {
+                                if ($row = mysqli_fetch_assoc($result1)) 
+                                            {
+                                                if($row['DiaChi']!=NULL){
+
+                        ?>
+                                    <h3 class="mb-4 billing-heading"> Your Information</h3>
+                                    <div class="col-md-12 d-flex mb-5">
+                                        <div class="cart-detail cart-total p-3 p-md-4">
+                                            <p class="d-flex">
+                                                <span>FullName:</span>
+                                                <span style="color: black; font-size:20px"><?php echo $row['HoTen'] ?></span>
+                                                <input type="hidden" name="name" value="<?= $row['HoTen']; ?>">
+
+                                            </p>
+                                            <hr>
+                                            <p class="d-flex">
+                                                <span>Address</span>
+                                                <span style="color: black; font-size:20px"><?php echo $row['DiaChi'] ?></span>
+                                                <input type="hidden" name="address" value="<?= $row['DiaChi']; ?>">
+
+                                            </p>
+                                            <hr>
+                                            <p class="d-flex">
+                                                <span>Phone</span>
+                                                <span style="color: black; font-size:20px"><?php echo $row['SoDienThoai'] ?></span>
+                                                <input type="hidden" name="phone" value="<?= $row['SoDienThoai']; ?>">
+
+                                            </p>
+                                            <input type="hidden" name="email" value="<?= $row['Email']; ?>">
+
+                                            <hr>
+                                            <p class="d-flex">
+                                                <span>Payment Options</span>
+                                                <span>
+                                                    <select name="pmode">
+                                                        <option value="" selected disabled>Select Payment Options</option>
+                                                        <option value="cards">Credit Card</option>
+                                                        <option value="cod">COD</option>
+                                                        <option value="netbanking">Net Banking</option>
+                                                    </select>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <input style="margin-top:20px;" type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+                            <?php
+                                                }else{
+                                    
+                              
+                                ?>
+                      
+								<div class="col -md-12">
+									<div class="form-group">
+										<label for="firstname">Full Name<span class="important"> *</span></label>
+										<input type="text" name="name" class="form-control" placeholder="John M. Doe">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="lastname">Address<span class="important"> *</span></label>
+										<input type="text" class="form-control" name="address" placeholder="542 W, 15th Street">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="lastname">Phone<span class="important"> *</span></label>
+										<input type="text" class="form-control" name="phone" placeholder="0123456789">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="lastname">Email</label>
+										<input type="text" class="form-control" name="email" placeholder="john@example.com">
+									</div>
+								</div>
+                                <div class="col-md-12">
+							<div class="cart-detail p-3 p-md-4">
+								<h3 class="billing-heading mb-3">Payment Options</h3>
+								<select name="pmode">
+									<option value="" selected disabled>Select Payment Options</option>
+									<option value="cards">Credit Card</option>
+									<option value="cod">COD</option>
+									<option value="netbanking">Net Banking</option>
+								</select>
+							</div>
+						</div>
                         <input style="margin-top:20px;" type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+						</div>
+						
+
+                        
                     </form><!-- END -->
+                <?php
+                                }
+                            }
+                        }
+                           }
+                        
+                    
+
+                ?>
                 </div>
             </div>
         </div>
         <a href="shop.php">Continue Shopping</a>
+        <a href="order_history.php" style="margin-left: 70%;">Order History</a>
+
     </section> <!-- .section -->
 
     <footer>
