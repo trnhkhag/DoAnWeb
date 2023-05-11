@@ -3883,6 +3883,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-menu {
+  width: 170px;
   position: absolute;
   top: 100%;
   left: 0;
@@ -5625,7 +5626,7 @@ input[type="button"].btn-block {
 }
 
 .card-footer {
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 0.25rem;
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -6386,7 +6387,7 @@ a.badge-dark:focus {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 0.25rem;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -15221,4 +15222,15 @@ textarea.form-control {
 .order-items{
   display: flex;
   justify-content: space-evenly;
+}
+
+.hidden-chekbox{
+  display: none;
+}
+.name-filter{
+  cursor: pointer;
+}
+.name-filter:hover{
+  color: orange;
+  font-weight: bold;
 }

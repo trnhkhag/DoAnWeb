@@ -1,8 +1,11 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
-<?php session_start(); include('connect_db.php') ?>
+<?php session_start();
+$connect = new PDO("mysql:host=localhost;dbname=webprojectdb2", "root", "");
+
+?>
+
 <head>
     <title>BKMT WATCH | Shop</title>
     <meta charset="utf-8">
@@ -51,10 +54,21 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="shop.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="shop.php">Men's Watches</a>
-                            <a class="dropdown-item" href="shop.php">Women's Watches</a>
-                            <a class="dropdown-item" href="shop.php">Mechanical Watches</a>
-                            <a class="dropdown-item" href="shop.php">Battery Watches</a>
+                            <?php
+
+                            $query = " SELECT DISTINCT(TenLoai) FROM sanpham,loai WHERE TrangThai = '1'and sanpham.MaLoai=loai.MaLoai";
+                            $statement = $connect->prepare($query);
+                            $statement->execute();
+                            $result = $statement->fetchAll();
+                            foreach ($result as $row) {
+                            ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector maloai hidden-chekbox" value="<?php echo $row['TenLoai']; ?>"><span class="name-filter"><?php echo $row['TenLoai']; ?></span></label>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </li>
                     <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
