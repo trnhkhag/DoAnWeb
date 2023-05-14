@@ -8,11 +8,12 @@ if(isset($_REQUEST['adduser'])) {
     $addressUser = $_REQUEST['uaddress'];
     $roleUser = $_REQUEST['urole'];
     $passUser = $_REQUEST['upass'];
+	$passUser = md5($passUser);
 
 	$servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb";
+    $dbname = "webprojectdb2";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection
@@ -22,7 +23,7 @@ if(isset($_REQUEST['adduser'])) {
 	}
 	//chưa có các đk kiểm tra đầu vào
   //xử lý các vấn đề tương tự với edit_user
-	$sql = sprintf("INSERT INTO `nguoidung` (`Hoten`,`TenDangNhap`, `MatKhau`, `email`, `SoDienThoai`, `DiaChi`,`role`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s','%s')", $tenUser, $accountUser, $passUser, $emailUser, $phoneUser, $addressUser, $roleUser);
+	$sql = sprintf("INSERT INTO `nguoidung` (`HoTen`,`TenDangNhap`, `MatKhau`, `Email`, `SoDienThoai`, `DiaChi`,`role`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s','%s')", $tenUser, $accountUser, $passUser, $emailUser, $phoneUser, $addressUser, $roleUser);
 	if ($conn->query($sql) === TRUE) {
 	  echo "The record editted successfully";
 	  header("Location: admin_user.php");

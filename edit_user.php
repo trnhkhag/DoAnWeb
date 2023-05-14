@@ -5,11 +5,12 @@ if(isset($_REQUEST['edituser'])) {
     $emailUser = $_REQUEST['uemail'];
     $phoneUser = $_REQUEST['uphone'];
 	$roleUser = $_REQUEST['urole'];
+	$actionUser=$_REQUEST['uban'];
 
 	$servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webprojectdb";
+    $dbname = "webprojectdb2";
 
 
 	// Create connection
@@ -20,7 +21,7 @@ if(isset($_REQUEST['edituser'])) {
 	}
 	//chưa có các đk kiểm tra đầu vào
     //chưa xử lý phần role
-	$sql = sprintf("UPDATE `nguoidung` SET `Hoten` = '%s', `email` = '%s', `SoDienThoai` = '%s', `updated_at` = CURRENT_TIMESTAMP(), `role` = '%s'  WHERE `nguoidung`.`MaNguoiDung` = %d", $tenUser, $emailUser, $phoneUser, $roleUser, $idUser);
+	$sql = sprintf("UPDATE `nguoidung` SET `HoTen` = '%s', `Email` = '%s', `SoDienThoai` = '%s', `updated_at` = CURRENT_TIMESTAMP(), `role` = '%s' , `TrangThaiNguoiDung`= '%s'  WHERE `nguoidung`.`MaNguoiDung` = %d", $tenUser, $emailUser, $phoneUser, $roleUser, $actionUser, $idUser);
 	if ($conn->query($sql) === TRUE) {
 	  header("Location: admin_user.php");
 	  exit();
