@@ -31,7 +31,7 @@ if (!$conn) {
 if(isset($_POST['searchBtn'])){
   if(isset($_POST['searchKey'])){
     $searchKey=$_POST['searchKey'];
-    $sql = "SELECT * FROM nguoidung WHERE Hoten LIKE '%$searchKey%' or email LIKE  '%$searchKey%' ORDER BY role LIMIT $page_first_result, $limit";
+    $sql = "SELECT * FROM nguoidung WHERE HoTen LIKE '%$searchKey%' or Email LIKE  '%$searchKey%' ORDER BY role LIMIT $page_first_result, $limit";
     $result = mysqli_query($conn, $sql);
   }
 }
@@ -53,10 +53,10 @@ if(isset($_REQUEST['Sortby'])){
   $Sortby= $_REQUEST['Sortby'];
 }
 if($Sortby==2){
-  $sql = "SELECT * FROM nguoidung WHERE role LIKE '%$roleSort%' and created_at LIKE '%$joinDate%' and updated_at LIKE '%$editDate%' ORDER BY Hoten DESC LIMIT $page_first_result, $limit";
+  $sql = "SELECT * FROM nguoidung WHERE role LIKE '%$roleSort%' and created_at LIKE '%$joinDate%' and updated_at LIKE '%$editDate%' ORDER BY HoTen DESC LIMIT $page_first_result, $limit";
 }
 else if ($Sortby==3){
-  $sql = "SELECT * FROM nguoidung WHERE role LIKE '%$roleSort%' and created_at LIKE '%$joinDate%' and updated_at LIKE '%$editDate%' ORDER BY email ASC LIMIT $page_first_result, $limit";
+  $sql = "SELECT * FROM nguoidung WHERE role LIKE '%$roleSort%' and created_at LIKE '%$joinDate%' and updated_at LIKE '%$editDate%' ORDER BY Email ASC LIMIT $page_first_result, $limit";
 }
 else{
   $sql = "SELECT * FROM nguoidung WHERE role LIKE '%$roleSort%' and created_at LIKE '%$joinDate%' and updated_at LIKE '%$editDate%' ORDER BY role ASC LIMIT $page_first_result, $limit";
@@ -219,14 +219,17 @@ $result = mysqli_query($conn, $sql);
                 $s .= '</td>';
                 $s .= sprintf('<td class="text-left">"%s"</td>', $row['SoDienThoai']);
                 $s .= sprintf('<td class="text-left">"%s"</td>', $row['role']);
-                $s .= sprintf('<td class="text-left">"%s"</td>', $row['created_at']);
+                $s .= sprintf('<td class="text-left">"%s"', $row['created_at']);
+                if($row['TrangThaiNguoiDung']==0){
+                  $s .='&lt; Banned &gt;';
+                }
+                $s .='</td>';
                 //cần 1 hàng lưu trữ giá trị của id mà có thể sử dụng, có nên thiết kế hàm php không nhỉ
                 //thay vì làm href mình sửa trên btn
                 //mình còn thiếu vấn đề bên bảo mật
                 $s .='<td>';
                 $s .= sprintf("<i class='bx bxs-edit-alt' onclick='editUser(%s)'><span class='tooltip'>edit</span></i>", $row['MaNguoiDung']);
                 $s .= sprintf("<i class='bx bxs-trash' onclick='deleteUser(%s)'><span class='tooltip'>delete</span></i>", $row['MaNguoiDung']);
-                $s .= "<i class='bx bx-mail-send'><span class='tooltip'>contact</span></i>";
                 $s .='</td>';
                 $s .='</tr>';
           }

@@ -39,18 +39,24 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 		if (mysqli_num_rows($result) === 1) {
 			$row = mysqli_fetch_assoc($result);
 			if ($row['TenDangNhap'] === $uname && $row['MatKhau'] === $pass) {
-				if ($row['role'] === 'Customer') {
-					$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
-					$_SESSION['HoTen'] = $row['HoTen'];
-					$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
-					header("Location: index.php");
-					exit();
-				}  
-				if ($row['role'] === 'Admin') {
-					$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
-					$_SESSION['HoTen'] = $row['HoTen'];
-					$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
-					header("Location: admin_index.php");
+				if($row['TrangThaiNguoiDung']==1){
+					if ($row['role'] === 'Customer') {
+						$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
+						$_SESSION['HoTen'] = $row['HoTen'];
+						$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
+						header("Location: index.php");
+						exit();
+					}  
+					if ($row['role'] === 'Admin') {
+						$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
+						$_SESSION['HoTen'] = $row['HoTen'];
+						$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
+						header("Location: admin_index.php");
+						exit();
+					}
+				}
+				else{
+					header("Location: login1.php?error=You has been banned");
 					exit();
 				}
 			} else {
@@ -66,3 +72,4 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	header("Location: login1.php");
 	exit();
 }
+?>

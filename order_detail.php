@@ -120,11 +120,11 @@ if(isset($_REQUEST['id'])){
                 {
                   echo '<td><span class="status-waiting">Waiting</span></td>';
                 }
-                if($row['TrangThai']==0)
+                if($row['TrangThai']==1)
                 {
                   echo '<td><span class="status-unpaid">Canceled</span></td>';
                 }
-                if($row['TrangThai']==1)
+                if($row['TrangThai']==2)
                 {
                   echo '<td><span class="status-paid">Succesful</span></td>';
                 }

@@ -9,12 +9,24 @@ $dbname = "webprojectdb2";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+if (!isset ($_GET['page']) ) {
+  $page = 1; 
+  } else {  
+  $page = $_GET['page'];  
+  }
+
+$limit=10;
+$sqlcount = "SELECT * FROM sanpham";
+$resultcount = mysqli_query($conn, $sqlcount);
+$page_first_result = ($page-1) * $limit;
+$number_of_result = mysqli_num_rows($resultcount);
+$number_of_page = ceil ($number_of_result / $limit);
 // Check connection
 if ($conn->connect_error) {
   die("Connect failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai";
+$sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai ORDER BY MaSP LIMIT $page_first_result, $limit";
 
 $result = mysqli_query($conn, $sql);
 
@@ -198,16 +210,27 @@ $conn->close();
         </table>
       </div>
       <div class="footer">
-        <div class="page">
-          <button><i class='bx bx-left-arrow-alt'></i></button>
-          <button class="current-page">1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <button><i class='bx bx-right-arrow-alt'></i></button>
-        </div>
+      <div class="page">
+        <?php
+        if($page>=2){
+          printf('<button><i class="bx bx-left-arrow-alt" onclick="nextPage(%d-1)"></i></button>', $page);
+        }
+        $temp=$page;
+        $temp=$page;
+        for($page = 1; $page<= $number_of_page; $page++) {
+          if($page==$temp){
+            printf('<button class="current-page" onclick="nextPage(%d)">%d</button>', $page, $page);
+          }
+          else{
+            printf('<button onclick="nextPage(%d)">%d</button>', $page, $page);         
+          }
+        }
+        if($temp<$number_of_page){
+          printf('<button><i class="bx bx-right-arrow-alt" onclick="nextPage(%d+1)"></i></button>', $temp);
+        }
+        ?>
       </div>
+    </div>
   </section>
 
   <div class="modal product-form">
@@ -268,6 +291,12 @@ $conn->close();
   </form>
 
   <script>
+    function nextPage(x){
+      window.location.href="admin_product.php?page="+x;
+      //nếu số page trên url trùng với nút thì gán class nút đc chọn vào
+      //vậy thì phần tạo nút kia mình sẽ phải xử lý bằng js, không echo bằng php nữa
+      //phải lấy được tổng số nút cần tạo!
+    }
     // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");

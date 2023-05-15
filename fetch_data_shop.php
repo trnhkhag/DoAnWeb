@@ -55,7 +55,6 @@ if (isset($_POST["action"])) {
 			$parameters[] = '%'. $search_filter . '%';
 		}
 	}
-
 	$statement = $connect->prepare($query);
 	$statement->execute($parameters);
 	$result = $statement->fetchAll();

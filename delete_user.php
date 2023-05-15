@@ -26,3 +26,4 @@ if(isset($_REQUEST['deleteUser'])) {
 
 	mysqli_close($conn);
 }
+?>
