@@ -15252,3 +15252,7 @@ textarea.form-control {
   color: orange;
   font-weight: bold;
 }
+
+.hidden-checkbox{
+  display: none;
+}

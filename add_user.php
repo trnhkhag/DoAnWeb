@@ -33,4 +33,5 @@ if(isset($_REQUEST['adduser'])) {
 	}
 
 	mysqli_close($conn);
+}
   ?>

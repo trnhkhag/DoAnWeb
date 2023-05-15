@@ -8,6 +8,8 @@ $username = "root";
 $password = "";
 //đổi giùm cái tên database
 $dbname = "webprojectdb2";
+
+
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!isset ($_GET['page']) ) {
@@ -29,7 +31,7 @@ if (!$conn) {
 if(isset($_POST['searchBtn'])){
   if(isset($_POST['searchKey'])){
     $searchKey=$_POST['searchKey'];
-    $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE MaDH LIKE '%$searchKey%' or TenDangNhap LIKE  '%$searchKey%' OR HoTen LIKE '%$searchKey%' ORDER BY NgayLap DESC LIMIT $page_first_result, $limit";
+    $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE MaDH LIKE '%$searchKey%' or TenDangNhap LIKE  '%$searchKey%' OR Hoten LIKE '%$searchKey%' ORDER BY TrangThai DESC LIMIT $page_first_result, $limit";
     $result = mysqli_query($conn, $sql);
   }
 }
@@ -37,15 +39,8 @@ else{
   $statusSort;
   $Datefrom;
   $Dateto;
-  $Address;
   if(isset($_REQUEST['statusSort'])){
     $statusSort= $_REQUEST['statusSort'];
-  }
-  if(empty($_REQUEST['statusSort'])){
-    $statusSort="";
-  }
-  if(empty($_REQUEST['addressSort'])){
-    $Address="";
   }
   if(isset($_REQUEST['datefrom'])){
     $Datefrom= $_REQUEST['datefrom'];
@@ -53,16 +48,19 @@ else{
   if(isset($_REQUEST['dateto'])){
     $Dateto= $_REQUEST['dateto'];
   }
-  if(isset($_REQUEST['addressSort'])){
-    $Address= $_REQUEST['addressSort'];
+  if(!isset($_REQUEST['dateto'])){
+    $Dateto=date('Y-m-d');
   }
-  if(empty($_REQUEST['dateto'])||empty($_REQUEST['datefrom'])){
-    $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%' and DiaChi LIKE '%$Address%' and TrangThai like '$statusSort%' ORDER BY NgayLap DESC LIMIT $page_first_result, $limit";
-  }
-  else{
-    $sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%' and (NgayLap BETWEEN '$Datefrom' and '$Dateto') and DiaChi LIKE '%$Address%' and TrangThai like '$statusSort%' ORDER BY NgayLap DESC LIMIT $page_first_result, $limit";
-  }  
-  $result = mysqli_query($conn, $sql);}
+  $timestamp1 = strtotime($Datefrom);
+  $timestamp2 = strtotime($Dateto);
+
+if ($timestamp1 > $timestamp2) {
+  $z=$Datefrom;
+  $Datefrom=$Dateto;
+  $Dateto=$z;
+} 
+$sql = "SELECT d.*, TenDangNhap FROM donhang d JOIN nguoidung n ON d.MaNguoiDung = n.MaNguoiDung WHERE TrangThai like '$statusSort%' or NgayLap >= '%$Datefrom%' and NgayLap <= '%$Dateto%'";
+$result = mysqli_query($conn, $sql);}
 ?>
 
 <head>
@@ -158,9 +156,9 @@ else{
           <div class="option">
             <p class="title">Time & Date</p>
                 <label for="datefrom">From:</label>
-                <input type="date" name="datefrom" value="<?php if(isset($_REQUEST['datefrom'])) echo $_REQUEST['datefrom'];  ?>">
+                <input type="date" name="datefrom">
                 <label for="dateto">To    :</label>
-                <input type="date" name="dateto" value="<?php if(isset($_REQUEST['datefrom'])) echo $_REQUEST['dateto'];  ?>">
+                <input type="date" name="dateto">
 </br>
             <button onclick="submitForm()">ok</button>
             </div>
@@ -170,19 +168,8 @@ else{
                 <select name="statusSort" onchange="submitForm()">
                   <option value="" <?= $_REQUEST['statusSort'] == "" ? 'selected' : '';?>>All</option>
                   <option value="-1" <?= $_REQUEST['statusSort'] == -1 ? 'selected' : '';?>>Waiting</option>
-                  <option value="1" <?= $_REQUEST['statusSort'] == 1 ? 'selected' : '';?>>Refused</option>
-                  <option value="2" <?= $_REQUEST['statusSort'] == 2 ? 'selected' : '';?>>Accepted</option>
-                </select>
-            </div>
-          </div>
-          <div class="option">
-            <p class="title">Address</p>
-            <div class="option-list user-manage">
-                <select name="addressSort" onchange="submitForm()">
-                  <option value="" <?= $_REQUEST['addressSort'] == "" ? 'selected' : '';?>>All</option>
-                  <option value="TP Ho Chi Minh" <?= $_REQUEST['addressSort'] == "TP Ho Chi Minh" ? 'selected' : '';?>>TP Hồ Chí Minh</option>
-                  <option value="Ha Noi" <?= $_REQUEST['addressSort'] == "Ha Noi" ? 'selected' : '';?>>Hà Nội</option>
-                  <option value="Hai Phong" <?= $_REQUEST['addressSort'] == "Hai Phong" ? 'selected' : '';?>>Hải Phòng</option>
+                  <option value="0" <?= $_REQUEST['statusSort'] == 0 ? 'selected' : '';?>>Refused</option>
+                  <option value="1" <?= $_REQUEST['statusSort'] == 1 ? 'selected' : '';?>>Accepted</option>
                 </select>
             </div>
           </div>
@@ -225,11 +212,11 @@ else{
                 {
                   $s .='<td><span class="status-waiting">Waiting</span></td>';
                 }
-                if($row['TrangThai']==1)
+                if($row['TrangThai']==0)
                 {
                   $s .='<td><span class="status-unpaid">Canceled</span></td>';
                 }
-                if($row['TrangThai']==2)
+                if($row['TrangThai']==1)
                 {
                   $s .='<td><span class="status-paid">Succesful</span></td>';
                 }

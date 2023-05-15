@@ -2,9 +2,7 @@
 
 <html lang="en">
 <?php session_start();
-$connect = new PDO("mysql:host=localhost;dbname=webprojectdb2", "root", "");
-
-?>
+include('connect_db.php') ?>
 
 <head>
     <title>BKMT WATCH | Shop</title>
@@ -41,13 +39,75 @@ $connect = new PDO("mysql:host=localhost;dbname=webprojectdb2", "root", "");
 </head>
 
 <body class="goto-here">
-    <?php require_once 'nav.php'; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">BKMT WATCH</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="shop.php" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <?php
+
+                            $query = "SELECT DISTINCT(TenLoai) FROM sanpham,loai WHERE TrangThai = '1'and sanpham.MaLoai=loai.MaLoai";
+                            $statement = $connect->prepare($query);
+                            $statement->execute();
+                            $result = $statement->fetchAll();
+                            foreach ($result as $row) {
+                            ?>
+                                <div class="list-group-item checkbox">
+                                    <label><input type="checkbox" class="common_selector maloai hidden-checkbox" value="<?php echo $row['TenLoai']; ?>"> <?php echo $row['TenLoai']; ?></label>
+                                </div>
+                            <?php
+                            }
+
+                            ?>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <div id="right">
+                <form method="POST">
+                    <input type="text" class="form-control3" placeholder="Search" id="search_product_name" name="search_product_name">
+                </form>
+            </div>
+
+            <div class="collapse navbar-collapse ftco-nav-right" id="ftco-nav">
+                <ul class="navbar-nav2 ">
+                    <li class="nav-item"><a href="cart.php" class="nav-link"><i class="fa-solid fa-cart-shopping" id="cart"><span id="cart-Item" style="font-size:15px; position:absolute;top:4px;"></span></i></a></li>
+                    <?php
+                    if (isset($_SESSION['TenDangNhap'])) {
+                    ?>
+                        <li class="nav-item"><a href="index.php" class="nav-link"><span class="user-header">Hello, <?php echo $_SESSION['TenDangNhap']; ?></span> </a></li>
+                        <li class="nav-item"><a href="logout.php" class="nav-link"><span class="user-header">Logout</span> </a></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li class="nav-item"><a href="login.php" class="nav-link"><i class="fa-solid fa-user"></i></a></li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
 
     <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpeg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span>
+                    </p>
                     <h1 class="mb-0 bread">Products</h1>
                 </div>
             </div>
@@ -125,7 +185,22 @@ $connect = new PDO("mysql:host=localhost;dbname=webprojectdb2", "root", "");
         </div>
     </section>
 
-    <?php require_once 'footer.php'; ?>
+    <footer>
+        <div class="Our_social_media">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="more_info">
+            <a href="#">Contact us</a>
+            <a href="#">Our Services</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Career</a>
+        </div>
+        <p>INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh</p>
+    </footer>
 
 
     <!-- loader -->
