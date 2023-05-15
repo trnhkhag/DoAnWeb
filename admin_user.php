@@ -25,7 +25,6 @@ $page_first_result = ($page-1) * $limit;
 $number_of_result = mysqli_num_rows($resultcount);
 $number_of_page = ceil ($number_of_result / $limit);
 // Check connection
-//if search is emty?
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
@@ -345,7 +344,6 @@ $result = mysqli_query($conn, $sql);
         options[i].style.display = 'none';
       }
     }
-
     // expand and shrink sidebar
     let sidebar = document.querySelector(".sidebar");
     let sidebarBtn = document.querySelector(".sidebarBtn");

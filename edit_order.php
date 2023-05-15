@@ -8,7 +8,7 @@ if (isset($_POST["submit-order-form"])) {
   $orderDate = $_POST["date"];
 
   // Connect database
-  $conn = new mysqli("localhost", "root", "", "webprojectdb");
+  $conn = new mysqli("localhost", "root", "", "webprojectdb2");
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }

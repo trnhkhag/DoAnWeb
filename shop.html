@@ -31,8 +31,6 @@
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/mystyle.css">
-	<link href="css/jquery-ui-scroll-price.css" rel="stylesheet">
-
 
 </head>
 
@@ -100,14 +98,6 @@
 
 	<section class="ftco-section2">
 		<div class="container2">
-			<div class="contain-shop1">
-				<h3>Giá</h3>
-				<p>
-					<label for="amount">Price range:</label>
-					<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-				</p>
-				<div id="slider-range"></div>
-			</div>
 			<div class="contain-shop2">
 				<div class="row justify-content-center">
 					<div class="col-md-10 mb-5 text-center">
@@ -587,25 +577,6 @@
 	<script src="js/sweetalert.all.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/cart.js"></script>
-	<script src="js/wishlistproduct.js"></script>
-	<!-- TAI_JS -->
-	<script>
-		
-		$(function () {
-			$("#slider-range").slider({
-				range: true,
-				min: 0,
-				max: 10000,
-				values: [0, 10000],
-				slide: function (event, ui) {
-					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-				}
-			});
-			$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-				" - $" + $("#slider-range").slider("values", 1));
-		});
-
-	</script>
 </body>
 
 </html>

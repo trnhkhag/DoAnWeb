@@ -30,3 +30,4 @@ if(isset($_REQUEST['edituser'])) {
 	}
 	mysqli_close($conn);
 }
+?>

@@ -8,7 +8,6 @@ $username = "root";
 $password = "";
 //đổi giùm cái tên database
 $dbname = "webprojectdb2";
-
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!isset ($_GET['page']) ) {
@@ -372,7 +371,6 @@ function Orderdetail(x){
     filterBtn.addEventListener('click', () => {
       header.classList.toggle('active');
     })
-
     
 
     

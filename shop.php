@@ -1,28 +1,10 @@
-<?php
-session_start();
-include('connect_db.php');
-
-// Define limit and get total products
-$limit = 8;
-$sql = "SELECT count(MaSP) AS total FROM sanpham";
-$result = $connect->query($sql);
-$row = $result->fetch();
-$totalProducts = $row['total'];
-
-// Get current page
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-// calculate total pages and start
-$totalPages = ceil($totalProducts / $limit);
-if ($currentPage > $totalPages) {
-    $currentPage = $totalPages;
-} else if ($currentPage < 1) {
-    $currentPage = 1;
-}
-$start = ($currentPage - 1) * $limit;
-?>
 <!DOCTYPE html>
+
 <html lang="en">
+<?php session_start();
+$connect = new PDO("mysql:host=localhost;dbname=webprojectdb2", "root", "");
+
+?>
 
 <head>
     <title>BKMT WATCH | Shop</title>
@@ -78,8 +60,8 @@ $start = ($currentPage - 1) * $limit;
                 <div class="item-shop1">
                     <h3>Giá</h3>
                     <input type="hidden" id="hidden_minimum_price" value="0" />
-                    <input type="hidden" id="hidden_maximum_price" value="5000" />
-                    <p id="price_show">0$ - 5000$</p>
+                    <input type="hidden" id="hidden_maximum_price" value="65000" />
+                    <p id="price_show">1000 - 65000</p>
                     <div id="price_range"></div>
                 </div>
                 <div class="item-shop1">
@@ -130,38 +112,13 @@ $start = ($currentPage - 1) * $limit;
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <?php
-                        if ($currentPage > 1) {
-                            echo '<li><a href="shop.php?page=' . $currentPage - 1 . '">&lt;</a></li>';
-                        } else {
-                            echo '<li><a href="#">&lt;</a></li>';
-                        }
-                        ?>
-
-                        <?php
-                        for ($i = 1; $i <= $totalPages; $i++) {
-                            if ($i == $currentPage) {
-                                echo "<li class='active'><span>" . $i . "</span></li>";
-                            } else {
-                                echo "<li><a href='shop.php?page=" . $i . "'>" . $i . "</a></li>";
-                            }
-                        }
-                        ?>
-
-                        <?php
-                        if ($currentPage < $totalPages) {
-                            echo '<li><a href="shop.php?page=' . $currentPage + 1 . '">&gt;</a></li>';
-                        } else {
-                            echo '<li><a href="#">&gt;</a></li>';
-                        }
-                        ?>
-                        <!-- <li><a href="#">&lt;</a></li>
+                        <li><a href="#">&lt;</a></li>
                         <li class="active"><span>1</span></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li> -->
+                        <li><a href="#">&gt;</a></li>
                     </ul>
                 </div>
             </div>
@@ -207,7 +164,7 @@ $start = ($currentPage - 1) * $limit;
                 var maloai = get_filter('maloai');
                 var search_product_name = $('#search_product_name').val();
                 $.ajax({
-                    url: "fetch_data_shop.php?page=" + <?php echo $currentPage ?>,
+                    url: "fetch_data_shop.php",
                     method: "POST",
                     data: {
                         action: action,
@@ -237,12 +194,12 @@ $start = ($currentPage - 1) * $limit;
 
             $('#price_range').slider({
                 range: true,
-                min: 0,
-                max: 5000,
-                values: [0, 5000],
-                step: 1,
+                min: 1000,
+                max: 65000,
+                values: [1000, 65000],
+                step: 500,
                 stop: function(event, ui) {
-                    $('#price_show').html(ui.values[0] + '$ - ' + ui.values[1] + '$');
+                    $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
                     $('#hidden_minimum_price').val(ui.values[0]);
                     $('#hidden_maximum_price').val(ui.values[1]);
                     filter_data();
@@ -254,7 +211,6 @@ $start = ($currentPage - 1) * $limit;
             });
         });
     </script>
-
 </body>
 
 </html>
