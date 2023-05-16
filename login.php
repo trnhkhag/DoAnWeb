@@ -51,7 +51,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 						$_SESSION['TenDangNhap'] = $row['TenDangNhap'];
 						$_SESSION['HoTen'] = $row['HoTen'];
 						$_SESSION['MaNguoiDung'] = $row['MaNguoiDung'];
-						header("Location: admin_index.php");
+						header("Location: admin_user.php");
 						exit();
 					}
 				}

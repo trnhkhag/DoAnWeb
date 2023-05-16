@@ -2,6 +2,7 @@
 <html lang="en">
 
 <?php
+session_start();
 if(isset($_REQUEST['id'])){
   $id=$_REQUEST['id'];
   $servername = "localhost";
@@ -37,62 +38,28 @@ if(isset($_REQUEST['id'])){
 </head>
 
 <body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bx-alarm'></i>
-      <span class="logo_name">BKMT WATCH</span>
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a href="admin_index.html">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      </li>
-      <li>
-        <a href="admin_product.html">
-          <i class='bx bx-box'></i>
-          <span class="links_name">Product</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="active">
-          <i class='bx bx-list-ul'></i>
-          <span class="links_name">Order list</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-pie-chart-alt-2'></i>
-          <span class="links_name">Analytics</span>
-        </a>
-      </li>
-      <li>
-        <a href="admin_user.html">
-          <i class='bx bx-user'></i>
-          <span class="links_name">User</span>
-        </a>
-      </li>
-      <li class="log_out">
-        <a href="#">
-          <i class='bx bx-log-out'></i>
-          <span class="links_name">Log out</span>
-        </a>
-      </li>
-    </ul>
+<div class="sidebar">
+    <?php
+      include('admin_nav.php')
+    ?>
+    <section class="home-section">
+<nav>
+<div class="sidebar-button">
+  <i class="bx bx-menu sidebarBtn"></i>
+  <span class="dashboard">ADMIN-Order-Detail</span>
+</div>
+<div class="profile-details">
+<?php
+  if (isset($_SESSION['TenDangNhap'])) { 
+    $s='';
+    $s .= sprintf('<span class="admin_name">%s</span>', $_SESSION['TenDangNhap']);
+    $s .= sprintf('  <img src="images/profile.jpg" alt="">');
+    $s .= sprintf('  <i class="bx bx-chevron-down"></i>');
+    echo $s;
+  }
+?>
   </div>
-  <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Order detail</span>
-      </div>
-      <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
-        <span class="admin_name">Admin</span>
-        <i class='bx bx-chevron-down'></i>
-      </div>
-    </nav>
+</nav>
 
     <div class="home-content order-detail">
 

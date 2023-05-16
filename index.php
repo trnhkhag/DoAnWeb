@@ -131,7 +131,7 @@ $conn->close();
 						<div class="col-md-6 order-md-last align-items-stretch d-flex">
 							<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url(images/category.jpeg);">
 								<div class="text text-center" style="margin-top: 200px;">
-									<p><a href="shop.html" class="btn btn-primary">Shop now</a></p>
+									<p><a href="shop.php" class="btn btn-primary">Shop now</a></p>
 								</div>
 							</div>
 						</div>
@@ -171,7 +171,7 @@ $conn->close();
 			<div class="row justify-content-center mb-3 pb-3">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<span class="subheading">Featured Products</span>
-					<h2 class="mb-4">Our Products</h2>
+					<h2 class="mb-4">Our Top Products</h2>
 				</div>
 			</div>
 		</div>

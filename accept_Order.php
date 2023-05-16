@@ -13,7 +13,7 @@ if(isset($_REQUEST['acceptOrder'])) {
 	if (!$conn) {
 	  die("Connection failed: " . mysqli_connect_error());
 	}
-    $sql = sprintf("UPDATE `donhang` SET `TrangThai` = '1' WHERE `donhang`.`MaDH` = %d", $id);
+    $sql = sprintf("UPDATE `donhang` SET `TrangThai` = '2' WHERE `donhang`.`MaDH` = %d", $id);
 	if ($conn->query($sql) === TRUE) {
 	  header("Location: admin_order_list.php");
 	  exit();

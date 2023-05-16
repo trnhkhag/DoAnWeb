@@ -87,8 +87,8 @@ include('connect_db.php') ?>
                     <?php
                     if (isset($_SESSION['TenDangNhap'])) {
                     ?>
-                        <li class="nav-item"><a href="index.php" class="nav-link"><span class="user-header">Hello, <?php echo $_SESSION['TenDangNhap']; ?></span> </a></li>
-                        <li class="nav-item"><a href="logout.php" class="nav-link"><span class="user-header">Logout</span> </a></li>
+                        <li class="nav-item"><a href="index.php" class="nav-link"><span class="user-header"><?php echo $_SESSION['TenDangNhap']; ?></span> </a></li>
+                        <li class="nav-item"><a href="logout.php" class="nav-link"><span class="user-header"><i class="fa-solid fa-right-from-bracket"></i></span> </a></li>
                     <?php
                     } else {
                     ?>

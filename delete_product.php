@@ -18,7 +18,7 @@ if (isset($_POST["deleteProduct"])) {
     unlink(implode(" ",$row));
 
     // sql to delete a record
-    $sql = "DELETE FROM sanpham WHERE MaSP = $id";
+    $sql = "UPDATE `sanpham` SET `TrangThai` = '0' WHERE `MaSP` = $id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Record deleted successfully";
