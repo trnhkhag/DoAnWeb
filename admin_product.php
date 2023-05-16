@@ -7,29 +7,48 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "webprojectdb2";
-
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+
 if (!isset ($_GET['page']) ) {
   $page = 1; 
   } else {  
   $page = $_GET['page'];  
   }
-
 $limit=10;
-$sqlcount = "SELECT * FROM sanpham";
-$resultcount = mysqli_query($conn, $sqlcount);
-$page_first_result = ($page-1) * $limit;
-$number_of_result = mysqli_num_rows($resultcount);
-$number_of_page = ceil ($number_of_result / $limit);
-// Check connection
-if ($conn->connect_error) {
-  die("Connect failed: " . $conn->connect_error);
+  $sqlcount = "SELECT * FROM sanpham JOIN loai ON sanpham.MaLoai = loai.MaLoai";
+  $resultcount = mysqli_query($conn, $sqlcount);
+  $page_first_result = ($page-1) * $limit;
+  $number_of_result = mysqli_num_rows($resultcount);
+  $number_of_page = ceil ($number_of_result / $limit);
+
+// Create connection
+
+if(isset($_POST['searchBtn'])){
+  if(isset($_POST['searchKey'])){
+    $searchKey=$_POST['searchKey'];
+    
+    $sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai WHERE TenSP LIKE '%$searchKey%' ORDER BY MaSP LIMIT $page_first_result, $limit";
+    $result = mysqli_query($conn, $sql);
+  }
+}
+else{
+  if (!isset ($_GET['page']) ) {
+    $page = 1; 
+    } else {  
+    $page = $_GET['page'];  
+    }
+  
+  
+  // Check connection
+  if ($conn->connect_error) {
+    die("Connect failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai ORDER BY MaSP LIMIT $page_first_result, $limit";
+  
+  $result = mysqli_query($conn, $sql);
 }
 
-$sql = "SELECT s.*, l.TenLoai FROM sanpham s join loai l on s.MaLoai = l.MaLoai ORDER BY MaSP LIMIT $page_first_result, $limit";
-
-$result = mysqli_query($conn, $sql);
 
 $conn->close();
 ?>
@@ -71,10 +90,16 @@ $conn->close();
     <div class="home-content product">
       <div class="header">
         <div class="nav">
+        <div class="action">
+        <form action="" method="POST">
+          
           <div class="search-box">
-            <input type="text" placeholder="Search product">
-            <i class='bx bx-search'></i>
-          </div>
+            <input type="text" name="searchKey" placeholder="Search by product name...">
+            <button type="submit" class='bx bx-search' name="searchBtn"></button>
+</form>
+        </div>
+            </div>
+       
           <div class="action">
             <div class="add-order btn">
               <i class="bx bx-plus"></i>
@@ -101,21 +126,6 @@ $conn->close();
             </div>
           </div>
           <div class="option">
-            <p class="title">Price range</p>
-            <div class="option-list">
-              <form action="" class="price-range">
-                <div class="from">
-                  <label for="from">From</label>
-                  <input type="text" id="from" placeholder=" 0$">
-                </div>
-                <div class="to">
-                  <label for="to">To</label>
-                  <input type="text" id="to" placeholder=" 1000$">
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="option">
             <p class="title">Status</p>
             <div class="option-list">
               <form action="#" class="status">
@@ -125,17 +135,6 @@ $conn->close();
                   <option value="Sold out">Sold out</option>
                 </select>
               </form>
-            </div>
-          </div>
-          <div class="option">
-            <p class="title">Sort</p>
-            <div class="option-list">
-              <div class="sort">
-                <button id="byname"><i class="fa-solid fa-arrow-up"></i> By name</button>
-              </div>
-              <div class="sort">
-                <button id="byprice"><i class="fa-solid fa-arrow-up"></i> By price</button>
-              </div>
             </div>
           </div>
         </div>

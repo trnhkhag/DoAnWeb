@@ -144,7 +144,7 @@ if(isset($_REQUEST['id'])){
             if (mysqli_num_rows($result1) > 0) {
               while ($row = mysqli_fetch_assoc($result1)) {
               $s .="<tr>";
-              $s .= sprintf("<td><img src='' class='product-image'>%s</td>", $row["Hinh"]);
+              $s .= sprintf("<td><img src='%s' class='product-image'></td>", $row["Hinh"]);
               $s .= sprintf("<td><h4>%s</h4>",$row['TenSP']);
               $s .= sprintf("<p>%s</p></td>",$row['MoTa']);
               $s .= sprintf("<td>%f</td>", $row["Gia"]);
